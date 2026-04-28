@@ -61,7 +61,7 @@
 
       // ─── Components ───────────────────────────────────────────────────────────────
 
-      const StatCard = ({ label, value, sub, color = theme.accent, trend, dimmed = false }) => (
+      const StatCard = ({ label, value, sub, color = theme.accent, dimmed = false }) => (
         <div style={{
           background: theme.surface, border: `1px solid ${theme.border}`,
           borderRadius: 12, padding: "20px 22px", position: "relative", overflow: "hidden",
@@ -75,11 +75,6 @@
           <div style={{ color: theme.muted, fontSize: 11, fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>{label}</div>
           <div style={{ color: theme.text, fontSize: 32, fontFamily: "'Syne', sans-serif", fontWeight: 700, lineHeight: 1 }}>{typeof value === "number" ? value.toLocaleString() : value}</div>
           {sub && <div style={{ color: theme.muted, fontSize: 12, marginTop: 6, fontFamily: "'DM Mono', monospace" }}>{sub}</div>}
-          {trend !== undefined && (
-            <div style={{ color: trend >= 0 ? theme.success : theme.danger, fontSize: 12, marginTop: 4, fontFamily: "'DM Mono', monospace" }}>
-              {trend >= 0 ? "↑" : "↓"} {Math.abs(trend)}% vs prev period
-            </div>
-          )}
         </div>
       );
 
@@ -299,10 +294,10 @@
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   {/* Top KPIs */}
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="New Users" value={d.newUsers} color={theme.accent} trend={12} dimmed={loading} />
-                    <StatCard label="Active Users" value={d.activeUsers} color="#6366f1" trend={8} dimmed={loading} />
-                    <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} trend={21} dimmed={loading} />
-                    <StatCard label="Vaccines Logged" value={d.vaccinesLogged} color="#f59e0b" trend={18} dimmed={loading} />
+                    <StatCard label="New Users" value={d.newUsers} color={theme.accent} dimmed={loading} />
+                    <StatCard label="Active Users" value={d.activeUsers} color="#6366f1" dimmed={loading} />
+                    <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} dimmed={loading} />
+                    <StatCard label="Vaccines Logged" value={d.vaccinesLogged} color="#f59e0b" dimmed={loading} />
                   </div>
 
                   {/* Trend Chart */}
@@ -361,10 +356,10 @@
               {activeTab === "growth" && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="Sign-ups" value={d.newUsers} color={theme.accent} trend={12} sub="App Store + direct" dimmed={loading} />
-                    <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" trend={8} sub="Unique users" dimmed={loading} />
-                    <StatCard label="Add Child" value={d.childrenAdded} color={theme.success} trend={21} sub="Across all countries" dimmed={loading} />
-                    <StatCard label="Vaccine Logs" value={d.vaccinesLogged} color="#f59e0b" trend={18} sub="Entries created" dimmed={loading} />
+                    <StatCard label="Sign-ups" value={d.newUsers} color={theme.accent} sub="App Store + direct" dimmed={loading} />
+                    <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" sub="Unique users" dimmed={loading} />
+                    <StatCard label="Add Child" value={d.childrenAdded} color={theme.success} sub="Across all countries" dimmed={loading} />
+                    <StatCard label="Vaccine Logs" value={d.vaccinesLogged} color="#f59e0b" sub="Entries created" dimmed={loading} />
                   </div>
 
                   <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
@@ -411,8 +406,8 @@
               {activeTab === "errors" && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="Total Crashes" value={d.crashes} color={theme.danger} trend={-18} sub="iOS + Android" dimmed={loading} />
-                    <StatCard label="Total Errors" value={d.errors} color={theme.warning} trend={5} sub="All types" dimmed={loading} />
+                    <StatCard label="Total Crashes" value={d.crashes} color={theme.danger} sub="iOS + Android" dimmed={loading} />
+                    <StatCard label="Total Errors" value={d.errors} color={theme.warning} sub="All types" dimmed={loading} />
                     <StatCard label="Crash Rate" value={`${((d.crashes / (d.activeUsers || 1)) * 100).toFixed(2)}%`} color={theme.danger} sub="of active sessions" dimmed={loading} />
                     <StatCard label="Error Rate" value={`${((d.errors / (d.activeUsers || 1)) * 100).toFixed(1)}%`} color={theme.warning} sub="of active sessions" dimmed={loading} />
                   </div>
@@ -462,7 +457,6 @@
                       label="Total intent taps"
                       value={d.totalIntentTaps || d.fakeDoors.reduce((s, f) => s + f.count, 0)}
                       color={theme.accent}
-                      trend={19}
                       sub="All fake doors"
                       dimmed={loading}
                     />
