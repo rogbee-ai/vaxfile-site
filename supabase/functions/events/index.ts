@@ -51,15 +51,8 @@ async function posthogQuery(
 function readScalarFromResponse(payload: unknown): number {
   if (!payload || typeof payload !== 'object') return 0
   const results = (payload as { results?: unknown }).results
-  if (Array.isArray(results)) {
-    const first = results[0]
-    if (typeof first === 'number') return first
-    if (first && typeof first === 'object' && 'count' in first) {
-      return Number((first as { count: unknown }).count) || 0
-    }
-  }
-  if ('result' in (payload as Record<string, unknown>)) {
-    return Number((payload as Record<string, unknown>).result) || 0
+  if (Array.isArray(results) && Array.isArray(results[0])) {
+    return Number(results[0][0]) || 0
   }
   return 0
 }
@@ -71,10 +64,9 @@ function readVaccineTrend(payload: unknown): Array<{ day: string; value: number 
 
   return results
     .map((row) => {
-      if (!row || typeof row !== 'object') return null
-      const r = row as Record<string, unknown>
-      const day = String(r.day ?? r.date ?? '')
-      const value = Number(r.value ?? r.count ?? 0) || 0
+      if (!Array.isArray(row)) return null
+      const day = String(row[0] ?? '')
+      const value = Number(row[1] ?? 0) || 0
       if (!day) return null
       return { day, value }
     })
@@ -100,7 +92,7 @@ Deno.serve(async (req) => {
       query: `
         SELECT count()
         FROM events
-        WHERE event = 'sign_up'
+        WHERE event = 'user_signed_up'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
       `,
@@ -111,7 +103,7 @@ Deno.serve(async (req) => {
       query: `
         SELECT uniq(distinct_id)
         FROM events
-        WHERE event = 'app_open'
+        WHERE event = 'user_logged_in'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
       `,
@@ -122,7 +114,7 @@ Deno.serve(async (req) => {
       query: `
         SELECT count()
         FROM events
-        WHERE event = 'vaccine_logged'
+        WHERE event = 'vaccination_logged'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
       `,
@@ -133,7 +125,7 @@ Deno.serve(async (req) => {
       query: `
         SELECT toDate(timestamp) AS day, count() AS value
         FROM events
-        WHERE event = 'vaccine_logged'
+        WHERE event = 'vaccination_logged'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
         GROUP BY day

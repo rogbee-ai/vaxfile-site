@@ -7,8 +7,8 @@ const corsHeaders = {
 }
 
 const featureMeta: Record<string, { label: string; icon: string }> = {
-  multiple_children: { label: 'Add 2nd child', icon: '👶' },
-  doc_scan: { label: 'Doc scan (OCR)', icon: '📄' },
+  second_child: { label: 'Add 2nd child', icon: '👶' },
+  scan_records: { label: 'Doc scan (OCR)', icon: '📄' },
   other_country: { label: 'Other country', icon: '🌍' },
 }
 
@@ -72,10 +72,9 @@ function parseFakeDoors(payload: unknown): FakeDoor[] {
 
   const rows = results
     .map((row) => {
-      if (!row || typeof row !== 'object') return null
-      const r = row as Record<string, unknown>
-      const feature = String(r.feature ?? r.properties_feature ?? '')
-      const count = Number(r.count ?? r.value ?? 0) || 0
+      if (!Array.isArray(row)) return null
+      const feature = String(row[0] ?? '')
+      const count = Number(row[1] ?? 0) || 0
       if (!feature) return null
 
       const meta = featureMeta[feature] ?? { label: feature, icon: '✨' }
@@ -99,10 +98,9 @@ function parseFakeDoorTrend(payload: unknown): FakeDoorTrendPoint[] {
 
   return results
     .map((row) => {
-      if (!row || typeof row !== 'object') return null
-      const r = row as Record<string, unknown>
-      const day = String(r.day ?? r.date ?? '')
-      const value = Number(r.value ?? r.count ?? 0) || 0
+      if (!Array.isArray(row)) return null
+      const day = String(row[0] ?? '')
+      const value = Number(row[1] ?? 0) || 0
       if (!day) return null
       return { day, value }
     })
@@ -127,9 +125,9 @@ Deno.serve(async (req) => {
     const fakeDoorsQuery = {
       kind: 'HogQLQuery',
       query: `
-        SELECT properties.feature AS feature, count() AS count
+        SELECT JSONExtractString(properties, 'feature') AS feature, count() AS count
         FROM events
-        WHERE event = 'premium_intent'
+        WHERE event = 'coming_soon_shown'
 
           AND (${dateFilterSql})
         GROUP BY feature
@@ -142,7 +140,7 @@ Deno.serve(async (req) => {
       query: `
         SELECT toDate(timestamp) AS day, count() AS value
         FROM events
-        WHERE event = 'premium_intent'
+        WHERE event = 'coming_soon_shown'
 
           AND (${dateFilterSql})
         GROUP BY day
