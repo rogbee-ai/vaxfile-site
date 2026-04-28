@@ -109,10 +109,9 @@ Deno.serve(async (req) => {
         SELECT count()
         FROM events
         WHERE event = '$exception'
-          AND filter_test_accounts = true
+
           AND (${dateFilterSql})
       `,
-      filter_test_accounts: true,
     }
 
     const errorTypesQuery = {
@@ -121,13 +120,12 @@ Deno.serve(async (req) => {
         SELECT properties.$exception_type AS name, count() AS count
         FROM events
         WHERE event = '$exception'
-          AND filter_test_accounts = true
+
           AND (${dateFilterSql})
         GROUP BY name
         ORDER BY count DESC
         LIMIT 5
       `,
-      filter_test_accounts: true,
     }
 
     const [totalErrorsRaw, errorTypesRaw] = await Promise.all([

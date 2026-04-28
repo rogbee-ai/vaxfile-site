@@ -48,8 +48,8 @@ Deno.serve(async (req) => {
       .gte('created_at', fromDate)
 
     let childrenQuery = supabase
-      .from('children')
-      .select('country', { count: 'exact' })
+      .from('profiles')
+      .select('country_code', { count: 'exact' })
       .gte('created_at', fromDate)
 
     let logsCountQuery = supabase
@@ -63,10 +63,9 @@ Deno.serve(async (req) => {
       .gte('created_at', fromDate)
 
     if (TEST_USER_ID) {
-      usersCountQuery = usersCountQuery.neq('user_id', TEST_USER_ID)
+      usersCountQuery = usersCountQuery.neq('id', TEST_USER_ID)
       childrenQuery = childrenQuery.neq('user_id', TEST_USER_ID)
-      logsCountQuery = logsCountQuery.neq('user_id', TEST_USER_ID)
-      usersTrendQuery = usersTrendQuery.neq('user_id', TEST_USER_ID)
+      usersTrendQuery = usersTrendQuery.neq('id', TEST_USER_ID)
     }
 
     const [
@@ -97,7 +96,7 @@ Deno.serve(async (req) => {
 
     const countryCounts = new Map<string, number>()
     for (const row of childrenRows ?? []) {
-      const country = row.country ?? 'Unknown'
+      const country = row.country_code ?? 'Unknown'
       countryCounts.set(country, (countryCounts.get(country) ?? 0) + 1)
     }
 

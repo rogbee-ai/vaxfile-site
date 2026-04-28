@@ -101,10 +101,9 @@ Deno.serve(async (req) => {
         SELECT count()
         FROM events
         WHERE event = 'sign_up'
-          AND filter_test_accounts = true
+
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
       `,
-      filter_test_accounts: true,
     }
 
     const appOpensQuery = {
@@ -113,10 +112,9 @@ Deno.serve(async (req) => {
         SELECT uniq(distinct_id)
         FROM events
         WHERE event = 'app_open'
-          AND filter_test_accounts = true
+
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
       `,
-      filter_test_accounts: true,
     }
 
     const vaccinesLoggedQuery = {
@@ -125,10 +123,9 @@ Deno.serve(async (req) => {
         SELECT count()
         FROM events
         WHERE event = 'vaccine_logged'
-          AND filter_test_accounts = true
+
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
       `,
-      filter_test_accounts: true,
     }
 
     const vaccineTrendQuery = {
@@ -137,12 +134,11 @@ Deno.serve(async (req) => {
         SELECT toDate(timestamp) AS day, count() AS value
         FROM events
         WHERE event = 'vaccine_logged'
-          AND filter_test_accounts = true
+
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
         GROUP BY day
         ORDER BY day ASC
       `,
-      filter_test_accounts: true,
     }
 
     const [signUpsRaw, appOpensRaw, vaccinesLoggedRaw, vaccineTrendRaw] = await Promise.all([

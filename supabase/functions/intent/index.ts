@@ -130,12 +130,11 @@ Deno.serve(async (req) => {
         SELECT properties.feature AS feature, count() AS count
         FROM events
         WHERE event = 'premium_intent'
-          AND filter_test_accounts = true
+
           AND (${dateFilterSql})
         GROUP BY feature
         ORDER BY count DESC
       `,
-      filter_test_accounts: true,
     }
 
     const fakeDoorTrendQuery = {
@@ -144,12 +143,11 @@ Deno.serve(async (req) => {
         SELECT toDate(timestamp) AS day, count() AS value
         FROM events
         WHERE event = 'premium_intent'
-          AND filter_test_accounts = true
+
           AND (${dateFilterSql})
         GROUP BY day
         ORDER BY day ASC
       `,
-      filter_test_accounts: true,
     }
 
     const [fakeDoorsRaw, fakeDoorTrendRaw] = await Promise.all([
