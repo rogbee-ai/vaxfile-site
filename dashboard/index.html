@@ -295,7 +295,7 @@
                   {/* Top KPIs */}
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
                     <StatCard label="New Users" value={d.newUsers} color={theme.accent} dimmed={loading} />
-                    <StatCard label="Active Users" value={d.activeUsers} color="#6366f1" dimmed={loading} />
+                    <StatCard label="Logins" value={d.activeUsers} color="#6366f1" dimmed={loading} />
                     <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} dimmed={loading} />
                     <StatCard label="Vaccines Logged" value={d.vaccinesLogged} color="#f59e0b" dimmed={loading} />
                   </div>
@@ -357,7 +357,7 @@
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
                     <StatCard label="Sign-ups" value={d.newUsers} color={theme.accent} sub="App Store + direct" dimmed={loading} />
-                    <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" sub="Unique users" dimmed={loading} />
+                    <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" sub="Login events" dimmed={loading} />
                     <StatCard label="Add Child" value={d.childrenAdded} color={theme.success} sub="Across all countries" dimmed={loading} />
                     <StatCard label="Vaccine Logs" value={d.vaccinesLogged} color="#f59e0b" sub="Entries created" dimmed={loading} />
                   </div>
