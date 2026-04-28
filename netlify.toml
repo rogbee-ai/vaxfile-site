@@ -5,8 +5,3 @@
   from = "/dashboard"
   to = "/dashboard/index.html"
   status = 200
-
-[[redirects]]
-  from = "/.netlify/functions/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
