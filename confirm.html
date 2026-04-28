@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VaxFile — Email Confirmed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #F6FBF8; }
+    h1 { color: #1A5F3A; font-size: 24px; margin-bottom: 8px; }
+    p { color: #5B7A70; font-size: 16px; margin-bottom: 32px; text-align: center; padding: 0 24px; }
+    a { background: #1A5F3A; color: white; padding: 16px 32px; border-radius: 10px; text-decoration: none; font-size: 16px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>VaxFile</h1>
+  <p>Your email has been confirmed. Tap below to open the app and log in.</p>
+  <a id="openApp" href="#">Open VaxFile</a>
+  <script>
+    const hash = window.location.hash;
+    const search = window.location.search;
+    const params = hash || search || '';
+    const deepLink = 'vaxfile://confirm' + params;
+    document.getElementById('openApp').href = deepLink;
+    setTimeout(() => {
+      window.location.href = deepLink;
+    }, 500);
+  </script>
+</body>
+</html>

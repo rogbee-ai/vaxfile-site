@@ -1,0 +1,547 @@
+import { useState, useEffect } from "react";
+import {
+  AreaChart, Area, BarChart, Bar, LineChart, Line,
+  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell
+} from "recharts";
+
+// ─── Mock Data ────────────────────────────────────────────────────────────────
+
+const COUNTRIES = ["All", "NL", "US", "DE", "UK", "AU", "CA", "FR", "SG"];
+const TIME_RANGES = ["24h", "30d", "All time"];
+const EMPTY_DATA = {
+  newUsers: 0,
+  activeUsers: 0,
+  childrenAdded: 0,
+  vaccinesLogged: 0,
+  crashes: 0,
+  errors: 0,
+  usersTrend: [],
+  vaccineTrend: [],
+  childrenByCountry: [],
+  errorTypes: [],
+  fakeDoors: [
+    { feature: "multiple_children", label: "Add 2nd child", count: 0, icon: "👶" },
+    { feature: "doc_scan", label: "Doc scan (OCR)", count: 0, icon: "📄" },
+    { feature: "other_country", label: "Other country", count: 0, icon: "🌍" },
+  ],
+  fakeDoorTrend: [],
+  totalIntentTaps: 0,
+};
+
+// ─── Theme ────────────────────────────────────────────────────────────────────
+
+const theme = {
+  bg: "#0a0f1e",
+  surface: "#111827",
+  border: "#1e2d45",
+  accent: "#3b82f6",
+  accentGlow: "rgba(59,130,246,0.15)",
+  success: "#10b981",
+  warning: "#f59e0b",
+  danger: "#ef4444",
+  text: "#e2e8f0",
+  muted: "#64748b",
+  green: "#22c55e",
+};
+
+// ─── Components ───────────────────────────────────────────────────────────────
+
+const StatCard = ({ label, value, sub, color = theme.accent, trend, dimmed = false }) => (
+  <div style={{
+    background: theme.surface, border: `1px solid ${theme.border}`,
+    borderRadius: 12, padding: "20px 22px", position: "relative", overflow: "hidden",
+    opacity: dimmed ? 0.72 : 1,
+    transition: "opacity 0.15s ease",
+  }}>
+    <div style={{
+      position: "absolute", top: 0, left: 0, right: 0, height: 2,
+      background: color, opacity: 0.8,
+    }} />
+    <div style={{ color: theme.muted, fontSize: 11, fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>{label}</div>
+    <div style={{ color: theme.text, fontSize: 32, fontFamily: "'Syne', sans-serif", fontWeight: 700, lineHeight: 1 }}>{typeof value === "number" ? value.toLocaleString() : value}</div>
+    {sub && <div style={{ color: theme.muted, fontSize: 12, marginTop: 6, fontFamily: "'DM Mono', monospace" }}>{sub}</div>}
+    {trend !== undefined && (
+      <div style={{ color: trend >= 0 ? theme.success : theme.danger, fontSize: 12, marginTop: 4, fontFamily: "'DM Mono', monospace" }}>
+        {trend >= 0 ? "↑" : "↓"} {Math.abs(trend)}% vs prev period
+      </div>
+    )}
+  </div>
+);
+
+const SectionHeader = ({ icon, title, source }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+    <span style={{ fontSize: 18 }}>{icon}</span>
+    <span style={{ color: theme.text, fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16 }}>{title}</span>
+    {source && <span style={{ color: theme.muted, fontSize: 11, fontFamily: "'DM Mono', monospace", background: theme.border, padding: "2px 8px", borderRadius: 99, marginLeft: 4 }}>{source}</span>}
+  </div>
+);
+
+const CustomTooltip = ({ active, payload, label }) => {
+  if (!active || !payload?.length) return null;
+  return (
+    <div style={{ background: "#1e2d45", border: `1px solid ${theme.border}`, borderRadius: 8, padding: "8px 14px", fontSize: 13, color: theme.text, fontFamily: "'DM Mono', monospace" }}>
+      <div style={{ color: theme.muted, marginBottom: 4 }}>{label}</div>
+      {payload.map((p, i) => <div key={i} style={{ color: p.color }}>{p.value}</div>)}
+    </div>
+  );
+};
+
+
+
+// ─── Main Dashboard ───────────────────────────────────────────────────────────
+
+export default function Dashboard() {
+  const [timeRange, setTimeRange] = useState("30d");
+  const [country, setCountry] = useState("All");
+  const [activeTab, setActiveTab] = useState("overview");
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const rangeMap = {
+      "24h": "24h",
+      "30d": "30d",
+      "All time": "all",
+    };
+
+    const rangeParam = rangeMap[timeRange] || "all";
+    let cancelled = false;
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const fetchJsonWithRetry = async (url, retries = 1, retryDelayMs = 300) => {
+      let lastError;
+      for (let attempt = 0; attempt <= retries; attempt += 1) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          return await response.json();
+        } catch (error) {
+          lastError = error;
+          if (attempt < retries) {
+            await sleep(retryDelayMs);
+          }
+        }
+      }
+      throw lastError || new Error("Request failed");
+    };
+
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const [growth, events, intent, errors] = await Promise.all([
+          fetchJsonWithRetry(`/.netlify/functions/growth?range=${rangeParam}`),
+          fetchJsonWithRetry(`/.netlify/functions/events?range=${rangeParam}`),
+          fetchJsonWithRetry(`/.netlify/functions/intent?range=${rangeParam}`),
+          fetchJsonWithRetry(`/.netlify/functions/errors?range=${rangeParam}`),
+        ]);
+
+        const usersTrend = (growth.usersTrend || []).map((point) => ({
+          day: point.day ?? point.date,
+          value: Number(point.value ?? point.count) || 0,
+        }));
+        const vaccineTrend = (events.vaccineTrend || []).map((point) => ({
+          day: point.day ?? point.date,
+          value: Number(point.value ?? point.count) || 0,
+        }));
+
+        if (!cancelled) {
+          setData({
+            newUsers: Number(growth.newUsers) || 0,
+            activeUsers: Number(events.appOpens) || 0,
+            childrenAdded: Number(growth.childrenAdded) || 0,
+            vaccinesLogged: Number(growth.vaccinesLogged || events.vaccinesLogged) || 0,
+            crashes: Number(errors.totalCrashes) || 0,
+            errors: Number(errors.totalErrors) || 0,
+            usersTrend,
+            vaccineTrend,
+            childrenByCountry: growth.childrenByCountry || [],
+            errorTypes: errors.errorTypes || [],
+            fakeDoors: intent.fakeDoors || EMPTY_DATA.fakeDoors,
+            fakeDoorTrend: (intent.fakeDoorTrend || []).map((point) => ({
+              day: point.day,
+              value: Number(point.value) || 0,
+            })),
+            totalIntentTaps: Number(intent.totalIntentTaps) || 0,
+          });
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setData(EMPTY_DATA);
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [timeRange]);
+
+  const d = data || EMPTY_DATA;
+
+  const tabs = [
+    { id: "overview", label: "Overview" },
+    { id: "growth", label: "Growth" },
+    { id: "errors", label: "Errors" },
+    { id: "premium", label: "Premium Intent" },
+  ];
+
+  const filteredChildren = country === "All"
+    ? d.childrenByCountry
+    : d.childrenByCountry.filter(c => c.country === country);
+
+  return (
+    <div style={{
+      minHeight: "100vh", background: theme.bg, color: theme.text,
+      fontFamily: "'DM Sans', sans-serif",
+      paddingBottom: 40,
+    }}>
+      {/* Google Fonts */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:ital,wght@0,700&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap');
+        * { box-sizing: border-box; }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0f1e; }
+        ::-webkit-scrollbar-thumb { background: #1e2d45; border-radius: 2px; }
+        select { -webkit-appearance: none; }
+      `}</style>
+
+      {/* Header */}
+      <div style={{
+        borderBottom: `1px solid ${theme.border}`,
+        padding: "16px 24px", display: "flex", alignItems: "center",
+        justifyContent: "space-between", flexWrap: "wrap", gap: 12,
+        position: "sticky", top: 0, background: theme.bg, zIndex: 10,
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{
+            width: 28, height: 28, borderRadius: 8,
+            background: `linear-gradient(135deg, ${theme.accent}, #6366f1)`,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 14,
+          }}>💉</div>
+          <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 17, letterSpacing: "-0.02em" }}>VaxTrack</span>
+          <span style={{ color: theme.muted, fontFamily: "'DM Mono', monospace", fontSize: 11 }}>Analytics</span>
+        </div>
+
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {/* Time Range */}
+          <div style={{ display: "flex", background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 8, overflow: "hidden" }}>
+            {TIME_RANGES.map(t => (
+              <button key={t} onClick={() => setTimeRange(t)} style={{
+                background: timeRange === t ? theme.accent : "transparent",
+                color: timeRange === t ? "#fff" : theme.muted,
+                border: "none", padding: "6px 14px", cursor: "pointer",
+                fontFamily: "'DM Mono', monospace", fontSize: 12, transition: "all 0.15s",
+              }}>{t}</button>
+            ))}
+          </div>
+
+          {/* Country Filter */}
+          <select
+            value={country}
+            onChange={e => setCountry(e.target.value)}
+            style={{
+              background: theme.surface, border: `1px solid ${theme.border}`,
+              color: theme.text, borderRadius: 8, padding: "6px 12px",
+              fontFamily: "'DM Mono', monospace", fontSize: 12, cursor: "pointer",
+            }}
+          >
+            {COUNTRIES.map(c => <option key={c} value={c}>{c === "All" ? "🌍 All countries" : `🏳️ ${c}`}</option>)}
+          </select>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div style={{
+        borderBottom: `1px solid ${theme.border}`,
+        padding: "0 24px", display: "flex", gap: 0, overflowX: "auto",
+      }}>
+        {tabs.map(tab => (
+          <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
+            background: "none", border: "none",
+            borderBottom: activeTab === tab.id ? `2px solid ${theme.accent}` : "2px solid transparent",
+            color: activeTab === tab.id ? theme.text : theme.muted,
+            padding: "14px 20px", cursor: "pointer",
+            fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 14,
+            whiteSpace: "nowrap", transition: "all 0.15s",
+            marginBottom: -1,
+          }}>{tab.label}</button>
+        ))}
+      </div>
+
+      <div style={{ padding: "24px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
+
+        {/* ── OVERVIEW TAB ── */}
+        {activeTab === "overview" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {/* Top KPIs */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
+              <StatCard label="New Users" value={d.newUsers} color={theme.accent} trend={12} dimmed={loading} />
+              <StatCard label="Active Users" value={d.activeUsers} color="#6366f1" trend={8} dimmed={loading} />
+              <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} trend={21} dimmed={loading} />
+              <StatCard label="Vaccines Logged" value={d.vaccinesLogged} color="#f59e0b" trend={18} dimmed={loading} />
+            </div>
+
+            {/* Trend Chart */}
+            <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+              <SectionHeader icon="📈" title="Activity Trend" source="PostHog" />
+              <ResponsiveContainer width="100%" height={200}>
+                <AreaChart data={d.usersTrend.map((p, i) => ({ ...p, vaccines: d.vaccineTrend[i]?.value }))}>
+                  <defs>
+                    <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={theme.accent} stopOpacity={0.3} />
+                      <stop offset="95%" stopColor={theme.accent} stopOpacity={0} />
+                    </linearGradient>
+                    <linearGradient id="colorVax" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={theme.success} stopOpacity={0.3} />
+                      <stop offset="95%" stopColor={theme.success} stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke={theme.border} />
+                  <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area type="monotone" dataKey="value" name="Active Users" stroke={theme.accent} fill="url(#colorUsers)" strokeWidth={2} />
+                  <Area type="monotone" dataKey="vaccines" name="Vaccines Logged" stroke={theme.success} fill="url(#colorVax)" strokeWidth={2} />
+                </AreaChart>
+              </ResponsiveContainer>
+              <div style={{ display: "flex", gap: 16, marginTop: 8, justifyContent: "center" }}>
+                {[["Active Users", theme.accent], ["Vaccines Logged", theme.success]].map(([l, c]) => (
+                  <div key={l} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, fontFamily: "'DM Mono', monospace", color: theme.muted }}>
+                    <div style={{ width: 12, height: 2, background: c, borderRadius: 1 }} />{l}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Children by Country */}
+            <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+              <SectionHeader icon="🌍" title="Children Added by Country" source="Supabase" />
+              <ResponsiveContainer width="100%" height={180}>
+                <BarChart data={filteredChildren} layout="vertical">
+                  <CartesianGrid strokeDasharray="3 3" stroke={theme.border} horizontal={false} />
+                  <XAxis type="number" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <YAxis type="category" dataKey="country" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} width={30} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Bar dataKey="count" name="Children" radius={[0, 4, 4, 0]}>
+                    {filteredChildren.map((_, i) => (
+                      <Cell key={i} fill={`hsl(${210 + i * 18}, 70%, ${55 - i * 3}%)`} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        )}
+
+        {/* ── GROWTH TAB ── */}
+        {activeTab === "growth" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
+              <StatCard label="Sign-ups" value={d.newUsers} color={theme.accent} trend={12} sub="App Store + direct" dimmed={loading} />
+              <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" trend={8} sub="Unique users" dimmed={loading} />
+              <StatCard label="Add Child" value={d.childrenAdded} color={theme.success} trend={21} sub="Across all countries" dimmed={loading} />
+              <StatCard label="Vaccine Logs" value={d.vaccinesLogged} color="#f59e0b" trend={18} sub="Entries created" dimmed={loading} />
+            </div>
+
+            <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+              <SectionHeader icon="👥" title="New Users Over Time" source="PostHog + App Store" />
+              <ResponsiveContainer width="100%" height={220}>
+                <AreaChart data={d.usersTrend}>
+                  <defs>
+                    <linearGradient id="gradUsers" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={theme.accent} stopOpacity={0.4} />
+                      <stop offset="95%" stopColor={theme.accent} stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke={theme.border} />
+                  <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area type="monotone" dataKey="value" name="New Users" stroke={theme.accent} fill="url(#gradUsers)" strokeWidth={2.5} dot={false} />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+              <SectionHeader icon="💉" title="Vaccine Logs Over Time" source="Supabase" />
+              <ResponsiveContainer width="100%" height={220}>
+                <AreaChart data={d.vaccineTrend}>
+                  <defs>
+                    <linearGradient id="gradVax" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.4} />
+                      <stop offset="95%" stopColor="#f59e0b" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke={theme.border} />
+                  <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area type="monotone" dataKey="value" name="Vaccines Logged" stroke="#f59e0b" fill="url(#gradVax)" strokeWidth={2.5} dot={false} />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        )}
+
+        {/* ── ERRORS TAB ── */}
+        {activeTab === "errors" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
+              <StatCard label="Total Crashes" value={d.crashes} color={theme.danger} trend={-18} sub="iOS + Android" dimmed={loading} />
+              <StatCard label="Total Errors" value={d.errors} color={theme.warning} trend={5} sub="All types" dimmed={loading} />
+              <StatCard label="Crash Rate" value={`${((d.crashes / (d.activeUsers || 1)) * 100).toFixed(2)}%`} color={theme.danger} sub="of active sessions" dimmed={loading} />
+              <StatCard label="Error Rate" value={`${((d.errors / (d.activeUsers || 1)) * 100).toFixed(1)}%`} color={theme.warning} sub="of active sessions" dimmed={loading} />
+            </div>
+
+            <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+              <SectionHeader icon="🔴" title="Error Breakdown" source="PostHog + App Store" />
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
+                {d.errorTypes.map((e, i) => {
+                  const max = d.errorTypes[0].count;
+                  const pct = (e.count / max) * 100;
+                  const iscrash = e.name.includes("Crash");
+                  return (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{ width: 140, fontSize: 12, fontFamily: "'DM Mono', monospace", color: iscrash ? theme.danger : theme.muted, flexShrink: 0 }}>{e.name}</div>
+                      <div style={{ flex: 1, background: theme.border, borderRadius: 4, height: 8, overflow: "hidden" }}>
+                        <div style={{ width: `${pct}%`, height: "100%", background: iscrash ? theme.danger : theme.warning, borderRadius: 4, transition: "width 0.4s ease" }} />
+                      </div>
+                      <div style={{ width: 40, fontSize: 13, fontFamily: "'DM Mono', monospace", color: theme.text, textAlign: "right" }}>{e.count}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div style={{
+              background: `linear-gradient(135deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02))`,
+              border: `1px solid rgba(239,68,68,0.2)`,
+              borderRadius: 12, padding: "16px 20px",
+              display: "flex", alignItems: "flex-start", gap: 12,
+            }}>
+              <span style={{ fontSize: 20 }}>⚠️</span>
+              <div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, marginBottom: 4 }}>Crash spike detected</div>
+                <div style={{ color: theme.muted, fontSize: 13, lineHeight: 1.5 }}>iOS crashes up 23% in last 24h. Likely related to iOS 18.4.1 update. <span style={{ color: theme.accent, cursor: "pointer" }}>View in App Store Connect →</span></div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── PREMIUM INTENT TAB ── */}
+        {activeTab === "premium" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+
+            {/* Total taps stat */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
+              <StatCard
+                label="Total intent taps"
+                value={d.totalIntentTaps || d.fakeDoors.reduce((s, f) => s + f.count, 0)}
+                color={theme.accent}
+                trend={19}
+                sub="All fake doors"
+                dimmed={loading}
+              />
+              <StatCard
+                label="Top signal"
+                value={(d.fakeDoors[0]?.icon || "👶") + " " + (d.fakeDoors[0]?.label || "Add 2nd child")}
+                color="#6366f1"
+                sub={`${d.fakeDoors[0]?.count || 0} taps`}
+                dimmed={loading}
+              />
+              <StatCard
+                label="% of active users"
+                value={`${(((d.totalIntentTaps || d.fakeDoors.reduce((s, f) => s + f.count, 0)) / (d.activeUsers || 1)) * 100).toFixed(1)}%`}
+                color={theme.success}
+                sub="tapped at least one"
+                dimmed={loading}
+              />
+            </div>
+
+            {/* Fake door breakdown */}
+            <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+              <SectionHeader icon="🚪" title="Fake Door Taps by Feature" source="PostHog" />
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 12 }}>
+                {d.fakeDoors.map((fd, i) => {
+                  const max = d.fakeDoors[0].count;
+                  const pct = (fd.count / max) * 100;
+                  const colors = [theme.accent, "#6366f1", theme.success];
+                  return (
+                    <div key={fd.feature}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                          <span style={{ fontSize: 18 }}>{fd.icon}</span>
+                          <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 14, color: theme.text }}>{fd.label}</span>
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: theme.muted, background: theme.border, padding: "2px 7px", borderRadius: 99 }}>{fd.feature}</span>
+                        </div>
+                        <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 22, color: theme.text }}>{fd.count.toLocaleString()}</span>
+                      </div>
+                      <div style={{ background: theme.border, borderRadius: 6, height: 10, overflow: "hidden" }}>
+                        <div style={{
+                          width: `${pct}%`, height: "100%",
+                          background: colors[i],
+                          borderRadius: 6, transition: "width 0.5s ease",
+                          opacity: 0.85,
+                        }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Trend over time */}
+            <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+              <SectionHeader icon="📈" title="Intent Taps Over Time" source="PostHog" />
+              <ResponsiveContainer width="100%" height={180}>
+                <AreaChart data={d.fakeDoorTrend}>
+                  <defs>
+                    <linearGradient id="gradIntent" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={theme.accent} stopOpacity={0.35} />
+                      <stop offset="95%" stopColor={theme.accent} stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke={theme.border} />
+                  <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area type="monotone" dataKey="value" name="Intent taps" stroke={theme.accent} fill="url(#gradIntent)" strokeWidth={2} dot={false} />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+
+            {/* Context note */}
+            <div style={{
+              background: `linear-gradient(135deg, rgba(59,130,246,0.08), rgba(99,102,241,0.04))`,
+              border: `1px solid rgba(59,130,246,0.2)`,
+              borderRadius: 12, padding: "16px 20px",
+              display: "flex", alignItems: "flex-start", gap: 12,
+            }}>
+              <span style={{ fontSize: 20 }}>💡</span>
+              <div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, marginBottom: 4 }}>What this tells you</div>
+                <div style={{ color: theme.muted, fontSize: 13, lineHeight: 1.6 }}>
+                  These taps show which locked features users actually want — before building them. The most-tapped feature is your strongest signal for what to prioritise in V2.
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Footer */}
+      <div style={{ textAlign: "center", marginTop: 40, color: theme.muted, fontFamily: "'DM Mono', monospace", fontSize: 11 }}>
+        VaxTrack Analytics · data from PostHog + Supabase
+      </div>
+    </div>
+  );
+}
