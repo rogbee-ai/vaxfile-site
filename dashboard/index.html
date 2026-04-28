@@ -146,10 +146,10 @@
             setLoading(true);
             try {
               const [growth, events, intent, errors] = await Promise.all([
-                fetchJsonWithRetry(`/.netlify/functions/growth?range=${rangeParam}`),
-                fetchJsonWithRetry(`/.netlify/functions/events?range=${rangeParam}`),
-                fetchJsonWithRetry(`/.netlify/functions/intent?range=${rangeParam}`),
-                fetchJsonWithRetry(`/.netlify/functions/errors?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/events?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/intent?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/errors?range=${rangeParam}`),
               ]);
 
               const usersTrend = (growth.usersTrend || []).map((point) => ({
