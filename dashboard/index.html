@@ -278,7 +278,7 @@
                   {/* Top KPIs */}
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
                     <StatCard label="New Users" value={d.newUsers} color={theme.accent} dimmed={loading} />
-                    <StatCard label="Logins" value={d.activeUsers} color="#6366f1" dimmed={loading} />
+                    <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" dimmed={loading} />
                     <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} dimmed={loading} />
                     <StatCard label="Vaccines Logged" value={d.vaccinesLogged} color="#f59e0b" dimmed={loading} />
                   </div>
@@ -302,12 +302,12 @@
                         <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
                         <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
                         <Tooltip content={<CustomTooltip />} />
-                        <Area type="monotone" dataKey="value" name="Logins" stroke={theme.accent} fill="url(#colorUsers)" strokeWidth={2} />
+                        <Area type="monotone" dataKey="value" name="App Opens" stroke={theme.accent} fill="url(#colorUsers)" strokeWidth={2} />
                         <Area type="monotone" dataKey="vaccines" name="Vaccines Logged" stroke={theme.success} fill="url(#colorVax)" strokeWidth={2} />
                       </AreaChart>
                     </ResponsiveContainer>
                     <div style={{ display: "flex", gap: 16, marginTop: 8, justifyContent: "center" }}>
-                      {[["Logins", theme.accent], ["Vaccines Logged", theme.success]].map(([l, c]) => (
+                      {[["App Opens", theme.accent], ["Vaccines Logged", theme.success]].map(([l, c]) => (
                         <div key={l} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, fontFamily: "'DM Mono', monospace", color: theme.muted }}>
                           <div style={{ width: 12, height: 2, background: c, borderRadius: 1 }} />{l}
                         </div>
@@ -389,7 +389,7 @@
               {activeTab === "errors" && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="Total Crashes" value={d.crashes} color={theme.danger} sub="iOS + Android" dimmed={loading} />
+                    <StatCard label="Total Crashes" value={d.crashes} color={theme.danger} sub="iOS" dimmed={loading} />
                     <StatCard label="Total Errors" value={d.errors} color={theme.warning} sub="All types" dimmed={loading} />
                     <StatCard label="Crash Rate" value={`${((d.crashes / (d.activeUsers || 1)) * 100).toFixed(2)}%`} color={theme.danger} sub="of active sessions" dimmed={loading} />
                     <StatCard label="Error Rate" value={`${((d.errors / (d.activeUsers || 1)) * 100).toFixed(1)}%`} color={theme.warning} sub="of active sessions" dimmed={loading} />
