@@ -74,6 +74,22 @@ function readVaccineTrend(payload: unknown): Array<{ day: string; value: number 
     .filter((row): row is { day: string; value: number } => row !== null)
 }
 
+function readUsersByCountry(payload: unknown): Array<{ country: string; count: number }> {
+  if (!payload || typeof payload !== 'object') return []
+  const results = (payload as { results?: unknown }).results
+  if (!Array.isArray(results)) return []
+
+  return results
+    .map((row) => {
+      if (!Array.isArray(row)) return null
+      const country = String(row[0] ?? '')
+      const count = Number(row[1] ?? 0) || 0
+      if (!country) return null
+      return { country, count }
+    })
+    .filter((row): row is { country: string; count: number } => row !== null)
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -134,11 +150,26 @@ Deno.serve(async (req) => {
       `,
     }
 
-    const [signUpsRaw, appOpensRaw, vaccinesLoggedRaw, vaccineTrendRaw] = await Promise.all([
+    const usersByCountryQuery = {
+      kind: 'HogQLQuery',
+      query: `
+        SELECT JSONExtractString(properties, '$geoip_country_code') AS country, count() AS count
+        FROM events
+        WHERE event = 'user_logged_in'
+
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
+        GROUP BY country
+        ORDER BY count DESC
+        LIMIT 20
+      `,
+    }
+
+    const [signUpsRaw, appOpensRaw, vaccinesLoggedRaw, vaccineTrendRaw, usersByCountryRaw] = await Promise.all([
       posthogQuery(apiUrl, token, signUpsQuery),
       posthogQuery(apiUrl, token, appOpensQuery),
       posthogQuery(apiUrl, token, vaccinesLoggedQuery),
       posthogQuery(apiUrl, token, vaccineTrendQuery),
+      posthogQuery(apiUrl, token, usersByCountryQuery),
     ])
 
     return new Response(
@@ -147,6 +178,7 @@ Deno.serve(async (req) => {
         appOpens: readScalarFromResponse(appOpensRaw),
         vaccinesLogged: readScalarFromResponse(vaccinesLoggedRaw),
         vaccineTrend: readVaccineTrend(vaccineTrendRaw),
+        usersByCountry: readUsersByCountry(usersByCountryRaw),
       }),
       {
         headers: {
