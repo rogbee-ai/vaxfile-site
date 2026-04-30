@@ -302,12 +302,12 @@
                         <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
                         <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
                         <Tooltip content={<CustomTooltip />} />
-                        <Area type="monotone" dataKey="value" name="Active Users" stroke={theme.accent} fill="url(#colorUsers)" strokeWidth={2} />
+                        <Area type="monotone" dataKey="value" name="Logins" stroke={theme.accent} fill="url(#colorUsers)" strokeWidth={2} />
                         <Area type="monotone" dataKey="vaccines" name="Vaccines Logged" stroke={theme.success} fill="url(#colorVax)" strokeWidth={2} />
                       </AreaChart>
                     </ResponsiveContainer>
                     <div style={{ display: "flex", gap: 16, marginTop: 8, justifyContent: "center" }}>
-                      {[["Active Users", theme.accent], ["Vaccines Logged", theme.success]].map(([l, c]) => (
+                      {[["Logins", theme.accent], ["Vaccines Logged", theme.success]].map(([l, c]) => (
                         <div key={l} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, fontFamily: "'DM Mono', monospace", color: theme.muted }}>
                           <div style={{ width: 12, height: 2, background: c, borderRadius: 1 }} />{l}
                         </div>
