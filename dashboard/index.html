@@ -21,7 +21,6 @@
 
       // ─── Mock Data ────────────────────────────────────────────────────────────────
 
-      const COUNTRIES = ["All", "NL", "US", "DE", "UK", "AU", "CA", "FR", "SG"];
       const TIME_RANGES = ["24h", "30d", "All time"];
       const EMPTY_DATA = {
         newUsers: 0,
@@ -102,7 +101,6 @@
 
       function Dashboard() {
         const [timeRange, setTimeRange] = useState("30d");
-        const [country, setCountry] = useState("All");
         const [activeTab, setActiveTab] = useState("overview");
         const [data, setData] = useState(null);
         const [loading, setLoading] = useState(true);
@@ -203,10 +201,6 @@
           { id: "premium", label: "Premium Intent" },
         ];
 
-        const filteredChildren = country === "All"
-          ? d.childrenByCountry
-          : d.childrenByCountry.filter(c => c.country === country);
-
         return (
           <div style={{
             minHeight: "100vh", background: theme.bg, color: theme.text,
@@ -254,18 +248,6 @@
                   ))}
                 </div>
 
-                {/* Country Filter */}
-                <select
-                  value={country}
-                  onChange={e => setCountry(e.target.value)}
-                  style={{
-                    background: theme.surface, border: `1px solid ${theme.border}`,
-                    color: theme.text, borderRadius: 8, padding: "6px 12px",
-                    fontFamily: "'DM Mono', monospace", fontSize: 12, cursor: "pointer",
-                  }}
-                >
-                  {COUNTRIES.map(c => <option key={c} value={c}>{c === "All" ? "🌍 All countries" : `🏳️ ${c}`}</option>)}
-                </select>
               </div>
             </div>
 
@@ -336,13 +318,13 @@
                   <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
                     <SectionHeader icon="🌍" title="Children Added by Country" source="Supabase" />
                     <ResponsiveContainer width="100%" height={180}>
-                      <BarChart data={filteredChildren} layout="vertical">
+                      <BarChart data={d.childrenByCountry} layout="vertical">
                         <CartesianGrid strokeDasharray="3 3" stroke={theme.border} horizontal={false} />
                         <XAxis type="number" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
                         <YAxis type="category" dataKey="country" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} width={30} />
                         <Tooltip content={<CustomTooltip />} />
                         <Bar dataKey="count" name="Children" radius={[0, 4, 4, 0]}>
-                          {filteredChildren.map((_, i) => (
+                          {d.childrenByCountry.map((_, i) => (
                             <Cell key={i} fill={`hsl(${210 + i * 18}, 70%, ${55 - i * 3}%)`} />
                           ))}
                         </Bar>
