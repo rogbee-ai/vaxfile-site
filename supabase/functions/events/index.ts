@@ -104,7 +104,7 @@ Deno.serve(async (req) => {
       query: `
         SELECT uniq(distinct_id)
         FROM events
-        WHERE event = 'user_logged_in'
+        WHERE event = 'app_open'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
       `,
