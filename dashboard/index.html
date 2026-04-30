@@ -8,6 +8,47 @@
   <body>
     <div id="root"></div>
 
+    <script>
+      (function () {
+        const AUTH_KEY = 'dashboard_auth';
+        const AUTH_VALUE = 'authenticated';
+        const PASSWORD = 'onniewou1ponny';
+        const root = document.getElementById('root');
+        const isAuthenticated = sessionStorage.getItem(AUTH_KEY) === AUTH_VALUE;
+
+        window.__dashboardAuth = isAuthenticated;
+        if (isAuthenticated || !root) return;
+
+        root.innerHTML = `
+          <div style="min-height:100vh;background:#0a0f1e;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;color:#f1f5f9;padding:24px;">
+            <form id="auth-form" style="width:100%;max-width:340px;background:#111827;border:1px solid #1e2d45;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;">Dashboard Access</div>
+              <input id="auth-password" type="password" placeholder="Enter password" style="background:#0a0f1e;border:1px solid #1e2d45;color:#f1f5f9;border-radius:8px;padding:10px 12px;font-size:14px;outline:none;" />
+              <button type="submit" style="background:#3b82f6;color:#fff;border:none;border-radius:8px;padding:10px 12px;font-size:14px;cursor:pointer;">Submit</button>
+              <div id="auth-error" style="display:none;color:#ef4444;font-size:13px;">Incorrect password</div>
+            </form>
+          </div>
+        `;
+
+        const form = document.getElementById('auth-form');
+        const input = document.getElementById('auth-password');
+        const error = document.getElementById('auth-error');
+
+        if (input) input.focus();
+        if (!form || !input || !error) return;
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          if (input.value === PASSWORD) {
+            sessionStorage.setItem(AUTH_KEY, AUTH_VALUE);
+            window.location.reload();
+            return;
+          }
+          error.style.display = 'block';
+        });
+      })();
+    </script>
+
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/prop-types@15/prop-types.min.js"></script>
     <script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.js"></script>
@@ -531,7 +572,9 @@
         );
       }
 
-      ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(Dashboard));
+      if (window.__dashboardAuth) {
+        ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(Dashboard));
+      }
     </script>
   </body>
 </html>
