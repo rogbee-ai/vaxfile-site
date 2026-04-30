@@ -238,7 +238,6 @@
 
         const tabs = [
           { id: "overview", label: "Overview" },
-          { id: "growth", label: "Growth" },
           { id: "errors", label: "Errors" },
           { id: "premium", label: "Premium Intent" },
         ];
@@ -371,56 +370,6 @@
                           ))}
                         </Bar>
                       </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              )}
-
-              {/* ── GROWTH TAB ── */}
-              {activeTab === "growth" && (
-                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="Sign-ups" value={d.newUsers} color={theme.accent} sub="App Store + direct" dimmed={loading} />
-                    <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" sub="Login events" dimmed={loading} />
-                    <StatCard label="Add Child" value={d.childrenAdded} color={theme.success} sub="Across all countries" dimmed={loading} />
-                    <StatCard label="Vaccine Logs" value={d.vaccinesLogged} color="#f59e0b" sub="Entries created" dimmed={loading} />
-                  </div>
-
-                  <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
-                    <SectionHeader icon="👥" title="New Users Over Time" source="PostHog + App Store" />
-                    <ResponsiveContainer width="100%" height={220}>
-                      <AreaChart data={d.usersTrend}>
-                        <defs>
-                          <linearGradient id="gradUsers" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor={theme.accent} stopOpacity={0.4} />
-                            <stop offset="95%" stopColor={theme.accent} stopOpacity={0} />
-                          </linearGradient>
-                        </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke={theme.border} />
-                        <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
-                        <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
-                        <Tooltip content={<CustomTooltip />} />
-                        <Area type="monotone" dataKey="value" name="New Users" stroke={theme.accent} fill="url(#gradUsers)" strokeWidth={2.5} dot={false} />
-                      </AreaChart>
-                    </ResponsiveContainer>
-                  </div>
-
-                  <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
-                    <SectionHeader icon="💉" title="Vaccine Logs Over Time" source="Supabase" />
-                    <ResponsiveContainer width="100%" height={220}>
-                      <AreaChart data={d.vaccineTrend}>
-                        <defs>
-                          <linearGradient id="gradVax" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.4} />
-                            <stop offset="95%" stopColor="#f59e0b" stopOpacity={0} />
-                          </linearGradient>
-                        </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke={theme.border} />
-                        <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
-                        <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
-                        <Tooltip content={<CustomTooltip />} />
-                        <Area type="monotone" dataKey="value" name="Vaccines Logged" stroke="#f59e0b" fill="url(#gradVax)" strokeWidth={2.5} dot={false} />
-                      </AreaChart>
                     </ResponsiveContainer>
                   </div>
                 </div>
