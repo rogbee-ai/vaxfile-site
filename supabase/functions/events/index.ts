@@ -6,6 +6,7 @@ const corsHeaders = {
 
 function mapRangeToDateFrom(range: string): string {
   if (range === '24h') return '-1d'
+  if (range === '7d') return '-7d'
   if (range === '30d') return '-30d'
   return 'all'
 }
@@ -81,7 +82,7 @@ Deno.serve(async (req) => {
   try {
     const url = new URL(req.url)
     const range = url.searchParams.get('range') ?? 'all'
-    const normalizedRange = ['24h', '30d', 'all'].includes(range) ? range : 'all'
+    const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
 
     const apiUrl = getApiUrl()
@@ -94,7 +95,7 @@ Deno.serve(async (req) => {
         FROM events
         WHERE event = 'user_signed_up'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
       `,
     }
 
@@ -105,7 +106,7 @@ Deno.serve(async (req) => {
         FROM events
         WHERE event = 'user_logged_in'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
       `,
     }
 
@@ -116,7 +117,7 @@ Deno.serve(async (req) => {
         FROM events
         WHERE event = 'vaccination_logged'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
       `,
     }
 
@@ -127,7 +128,7 @@ Deno.serve(async (req) => {
         FROM events
         WHERE event = 'vaccination_logged'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
         GROUP BY day
         ORDER BY day ASC
       `,

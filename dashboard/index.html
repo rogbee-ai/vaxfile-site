@@ -21,7 +21,7 @@
 
       // ─── Mock Data ────────────────────────────────────────────────────────────────
 
-      const TIME_RANGES = ["24h", "30d", "All time"];
+      const TIME_RANGES = ["24h", "7d", "30d", "All time"];
       const EMPTY_DATA = {
         newUsers: 0,
         activeUsers: 0,
@@ -108,6 +108,7 @@
         useEffect(() => {
           const rangeMap = {
             "24h": "24h",
+            "7d": "7d",
             "30d": "30d",
             "All time": "all",
           };

@@ -14,6 +14,7 @@ const featureMeta: Record<string, { label: string; icon: string }> = {
 
 function mapRangeToDateFrom(range: string): string {
   if (range === '24h') return '-1d'
+  if (range === '7d') return '-7d'
   if (range === '30d') return '-30d'
   return 'all'
 }
@@ -21,6 +22,7 @@ function mapRangeToDateFrom(range: string): string {
 function getDateFilterSql(dateFrom: string): string {
   if (dateFrom === 'all') return 'true'
   if (dateFrom === '-1d') return "timestamp >= now() - INTERVAL '1 day'"
+  if (dateFrom === '-7d') return "timestamp >= now() - INTERVAL '7 day'"
   return "timestamp >= now() - INTERVAL '30 day'"
 }
 
@@ -115,7 +117,7 @@ Deno.serve(async (req) => {
   try {
     const requestUrl = new URL(req.url)
     const range = requestUrl.searchParams.get('range') ?? 'all'
-    const normalizedRange = ['24h', '30d', 'all'].includes(range) ? range : 'all'
+    const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
     const dateFilterSql = getDateFilterSql(dateFrom)
 
