@@ -449,13 +449,6 @@
                       sub={`${d.fakeDoors[0]?.count || 0} taps`}
                       dimmed={loading}
                     />
-                    <StatCard
-                      label="% of active users"
-                      value={`${(((d.totalIntentTaps || d.fakeDoors.reduce((s, f) => s + f.count, 0)) / (d.activeUsers || 1)) * 100).toFixed(1)}%`}
-                      color={theme.success}
-                      sub="tapped at least one"
-                      dimmed={loading}
-                    />
                   </div>
 
                   {/* Fake door breakdown */}
