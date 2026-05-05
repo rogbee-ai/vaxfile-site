@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="VaxFile helps parents track their children&#39;s vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
   <meta name="twitter:image" content="https://www.vaxfile.app/assets/icon.png">
 
-  <link rel="icon" href="file:///Users/rogierbeeftink/Desktop/vaxfile-site/index_files/icon.png">
+  <link rel="icon" href="/favicon.png" type="image/png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -507,13 +507,27 @@
   </style>
 </head>
 <body>
+  <script>
+    (function() {
+      var hash = window.location.hash;
+      var search = window.location.search;
+      var params = hash || search || '';
+      if (params.includes('type=signup') || 
+          params.includes('type=recovery')) {
+        var type = params.includes('type=signup') 
+          ? 'confirm' 
+          : 'reset-password';
+        window.location.href = 'vaxfile://' + type + params;
+      }
+    })();
+  </script>
   <header class="site-header">
     <div class="header-inner">
       <a aria-label="VaxFile home" class="brand" href="https://vaxfile.app/">
         <img src="./index_files/icon.png" alt="" width="32" height="32">
         <span class="wordmark">VaxFile</span>
       </a>
-      <a href="file:///Users/rogierbeeftink/Desktop/vaxfile-site/index.html#download" class="btn-pill">Download free</a>
+      <a href="#download" class="btn-pill">Download free</a>
     </div>
   </header>
 
@@ -526,7 +540,7 @@
           <h1>Every vaccine. Every child. Always with you.</h1>
           <p class="hero-sub">VaxFile keeps your children's vaccination records safe, organised, and always to hand</p>
           <div class="cta-stack">
-            <a href="file:///Users/rogierbeeftink/Desktop/vaxfile-site/index.html#download" class="appstore-badge" aria-label="Download VaxFile on the App Store">
+            <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="Download VaxFile on the App Store">
               <img src="./index_files/download-on-the-app-store.svg" alt="Download on the App Store">
             </a>
             <p class="android-note">Android coming soon</p>
@@ -657,7 +671,7 @@
       <img class="download-icon" src="./index_files/icon.png" alt="VaxFile app icon" width="80" height="80">
       <h2>Your child's health record, always in your pocket.</h2>
       <p class="download-sub">Free to download</p>
-      <a href="https://vaxfile.app/" class="appstore-badge" aria-label="Download VaxFile on the App Store">
+      <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="Download VaxFile on the App Store">
         <img src="./index_files/download-on-the-app-store.svg" alt="Download on the App Store">
       </a>
       <p class="download-android">Android — coming soon</p>
@@ -675,7 +689,7 @@
         <a class="footer-link" href="https://vaxfile.app/privacy">Privacy</a>
         <a class="footer-link" href="https://vaxfile.app/impressum">Impressum</a>
       </nav>
-      <a href="file:///Users/rogierbeeftink/Desktop/vaxfile-site/index.html#download" class="footer-badge" aria-label="Download VaxFile on the App Store">
+      <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="footer-badge" aria-label="Download VaxFile on the App Store">
         <img src="./index_files/download-on-the-app-store.svg" alt="Download on the App Store">
       </a>
       <p class="copyright">© 2026 VaxFile. All rights reserved.</p>

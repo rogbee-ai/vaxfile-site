@@ -100,6 +100,7 @@ Deno.serve(async (req) => {
     const range = url.searchParams.get('range') ?? 'all'
     const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
+    const testUserId = Deno.env.get('TEST_USER_ID') ?? ''
 
     const apiUrl = getApiUrl()
     const token = getAuthToken()
@@ -110,6 +111,7 @@ Deno.serve(async (req) => {
         SELECT count()
         FROM events
         WHERE event = 'user_signed_up'
+          AND distinct_id != '${testUserId}'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
       `,
@@ -121,6 +123,7 @@ Deno.serve(async (req) => {
         SELECT uniq(distinct_id)
         FROM events
         WHERE event = 'app_open'
+          AND distinct_id != '${testUserId}'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
       `,
@@ -132,6 +135,7 @@ Deno.serve(async (req) => {
         SELECT count()
         FROM events
         WHERE event = 'vaccination_logged'
+          AND distinct_id != '${testUserId}'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
       `,
@@ -143,6 +147,7 @@ Deno.serve(async (req) => {
         SELECT toDate(timestamp) AS day, count() AS value
         FROM events
         WHERE event = 'vaccination_logged'
+          AND distinct_id != '${testUserId}'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
         GROUP BY day
@@ -156,6 +161,7 @@ Deno.serve(async (req) => {
         SELECT JSONExtractString(properties, '$geoip_country_code') AS country, count() AS count
         FROM events
         WHERE event = 'user_logged_in'
+          AND distinct_id != '${testUserId}'
 
           AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
         GROUP BY country

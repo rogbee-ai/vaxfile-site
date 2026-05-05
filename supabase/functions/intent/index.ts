@@ -120,6 +120,7 @@ Deno.serve(async (req) => {
     const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
     const dateFilterSql = getDateFilterSql(dateFrom)
+    const testUserId = Deno.env.get('TEST_USER_ID') ?? ''
 
     const apiUrl = getApiUrl()
     const token = getAuthToken()
@@ -130,6 +131,7 @@ Deno.serve(async (req) => {
         SELECT JSONExtractString(properties, 'feature') AS feature, count() AS count
         FROM events
         WHERE event = 'coming_soon_shown'
+          AND distinct_id != '${testUserId}'
 
           AND (${dateFilterSql})
         GROUP BY feature
@@ -143,6 +145,7 @@ Deno.serve(async (req) => {
         SELECT toDate(timestamp) AS day, count() AS value
         FROM events
         WHERE event = 'coming_soon_shown'
+          AND distinct_id != '${testUserId}'
 
           AND (${dateFilterSql})
         GROUP BY day
