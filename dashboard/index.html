@@ -15,7 +15,7 @@
         const AUTH_VALUE = 'authenticated';
         const PASSWORD = 'onniewou1ponny';
         const root = document.getElementById('root');
-        const isAuthenticated = sessionStorage.getItem(AUTH_KEY) === AUTH_VALUE;
+        const isAuthenticated = localStorage.getItem(AUTH_KEY) === AUTH_VALUE;
 
         window.__dashboardAuth = isAuthenticated;
         if (isAuthenticated || !root) return;
@@ -41,7 +41,7 @@
         form.addEventListener('submit', function (event) {
           event.preventDefault();
           if (input.value === PASSWORD) {
-            sessionStorage.setItem(AUTH_KEY, AUTH_VALUE);
+            localStorage.setItem(AUTH_KEY, AUTH_VALUE);
             window.location.reload();
             return;
           }
@@ -143,7 +143,7 @@
       // ─── Main Dashboard ───────────────────────────────────────────────────────────
 
       function Dashboard() {
-        const [timeRange, setTimeRange] = useState("30d");
+        const [timeRange, setTimeRange] = useState("24h");
         const [activeTab, setActiveTab] = useState("overview");
         const [data, setData] = useState(null);
         const [loading, setLoading] = useState(true);

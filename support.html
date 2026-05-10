@@ -31,7 +31,6 @@
     a { color: #1A5F3A; }
     a:focus-visible { outline: 2px solid #1A5F3A; outline-offset: 2px; border-radius: 2px; }
 
-    /* Header */
     .site-header {
       width: 100%;
       height: 64px;
@@ -65,14 +64,12 @@
       letter-spacing: -0.5px;
     }
 
-    /* Main */
     main {
       max-width: 720px;
       margin: 0 auto;
       padding: 0 16px 48px;
     }
 
-    /* Hero */
     .hero {
       padding: 48px 0 32px;
       text-align: left;
@@ -95,7 +92,6 @@
       line-height: 1.5;
     }
 
-    /* FAQ sections */
     .faq-section { margin-top: 40px; }
     .faq-section:first-of-type { margin-top: 8px; }
 
@@ -157,7 +153,6 @@
     .answer p { margin: 0 0 10px; }
     .answer p:last-child { margin: 0; }
 
-    /* Contact card */
     .contact-card {
       margin-top: 48px;
       background-color: #E8F5EE;
@@ -184,7 +179,6 @@
     }
     .contact-card a:hover { text-decoration: underline; }
 
-    /* Footer */
     .site-footer {
       width: 100%;
       background-color: #FFFFFF;
@@ -268,7 +262,36 @@
 
       <details>
         <summary>Which countries are supported?</summary>
-        <div class="answer"><p>VaxFile currently supports Germany (STIKO schedule) and the United Kingdom (NHS schedule). More countries are coming soon. To request a country, email us at <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
+        <div class="answer"><p>VaxFile currently supports Germany (STIKO schedule), the United Kingdom (NHS schedule), and the Netherlands (RIVM schedule). More countries are coming. To request a country, email us at <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
+      </details>
+
+      <details>
+        <summary>Can I add children from multiple countries?</summary>
+        <div class="answer"><p>Yes, with VaxFile Premium. You can assign multiple country schedules to a single child — useful for families who have lived in more than one country. The Schedule and Received tabs will show a country toggle so you can switch between schedules.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2>VaxFile Premium</h2>
+
+      <details>
+        <summary>What is VaxFile Premium?</summary>
+        <div class="answer"><p>VaxFile Premium is a one-time purchase that unlocks: unlimited child profiles, multi-country schedules per child, calendar integration, and AI-powered document scanning. Free accounts support one child with one country schedule.</p></div>
+      </details>
+
+      <details>
+        <summary>How do I purchase Premium?</summary>
+        <div class="answer"><p>Tap the upgrade prompt when you try to add a second child, switch countries, or use a Premium feature. The purchase is processed through the App Store — €7.99 as a one-time payment, yours forever.</p></div>
+      </details>
+
+      <details>
+        <summary>How do I restore a previous purchase?</summary>
+        <div class="answer"><p>Tap "Restore purchase" at the bottom of the Premium upgrade screen, or go to Settings in the app. Your purchase will be restored as long as you're signed in with the same Apple ID you used to buy it.</p></div>
+      </details>
+
+      <details>
+        <summary>I purchased Premium but it's not showing as active</summary>
+        <div class="answer"><p>Try tapping "Restore purchase" in the app. If that doesn't work, make sure you're signed in with the same Apple ID used for the purchase. If the issue persists, email us at <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
       </details>
     </section>
 
@@ -277,12 +300,22 @@
 
       <details>
         <summary>How do I log a vaccination?</summary>
-        <div class="answer"><p>Open a child's profile, go to the Log tab, and tap the + button. Select the vaccine, enter the date and other details, and tap Save.</p></div>
+        <div class="answer"><p>Open a child's profile, go to the Received tab, and tap the + button. Select the vaccine and dose, enter the date and other details, and tap Save.</p></div>
       </details>
 
       <details>
         <summary>Can I log a vaccination from the Schedule tab?</summary>
         <div class="answer"><p>Yes. Tap any overdue or due soon item in the Schedule tab to open the log form pre-filled with that vaccine and dose number.</p></div>
+      </details>
+
+      <details>
+        <summary>How do I scan a paper vaccination record?</summary>
+        <div class="answer"><p>This is a Premium feature. On the Received tab, tap the camera icon. Choose to take a photo or select one from your library. VaxFile uses AI to read the record and pre-fill the log form — you can review and edit each entry before saving. Scanning works best with clear, well-lit photos. Results may vary and should always be reviewed carefully.</p></div>
+      </details>
+
+      <details>
+        <summary>How accurate is the document scanning?</summary>
+        <div class="answer"><p>Document scanning uses AI and is designed to save time, not replace careful review. It works well for most standard vaccination booklets (German Impfausweis, Dutch Rijksvaccinatieboekje, UK Red Book) but may occasionally miss entries or make errors — especially with handwritten records. Always review each scanned entry before saving.</p></div>
       </details>
 
       <details>
@@ -301,7 +334,7 @@
 
       <details>
         <summary>Where does the vaccination schedule come from?</summary>
-        <div class="answer"><p>Schedules are based on official national guidelines — STIKO Impfkalender (RKI) for Germany and the NHS routine childhood immunisation schedule for the UK. VaxFile is a record-keeping tool only and does not provide medical advice. Always consult your doctor or healthcare provider.</p></div>
+        <div class="answer"><p>Schedules are based on official national guidelines — STIKO Impfkalender (RKI) for Germany, the NHS routine childhood immunisation schedule for the UK, and the RIVM national immunisation programme for the Netherlands. VaxFile is a record-keeping tool only and does not provide medical advice. Always consult your doctor or healthcare provider.</p></div>
       </details>
 
       <details>
@@ -313,6 +346,11 @@
         <summary>What does "Due this year" mean for the flu vaccine?</summary>
         <div class="answer"><p>The flu vaccine is annual. "Due this year" means no flu vaccine has been logged for the current calendar year and your child is old enough to receive it.</p></div>
       </details>
+
+      <details>
+        <summary>My child has schedules from two countries — how does that work?</summary>
+        <div class="answer"><p>With Premium, you can assign multiple country schedules to a child. On the Schedule and Received tabs, use the country toggle at the top to switch between schedules. Each schedule is tracked independently, and you can log vaccines against any of them.</p></div>
+      </details>
     </section>
 
     <section class="faq-section">
@@ -320,17 +358,17 @@
 
       <details>
         <summary>How do I turn on reminders?</summary>
-        <div class="answer"><p>When you first open a child's Log tab with no entries, VaxFile will offer to turn on reminders. Tap "Turn on reminders" and allow notifications when prompted.</p></div>
+        <div class="answer"><p>When you first open a child's Received tab with no entries, VaxFile will offer to turn on reminders. Tap "Turn on reminders" and allow notifications when prompted.</p></div>
       </details>
 
       <details>
         <summary>I turned off notifications. How do I turn them back on?</summary>
-        <div class="answer"><p>Go to iPhone Settings &gt; VaxFile &gt; Notifications and enable Allow Notifications. Then open VaxFile — the reminder prompt will reappear on any empty Log tab.</p></div>
+        <div class="answer"><p>Go to iPhone Settings &gt; VaxFile &gt; Notifications and enable Allow Notifications. Then open VaxFile — the reminder prompt will reappear on any empty Received tab.</p></div>
       </details>
 
       <details>
         <summary>Can I add vaccination dates to my calendar?</summary>
-        <div class="answer"><p>Yes. On the Schedule tab, tap the calendar icon next to any upcoming or due soon vaccine to add it to your device calendar.</p></div>
+        <div class="answer"><p>Yes, with VaxFile Premium. On the Schedule tab, tap the calendar icon next to any upcoming or due soon vaccine to add it to your device calendar. The event will appear in whichever calendar app you use on your device.</p></div>
       </details>
     </section>
 
@@ -344,12 +382,17 @@
 
       <details>
         <summary>Where is my data stored?</summary>
-        <div class="answer"><p>Your data is stored securely on Supabase servers in Frankfurt, Germany. It is encrypted in transit and never shared with third parties. See our <a href="https://vaxfile.app/privacy">Privacy Policy</a>.</p></div>
+        <div class="answer"><p>Your data is stored securely on Supabase servers in Frankfurt, Germany. It is encrypted in transit and never sold or shared with third parties for marketing purposes. See our <a href="https://vaxfile.app/privacy">Privacy Policy</a> for full details.</p></div>
+      </details>
+
+      <details>
+        <summary>Does document scanning store my photos?</summary>
+        <div class="answer"><p>No. When you scan a document, the photo is sent securely to OpenAI for processing and is not stored by VaxFile or OpenAI beyond the immediate request. No images are retained after the scan is complete.</p></div>
       </details>
 
       <details>
         <summary>I forgot my password. How do I reset it?</summary>
-        <div class="answer"><p>On the login screen, tap "Forgot password?" and enter your email address. You'll receive a reset link by email.</p></div>
+        <div class="answer"><p>On the login screen, tap "Forgot password?" and enter your email address. You'll receive a reset link by email. The link will take you to vaxfile.app where you can set a new password.</p></div>
       </details>
     </section>
 
@@ -368,7 +411,12 @@
 
       <details>
         <summary>A vaccine is missing from the schedule</summary>
-        <div class="answer"><p>The schedule only includes vaccines from the official STIKO (Germany) or NHS (UK) routine programmes. If you believe a vaccine is missing, email us at <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
+        <div class="answer"><p>The schedule only includes vaccines from the official routine programmes (STIKO for Germany, NHS for the UK, RIVM for the Netherlands). If you believe a vaccine is missing, email us at <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
+      </details>
+
+      <details>
+        <summary>Document scanning returned wrong or missing results</summary>
+        <div class="answer"><p>AI scanning works best with clear, well-lit, straight-on photos. Try retaking the photo with better lighting and less angle. If results are consistently wrong for a particular document type, email us at <a href="mailto:support@vaxfile.app">support@vaxfile.app</a> — your feedback helps us improve accuracy.</p></div>
       </details>
     </section>
 

@@ -31,7 +31,6 @@
     a { color: #1A5F3A; }
     a:focus-visible { outline: 2px solid #1A5F3A; outline-offset: 2px; border-radius: 2px; }
 
-    /* Header */
     .site-header {
       width: 100%;
       height: 64px;
@@ -65,7 +64,6 @@
       letter-spacing: -0.5px;
     }
 
-    /* Main */
     main {
       max-width: 720px;
       margin: 0 auto;
@@ -114,7 +112,6 @@
     }
     li { margin-bottom: 6px; }
 
-    /* Footer */
     .site-footer {
       width: 100%;
       background-color: #FFFFFF;
@@ -179,7 +176,7 @@
 
   <main>
     <h1>Privacy Policy</h1>
-    <p class="updated">Little Handy Apps — Last updated: April 2026</p>
+    <p class="updated">Little Handy Apps — Last updated: May 2026</p>
 
     <section>
       <h2>1. Who we are</h2>
@@ -198,6 +195,9 @@
       <h3>Vaccination records</h3>
       <p>Vaccination logs you create: vaccine name, date administered, dose number, who administered it, and optional notes.</p>
 
+      <h3>Scanned document images (Premium feature)</h3>
+      <p>If you use the optional document scanning feature, photos you take are temporarily transmitted to OpenAI for processing. Images are used solely to extract vaccination data and are not stored by OpenAI beyond the immediate processing request. No images are stored by VaxFile. This feature is entirely optional.</p>
+
       <h3>Usage data</h3>
       <p>We collect anonymised usage events (e.g. which features you use, how often you open the app) via PostHog, a GDPR-compliant analytics provider hosted in the EU. This data cannot be used to identify you personally.</p>
 
@@ -209,9 +209,10 @@
       <h2>3. How we use your data</h2>
       <p>We use your data solely to provide the VaxFile service:</p>
       <ul>
-        <li>To show you personalised vaccination schedules</li>
+        <li>To show you personalised vaccination schedules for Germany, the United Kingdom, and the Netherlands</li>
         <li>To remind you when vaccinations are due</li>
         <li>To allow you to log and review vaccination records</li>
+        <li>To process scanned vaccination documents using AI (Premium feature, optional)</li>
         <li>To improve the app based on anonymised usage patterns</li>
       </ul>
       <p>We do not use your data for advertising. We do not sell your data. We do not share your data with third parties except as described below.</p>
@@ -223,20 +224,31 @@
       <h3>Supabase</h3>
       <p>Your account, profile, and vaccination data is stored in Supabase, a GDPR-compliant database provider. Supabase servers are located in Frankfurt, Germany (eu-central-1). Supabase's privacy policy is available at <a href="https://supabase.com/privacy">supabase.com/privacy</a>.</p>
 
+      <h3>OpenAI (Premium feature only)</h3>
+      <p>The optional document scanning feature uses OpenAI's API to extract vaccination data from photos. When you use this feature, your image is sent securely to OpenAI and processed to return structured vaccination data. Images are not stored by OpenAI beyond the processing request and are not used to train OpenAI models. Use of this feature is subject to OpenAI's privacy policy, available at <a href="https://openai.com/privacy">openai.com/privacy</a>. This feature is entirely optional — you can use VaxFile without ever using document scanning.</p>
+
       <h3>PostHog</h3>
       <p>Anonymised usage analytics are processed by PostHog, hosted on PostHog's EU cloud. No personally identifiable information is sent to PostHog. PostHog's privacy policy is available at <a href="https://posthog.com/privacy">posthog.com/privacy</a>.</p>
 
+      <h3>RevenueCat (Premium feature only)</h3>
+      <p>In-app purchases are managed by RevenueCat. When you purchase VaxFile Premium, your purchase is processed by Apple and RevenueCat records the entitlement. RevenueCat's privacy policy is available at <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a>.</p>
+
       <h3>Apple</h3>
-      <p>Push notifications are delivered via Apple Push Notification Service (APNs). Apple does not have access to the content of your vaccination records.</p>
+      <p>Push notifications are delivered via Apple Push Notification Service (APNs). Apple does not have access to the content of your vaccination records. In-app purchases are processed by Apple.</p>
     </section>
 
     <section>
-      <h2>5. Data storage and security</h2>
+      <h2>5. Calendar integration (Premium feature)</h2>
+      <p>VaxFile Premium can add upcoming vaccination reminders to your device's calendar. This feature only creates calendar events on your device. VaxFile does not read, access, or transmit any existing calendar data. Calendar events are created entirely on-device and are not shared with any server.</p>
+    </section>
+
+    <section>
+      <h2>6. Data storage and security</h2>
       <p>All data is stored in the EU (Frankfurt). Data is encrypted in transit using TLS. Access to your data is restricted by row-level security policies — no other user can access your records. Profile photos are stored in a private storage bucket accessible only to your account.</p>
     </section>
 
     <section>
-      <h2>6. Your rights under GDPR</h2>
+      <h2>7. Your rights under GDPR</h2>
       <p>As a user in the European Union or United Kingdom you have the right to:</p>
       <ul>
         <li>Access the personal data we hold about you</li>
@@ -249,22 +261,22 @@
     </section>
 
     <section>
-      <h2>7. Data retention</h2>
+      <h2>8. Data retention</h2>
       <p>We retain your data for as long as your account is active. If you request account deletion, we will delete all your personal data within 30 days.</p>
     </section>
 
     <section>
-      <h2>8. Children's data</h2>
+      <h2>9. Children's data</h2>
       <p>VaxFile is designed for use by parents and carers. We do not knowingly collect data directly from children. All data about children is entered by the parent or carer who holds the account.</p>
     </section>
 
     <section>
-      <h2>9. Changes to this policy</h2>
+      <h2>10. Changes to this policy</h2>
       <p>We may update this policy from time to time. We will notify you of significant changes via the app. The current version is always available at <a href="https://vaxfile.app/privacy">vaxfile.app/privacy</a>.</p>
     </section>
 
     <section>
-      <h2>10. Contact</h2>
+      <h2>11. Contact</h2>
       <p>Little Handy Apps<br /><a href="mailto:support@vaxfile.app">support@vaxfile.app</a></p>
     </section>
   </main>

@@ -33,7 +33,7 @@ Deno.serve(async (req) => {
   try {
     const SUPABASE_URL = Deno.env.get('SUPABASE_URL')
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
-    const TEST_USER_ID = Deno.env.get('TEST_USER_ID')
+    const testUserId = Deno.env.get('TEST_USER_ID') ?? ''
 
     if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
       throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY')
@@ -58,18 +58,19 @@ Deno.serve(async (req) => {
 
     let logsCountQuery = supabase
       .from('vaccination_logs')
-      .select('*', { count: 'exact', head: true })
+      .select('*, profiles!inner(user_id)', { count: 'exact', head: true })
       .gte('created_at', fromDate)
+      .neq('profiles.user_id', testUserId)
 
     let usersTrendQuery = supabase
       .from('users')
       .select('created_at')
       .gte('created_at', fromDate)
 
-    if (TEST_USER_ID) {
-      usersCountQuery = usersCountQuery.neq('id', TEST_USER_ID)
-      childrenQuery = childrenQuery.neq('user_id', TEST_USER_ID)
-      usersTrendQuery = usersTrendQuery.neq('id', TEST_USER_ID)
+    if (testUserId) {
+      usersCountQuery = usersCountQuery.neq('id', testUserId)
+      childrenQuery = childrenQuery.neq('user_id', testUserId)
+      usersTrendQuery = usersTrendQuery.neq('id', testUserId)
     }
 
     const [

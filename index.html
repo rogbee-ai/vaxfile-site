@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<!-- saved from url=(0020)https://vaxfile.app/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VaxFile — Vaccine Records for Your Family, Always With You</title>
-  <meta name="description" content="VaxFile helps parents track their children&#39;s vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
+  <meta name="description" content="VaxFile helps parents track their children's vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.vaxfile.app/">
+  <link rel="icon" href="/favicon.png" type="image/png">
 
   <!-- Open Graph -->
   <meta property="og:title" content="VaxFile — Vaccine Records for Your Family, Always With You">
-  <meta property="og:description" content="VaxFile helps parents track their children&#39;s vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
+  <meta property="og:description" content="VaxFile helps parents track their children's vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.vaxfile.app/">
   <meta property="og:image" content="https://www.vaxfile.app/assets/icon.png">
@@ -18,14 +19,13 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="VaxFile — Vaccine Records for Your Family, Always With You">
-  <meta name="twitter:description" content="VaxFile helps parents track their children&#39;s vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
+  <meta name="twitter:description" content="VaxFile helps parents track their children's vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
   <meta name="twitter:image" content="https://www.vaxfile.app/assets/icon.png">
 
-  <link rel="icon" href="/favicon.png" type="image/png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="file:///Users/rogierbeeftink/Desktop/vaxfile-site/index_files/css2" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -36,11 +36,20 @@
     "applicationCategory": "HealthApplication",
     "url": "https://www.vaxfile.app/",
     "description": "VaxFile helps parents track their children's vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "name": "Free"
+      },
+      {
+        "@type": "Offer",
+        "price": "7.99",
+        "priceCurrency": "EUR",
+        "name": "VaxFile Premium"
+      }
+    ]
   }
   </script>
 
@@ -320,6 +329,60 @@
       margin: 0;
     }
 
+    /* ---------- Premium strip ---------- */
+    .premium-strip {
+      background-color: #E8F5EE;
+      border-radius: 16px;
+      padding: 32px 28px;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .premium-strip-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      color: #2E7D52;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .premium-strip h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1F4D3A;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .premium-strip p {
+      font-size: 15px;
+      color: #355B4F;
+      margin: 0;
+    }
+    .premium-features-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .premium-features-list li {
+      background-color: #FFFFFF;
+      color: #1A5F3A;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #C8E6D4;
+    }
+    .premium-price {
+      font-size: 14px;
+      color: #5B7A70;
+      margin: 0;
+    }
+
     /* ---------- Screenshot strip ---------- */
     .shot-strip {
       display: flex;
@@ -486,6 +549,7 @@
       .download h2 { font-size: 36px; }
       .problem-statement { font-size: 24px; }
       .shot-item { flex-basis: min(65%, 360px); }
+      .premium-strip { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
     }
 
     @media (min-width: 1024px) {
@@ -512,15 +576,13 @@
       var hash = window.location.hash;
       var search = window.location.search;
       var params = hash || search || '';
-      if (params.includes('type=signup') || 
-          params.includes('type=recovery')) {
-        var type = params.includes('type=signup') 
-          ? 'confirm' 
-          : 'reset-password';
+      if (params.includes('type=signup') || params.includes('type=recovery')) {
+        var type = params.includes('type=signup') ? 'confirm' : 'reset-password';
         window.location.href = 'vaxfile://' + type + params;
       }
     })();
   </script>
+
   <header class="site-header">
     <div class="header-inner">
       <a aria-label="VaxFile home" class="brand" href="https://vaxfile.app/">
@@ -538,7 +600,7 @@
         <div class="hero-text">
           <p class="eyebrow">For parents. For peace of mind</p>
           <h1>Every vaccine. Every child. Always with you.</h1>
-          <p class="hero-sub">VaxFile keeps your children's vaccination records safe, organised, and always to hand</p>
+          <p class="hero-sub">VaxFile keeps your children's vaccination records safe, organised, and always to hand — across countries and health systems.</p>
           <div class="cta-stack">
             <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="Download VaxFile on the App Store">
               <img src="./index_files/download-on-the-app-store.svg" alt="Download on the App Store">
@@ -547,7 +609,7 @@
           </div>
           <div class="trust-tags" role="list">
             <span class="trust-tag" role="listitem">🔒 Private &amp; secure</span>
-            <span class="trust-tag" role="listitem">🌍 Multi-country</span>
+            <span class="trust-tag" role="listitem">🇩🇪 🇬🇧 🇳🇱 3 countries</span>
             <span class="trust-tag" role="listitem">👶 Built for families</span>
           </div>
         </div>
@@ -573,11 +635,12 @@
     <section class="section section-bg-white">
       <div class="container">
         <h2>Everything you need, always at hand</h2>
+        <p class="section-sub">Free to use for one child. Unlock more with Premium.</p>
         <div class="features-grid">
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16l7-3 7 3z"></path></svg>
             <div class="feature-heading-row"><h3 class="feature-heading">All records in one place</h3></div>
-            <p class="feature-body">Add vaccination records. No more digging through folders.</p>
+            <p class="feature-body">Log vaccinations and keep your children's records safe, organised, and always accessible.</p>
           </article>
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
@@ -586,30 +649,40 @@
           </article>
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            <div class="feature-heading-row"><h3 class="feature-heading">Built for expats</h3></div>
-            <p class="feature-body">Multi-country vaccine tracking. Know exactly what's required for your home country (more coming soon).</p>
+            <div class="feature-heading-row"><h3 class="feature-heading">🇩🇪 🇬🇧 🇳🇱 Three countries</h3></div>
+            <p class="feature-body">Supports Germany (STIKO), United Kingdom (NHS), and Netherlands (RIVM) schedules. More countries coming.</p>
           </article>
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            <div class="feature-heading-row"><h3 class="feature-heading">Multiple children  <span class="premium-badge">Premium</span></h3></div>
-            <p class="feature-body">One app for your whole family. Each child gets their own profile.</p>
+            <div class="feature-heading-row"><h3 class="feature-heading">Multiple children</h3><span class="premium-badge">Premium</span></div>
+            <p class="feature-body">One app for your whole family. Each child gets their own profile and schedule.</p>
           </article>
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <div class="feature-heading-row">
-              <h3 class="feature-heading">Calendar integration</h3>
-              <span class="premium-badge">Premium</span>
-            </div>
-            <p class="feature-body">Sync upcoming vaccines straight to your calendar.</p>
+            <div class="feature-heading-row"><h3 class="feature-heading">Calendar integration</h3><span class="premium-badge">Premium</span></div>
+            <p class="feature-body">Sync upcoming vaccines straight to your calendar. Never miss a due date.</p>
           </article>
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <div class="feature-heading-row">
-              <h3 class="feature-heading">Scan &amp; digitise</h3>
-              <span class="premium-badge">Premium</span>
-            </div>
-            <p class="feature-body">Photograph paper vaccination records and store them digitally.</p>
+            <div class="feature-heading-row"><h3 class="feature-heading">Scan &amp; digitise</h3><span class="premium-badge">Premium</span></div>
+            <p class="feature-body">Photograph your paper vaccination booklet. VaxFile reads and imports your records using AI.</p>
           </article>
+        </div>
+
+        <!-- Premium strip -->
+        <div class="premium-strip">
+          <div>
+            <p class="premium-strip-eyebrow">VaxFile Premium</p>
+            <h3>One payment. Everything unlocked.</h3>
+            <p>Unlimited children, multi-country schedules, calendar sync, and AI document scanning.</p>
+          </div>
+          <ul class="premium-features-list">
+            <li>Unlimited children</li>
+            <li>Multi-country per child</li>
+            <li>Calendar integration</li>
+            <li>AI document scanning</li>
+          </ul>
+          <p class="premium-price">€7.99 — one-time purchase, no subscription</p>
         </div>
       </div>
     </section>
@@ -620,24 +693,28 @@
         <h2>Designed for real life</h2>
         <p class="section-sub">Clean, simple, and built around how parents actually think.</p>
         <div class="shot-strip" id="screenshots-carousel" role="region" aria-roledescription="carousel" aria-label="VaxFile app screenshots">
-          <figure class="shot-item" id="slide-1" role="group" aria-roledescription="slide" aria-label="1 of 3">
+          <figure class="shot-item" id="slide-1" role="group" aria-roledescription="slide" aria-label="1 of 4">
             <img src="./index_files/schedule.png" alt="Schedule view showing vaccines with status pills">
-            <figcaption class="shot-caption">Upcoming vaccines, always visible
-</figcaption>
+            <figcaption class="shot-caption">Upcoming vaccines, always visible</figcaption>
           </figure>
-          <figure class="shot-item" id="slide-2" role="group" aria-roledescription="slide" aria-label="2 of 3">
+          <figure class="shot-item" id="slide-2" role="group" aria-roledescription="slide" aria-label="2 of 4">
             <img src="./index_files/home_with_child(1).png" alt="Home screen showing a child with overdue indicator">
-            <figcaption class="shot-caption">Your children's full vaccination status at a glance</figcaption>
+            <figcaption class="shot-caption">Put reminders in your calendar, and get notified in the app</figcaption>
           </figure>
-          <figure class="shot-item" id="slide-3" role="group" aria-roledescription="slide" aria-label="3 of 3">
+          <figure class="shot-item" id="slide-3" role="group" aria-roledescription="slide" aria-label="3 of 4">
             <img src="./index_files/record_vaccination_form.png" alt="Form to record a new vaccination">
             <figcaption class="shot-caption">Add a vaccination instantly</figcaption>
+          </figure>
+          <figure class="shot-item" id="slide-4" role="group" aria-roledescription="slide" aria-label="4 of 4">
+            <img src="./index_files/scan.png" alt="Scan flow for paper vaccination records">
+            <figcaption class="shot-caption">Batch adding of vaccinations by scanning your child's paper vaccination records</figcaption>
           </figure>
         </div>
         <div class="carousel-indicators" aria-label="Carousel slide indicators">
           <button type="button" class="carousel-dot" data-slide="0" aria-label="Go to screenshot 1" aria-controls="slide-1" aria-current="true"></button>
           <button type="button" class="carousel-dot" data-slide="1" aria-label="Go to screenshot 2" aria-controls="slide-2" aria-current="false"></button>
           <button type="button" class="carousel-dot" data-slide="2" aria-label="Go to screenshot 3" aria-controls="slide-3" aria-current="false"></button>
+          <button type="button" class="carousel-dot" data-slide="3" aria-label="Go to screenshot 4" aria-controls="slide-4" aria-current="false"></button>
         </div>
       </div>
     </section>
@@ -650,12 +727,12 @@
           <div class="trust-item">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             <h3 class="trust-heading">Your data stays yours</h3>
-            <p class="trust-body">Your records are encrypted and stored securely. We never sell or share your personal data with third parties.</p>
+            <p class="trust-body">Encrypted, stored securely in the EU, and never sold or shared with third parties for marketing purposes.</p>
           </div>
           <div class="trust-item">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
             <h3 class="trust-heading">Accurate by design</h3>
-            <p class="trust-body">Vaccine schedules based on official health authority guidelines.</p>
+            <p class="trust-body">Schedules based on official guidelines from STIKO, NHS, and RIVM — kept up to date.</p>
           </div>
           <div class="trust-item">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
@@ -670,7 +747,7 @@
     <section id="download" class="download">
       <img class="download-icon" src="./index_files/icon.png" alt="VaxFile app icon" width="80" height="80">
       <h2>Your child's health record, always in your pocket.</h2>
-      <p class="download-sub">Free to download</p>
+      <p class="download-sub">Free to download. Premium features available as a one-time purchase.</p>
       <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="Download VaxFile on the App Store">
         <img src="./index_files/download-on-the-app-store.svg" alt="Download on the App Store">
       </a>
@@ -692,10 +769,9 @@
       <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="footer-badge" aria-label="Download VaxFile on the App Store">
         <img src="./index_files/download-on-the-app-store.svg" alt="Download on the App Store">
       </a>
-      <p class="copyright">© 2026 VaxFile. All rights reserved.</p>
+      <p class="copyright">© 2026 Little Handy Apps. All rights reserved.</p>
     </div>
   </footer>
-
 
   <script>
     (function () {
@@ -710,47 +786,35 @@
         dots.forEach(function (dot, i) {
           dot.setAttribute('aria-current', i === index ? 'true' : 'false');
         });
-
         if (shouldScroll) {
-          slides[index].scrollIntoView({
-            behavior: 'smooth',
-            inline: 'center',
-            block: 'nearest'
-          });
+          slides[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
       }
 
       dots.forEach(function (dot, index) {
-        dot.addEventListener('click', function () {
-          setActiveSlide(index, true);
-        });
+        dot.addEventListener('click', function () { setActiveSlide(index, true); });
       });
 
       var ticking = false;
       carousel.addEventListener('scroll', function () {
         if (ticking) return;
         ticking = true;
-
         window.requestAnimationFrame(function () {
           var carouselRect = carousel.getBoundingClientRect();
           var center = carouselRect.left + carouselRect.width / 2;
           var closestIndex = 0;
           var closestDistance = Infinity;
-
           slides.forEach(function (slide, index) {
             var rect = slide.getBoundingClientRect();
             var slideCenter = rect.left + rect.width / 2;
             var distance = Math.abs(center - slideCenter);
-            if (distance < closestDistance) {
-              closestDistance = distance;
-              closestIndex = index;
-            }
+            if (distance < closestDistance) { closestDistance = distance; closestIndex = index; }
           });
-
           setActiveSlide(closestIndex, false);
           ticking = false;
         });
       });
     })();
   </script>
-</body></html>
+</body>
+</html>
