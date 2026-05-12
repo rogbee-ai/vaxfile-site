@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../assets/favicon.png" type="image/png" />
+  <title>Datenschutzerklärung — VaxFile</title>
+  <meta name="description" content="Datenschutzerklärung von VaxFile — wie Little Handy Apps deine Daten erhebt, verwendet und schützt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; color: #355B4F; background-color: #F6FBF8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    a { color: #1A5F3A; }
+    a:focus-visible { outline: 2px solid #1A5F3A; outline-offset: 2px; border-radius: 2px; }
+    .site-header { width: 100%; height: 64px; background-color: #FFFFFF; border-bottom: 0.5px solid #E0E0E0; display: flex; align-items: center; }
+    .header-inner { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .header-logo { width: 32px; height: 32px; display: block; }
+    .wordmark { font-size: 17px; font-family: 'Nunito', sans-serif; font-weight: 800; color: #1A5F3A; letter-spacing: -0.5px; }
+    main { max-width: 720px; margin: 0 auto; padding: 0 16px 48px; }
+    h1 { font-size: 28px; font-weight: 700; color: #1F4D3A; margin: 40px 0 8px; line-height: 1.2; }
+    .updated { font-size: 13px; font-weight: 400; color: #888888; margin: 0 0 32px; }
+    section { margin-top: 32px; }
+    section:first-of-type { margin-top: 0; }
+    h2 { font-size: 18px; font-weight: 700; color: #1F4D3A; margin: 0 0 12px; line-height: 1.3; }
+    h3 { font-size: 16px; font-weight: 700; color: #1F4D3A; margin: 20px 0 8px; }
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+    ul { margin: 0 0 12px; padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    .site-footer { width: 100%; background-color: #FFFFFF; border-top: 1px solid #E0E0E0; padding: 24px 16px; margin-top: 48px; }
+    .footer-inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+    .footer-row { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .appstore-badge { display: inline-block; }
+    .appstore-badge img { height: 40px; width: auto; display: block; }
+    .footer-link { font-size: 14px; font-weight: 500; color: #1A5F3A; text-decoration: none; }
+    .footer-link:hover { text-decoration: underline; }
+    .copyright { font-size: 12px; font-weight: 400; color: #888888; margin: 0; }
+    @media (min-width: 640px) { .footer-row { flex-direction: row; gap: 24px; } }
+    .lang-toggle { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; }
+    .lang-link { font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 400; color: #888888; text-decoration: none; }
+    .lang-link.active { font-weight: 500; color: #1A5F3A; pointer-events: none; }
+    .lang-sep { color: #E0E0E0; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" aria-label="VaxFile Startseite" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+        <img src="../assets/icon.png" alt="VaxFile Logo" class="header-logo" width="32" height="32" />
+        <span class="wordmark">VaxFile</span>
+      </a>
+      <div class="lang-toggle" aria-label="Sprache wechseln">
+        <a class="lang-link" href="/en/privacy.html" onclick="sessionStorage.setItem('vaxfile-lang', 'en')">EN</a>
+        <span class="lang-sep">|</span>
+        <span class="lang-link active">DE</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Datenschutzerklärung</h1>
+    <p class="updated">Little Handy Apps — Zuletzt aktualisiert: Mai 2026</p>
+
+    <section>
+      <h2>1. Wer wir sind</h2>
+      <p>VaxFile ist eine App zur Verwaltung von Impfnachweisen, entwickelt von Little Handy Apps. Bei Fragen zu dieser Richtlinie kontaktiere uns unter <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p>
+    </section>
+
+    <section>
+      <h2>2. Welche Daten wir erheben</h2>
+      <h3>Kontodaten</h3>
+      <p>Bei der Kontoerstellung erheben wir deine E-Mail-Adresse und ein Passwort (als sicherer Hash gespeichert, niemals im Klartext).</p>
+      <h3>Profildaten</h3>
+      <p>Von dir eingegebene Informationen über deine Kinder oder Familienmitglieder: Name, Geburtsdatum, Geschlecht, Land und ein optionales Profilfoto.</p>
+      <h3>Impfeinträge</h3>
+      <p>Von dir erstellte Impfprotokolle: Impfstoffname, Datum der Verabreichung, Dosierungsnummer, wer es verabreicht hat, und optionale Notizen.</p>
+      <h3>Gescannte Dokumentbilder (Premium-Funktion)</h3>
+      <p>Wenn du die optionale Dokumentscan-Funktion verwendest, werden aufgenommene Fotos vorübergehend zur Verarbeitung an OpenAI übertragen. Bilder werden ausschließlich zur Extraktion von Impfdaten verwendet und von OpenAI nicht über die unmittelbare Verarbeitungsanfrage hinaus gespeichert. VaxFile speichert keine Bilder. Diese Funktion ist vollständig optional.</p>
+      <h3>Nutzungsdaten</h3>
+      <p>Wir erheben anonymisierte Nutzungsereignisse (z. B. welche Funktionen du verwendest, wie oft du die App öffnest) über PostHog, einen DSGVO-konformen Analyseanbieter mit EU-Hosting. Diese Daten können nicht zur persönlichen Identifikation verwendet werden.</p>
+      <h3>Gerätedaten</h3>
+      <p>Wir speichern ein Push-Benachrichtigungs-Token auf deinem Gerät und in unserer Datenbank, um dir Impferinnerungen zu senden. Wir nutzen dies nicht für Marketingzwecke.</p>
+    </section>
+
+    <section>
+      <h2>3. Wie wir deine Daten verwenden</h2>
+      <p>Wir verwenden deine Daten ausschließlich zur Bereitstellung des VaxFile-Dienstes:</p>
+      <ul>
+        <li>Um dir personalisierte Impfpläne für Deutschland, das Vereinigte Königreich und die Niederlande anzuzeigen</li>
+        <li>Um dich zu erinnern, wenn Impfungen fällig sind</li>
+        <li>Um das Eintragen und Überprüfen von Impfnachweisen zu ermöglichen</li>
+        <li>Um gescannte Impfdokumente per KI zu verarbeiten (Premium-Funktion, optional)</li>
+        <li>Um die App auf Basis anonymisierter Nutzungsmuster zu verbessern</li>
+      </ul>
+      <p>Wir verwenden deine Daten nicht für Werbung. Wir verkaufen deine Daten nicht. Wir geben deine Daten nicht an Dritte weiter, außer wie unten beschrieben.</p>
+    </section>
+
+    <section>
+      <h2>4. Drittanbieter</h2>
+      <h3>Supabase</h3>
+      <p>Deine Konto-, Profil- und Impfdaten werden bei Supabase gespeichert, einem DSGVO-konformen Datenbankanbieter. Supabase-Server befinden sich in Frankfurt, Deutschland (eu-central-1). Die Datenschutzrichtlinie von Supabase ist unter <a href="https://supabase.com/privacy">supabase.com/privacy</a> verfügbar.</p>
+      <h3>OpenAI (nur Premium-Funktion)</h3>
+      <p>Die optionale Dokumentscan-Funktion nutzt die OpenAI-API, um Impfdaten aus Fotos zu extrahieren. Wenn du diese Funktion verwendest, wird dein Bild sicher an OpenAI übermittelt und verarbeitet, um strukturierte Impfdaten zurückzugeben. Bilder werden von OpenAI nicht über die Verarbeitungsanfrage hinaus gespeichert und nicht zum Training von OpenAI-Modellen verwendet. Die Nutzung dieser Funktion unterliegt der Datenschutzrichtlinie von OpenAI, verfügbar unter <a href="https://openai.com/privacy">openai.com/privacy</a>. Diese Funktion ist vollständig optional.</p>
+      <h3>PostHog</h3>
+      <p>Anonymisierte Nutzungsanalysen werden von PostHog verarbeitet, gehostet in der PostHog EU-Cloud. Es werden keine personenbezogenen Daten an PostHog gesendet. Die Datenschutzrichtlinie von PostHog ist unter <a href="https://posthog.com/privacy">posthog.com/privacy</a> verfügbar.</p>
+      <h3>RevenueCat (nur Premium-Funktion)</h3>
+      <p>In-App-Käufe werden von RevenueCat verwaltet. Wenn du VaxFile Premium kaufst, wird dein Kauf über Apple abgewickelt und RevenueCat erfasst die Berechtigung. Die Datenschutzrichtlinie von RevenueCat ist unter <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a> verfügbar.</p>
+      <h3>Apple</h3>
+      <p>Push-Benachrichtigungen werden über den Apple Push Notification Service (APNs) zugestellt. Apple hat keinen Zugang zu den Inhalten deiner Impfeinträge. In-App-Käufe werden von Apple abgewickelt.</p>
+    </section>
+
+    <section>
+      <h2>5. Kalender-Integration (Premium-Funktion)</h2>
+      <p>VaxFile Premium kann bevorstehende Impferinnerungen zum Kalender deines Geräts hinzufügen. Diese Funktion erstellt ausschließlich Kalendereinträge auf deinem Gerät. VaxFile liest, greift nicht auf und überträgt keine vorhandenen Kalenderdaten. Kalendereinträge werden vollständig auf dem Gerät erstellt und nicht mit einem Server geteilt.</p>
+    </section>
+
+    <section>
+      <h2>6. Datenspeicherung und Sicherheit</h2>
+      <p>Alle Daten werden in der EU (Frankfurt) gespeichert. Daten sind bei der Übertragung mit TLS verschlüsselt. Der Zugriff auf deine Daten wird durch Row-Level-Security-Richtlinien eingeschränkt — kein anderer Nutzer kann auf deine Einträge zugreifen. Profilfotos werden in einem privaten Speicher-Bucket gespeichert, der nur für dein Konto zugänglich ist.</p>
+    </section>
+
+    <section>
+      <h2>7. Deine Rechte gemäß DSGVO</h2>
+      <p>Als Nutzer in der Europäischen Union oder im Vereinigten Königreich hast du das Recht auf:</p>
+      <ul>
+        <li>Auskunft über die von uns gespeicherten personenbezogenen Daten</li>
+        <li>Berichtigung unrichtiger Daten</li>
+        <li>Löschung deiner Daten</li>
+        <li>Widerspruch gegen oder Einschränkung der Verarbeitung deiner Daten</li>
+        <li>Datenübertragbarkeit</li>
+      </ul>
+      <p>Um eines dieser Rechte auszuüben, schreibe uns an <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>. Wir antworten innerhalb von 30 Tagen.</p>
+    </section>
+
+    <section>
+      <h2>8. Datenspeicherungsdauer</h2>
+      <p>Wir speichern deine Daten, solange dein Konto aktiv ist. Wenn du die Kontolöschung beantragst, löschen wir alle deine personenbezogenen Daten innerhalb von 30 Tagen.</p>
+    </section>
+
+    <section>
+      <h2>9. Kinderdaten</h2>
+      <p>VaxFile ist für die Nutzung durch Eltern und Erziehungsberechtigte konzipiert. Wir erheben wissentlich keine Daten direkt von Kindern. Alle Daten über Kinder werden von dem Elternteil oder der Erziehungsperson eingegeben, die das Konto besitzt.</p>
+    </section>
+
+    <section>
+      <h2>10. Änderungen dieser Richtlinie</h2>
+      <p>Wir können diese Richtlinie von Zeit zu Zeit aktualisieren. Wir werden dich über wesentliche Änderungen über die App informieren. Die aktuelle Version ist immer unter <a href="privacy.html">vaxfile.app/privacy</a> verfügbar.</p>
+    </section>
+
+    <section>
+      <h2>11. Kontakt</h2>
+      <p>Little Handy Apps<br /><a href="mailto:support@vaxfile.app">support@vaxfile.app</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-row">
+        <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="VaxFile im App Store laden">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Laden im App Store" />
+        </a>
+        <a href="support.html" class="footer-link">Support</a>
+        <a href="privacy.html" class="footer-link">Datenschutz</a>
+        <a href="impressum.html" class="footer-link">Impressum</a>
+      </div>
+      <p class="copyright">© 2026 Little Handy Apps. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+</body>
+</html>

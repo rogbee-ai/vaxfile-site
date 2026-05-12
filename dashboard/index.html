@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VaxFile Dashboard</title>
-    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
   </head>
   <body>
     <div id="root"></div>
@@ -64,6 +64,11 @@
       // ─── Mock Data ────────────────────────────────────────────────────────────────
 
       const TIME_RANGES = ["24h", "7d", "30d", "All time"];
+      const PLATFORM_OPTIONS = [
+        { label: "All", value: "all" },
+        { label: "iOS", value: "ios" },
+        { label: "Android", value: "android" },
+      ];
       const EMPTY_DATA = {
         newUsers: 0,
         activeUsers: 0,
@@ -144,6 +149,7 @@
 
       function Dashboard() {
         const [timeRange, setTimeRange] = useState("24h");
+        const [platform, setPlatform] = useState("all");
         const [activeTab, setActiveTab] = useState("overview");
         const [data, setData] = useState(null);
         const [loading, setLoading] = useState(true);
@@ -183,10 +189,10 @@
             setLoading(true);
             try {
               const [growth, events, intent, errors] = await Promise.all([
-                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rangeParam}`),
-                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/events?range=${rangeParam}`),
-                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/intent?range=${rangeParam}`),
-                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/errors?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rangeParam}&platform=${platform}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/events?range=${rangeParam}&platform=${platform}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/intent?range=${rangeParam}&platform=${platform}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/errors?range=${rangeParam}&platform=${platform}`),
               ]);
 
               const usersTrend = (growth.usersTrend || []).map((point) => ({
@@ -235,7 +241,7 @@
           return () => {
             cancelled = true;
           };
-        }, [timeRange]);
+        }, [timeRange, platform]);
 
         const d = data || EMPTY_DATA;
 
@@ -280,10 +286,22 @@
               </div>
 
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {/* Platform */}
+                <div style={{ display: "flex", background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 8, overflow: "hidden" }}>
+                  {PLATFORM_OPTIONS.map(({ label, value }) => (
+                    <button key={value} type="button" onClick={() => setPlatform(value)} style={{
+                      background: platform === value ? theme.accent : "transparent",
+                      color: platform === value ? "#fff" : theme.muted,
+                      border: "none", padding: "6px 14px", cursor: "pointer",
+                      fontFamily: "'DM Mono', monospace", fontSize: 12, transition: "all 0.15s",
+                    }}>{label}</button>
+                  ))}
+                </div>
+
                 {/* Time Range */}
                 <div style={{ display: "flex", background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 8, overflow: "hidden" }}>
                   {TIME_RANGES.map(t => (
-                    <button key={t} onClick={() => setTimeRange(t)} style={{
+                    <button key={t} type="button" onClick={() => setTimeRange(t)} style={{
                       background: timeRange === t ? theme.accent : "transparent",
                       color: timeRange === t ? "#fff" : theme.muted,
                       border: "none", padding: "6px 14px", cursor: "pointer",
@@ -320,9 +338,9 @@
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   {/* Top KPIs */}
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="New Users" value={d.newUsers} color={theme.accent} dimmed={loading} />
+                    <StatCard label="New Users" value={d.newUsers} color={theme.accent} dimmed={loading} sub={platform !== "all" ? "(all platforms)" : undefined} />
                     <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" dimmed={loading} />
-                    <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} dimmed={loading} />
+                    <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} dimmed={loading} sub={platform !== "all" ? "(all platforms)" : undefined} />
                     <StatCard label="Vaccines Logged" value={d.vaccinesLogged} color="#f59e0b" dimmed={loading} />
                   </div>
 

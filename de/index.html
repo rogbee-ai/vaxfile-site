@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VaxFile — Impfungen im Blick, immer und überall</title>
+  <meta name="description" content="VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.vaxfile.app/de/">
+  <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/" />
+  <link rel="alternate" hreflang="de" href="https://www.vaxfile.app/de/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/" />
+  <link rel="icon" href="../assets/favicon.png" type="image/png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VaxFile — Impfungen im Blick, immer und überall">
+  <meta property="og:description" content="VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.vaxfile.app/de/">
+  <meta property="og:image" content="https://www.vaxfile.app/assets/icon.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VaxFile — Impfungen im Blick, immer und überall">
+  <meta name="twitter:description" content="VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS.">
+  <meta name="twitter:image" content="https://www.vaxfile.app/assets/icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "VaxFile",
+    "operatingSystem": "iOS",
+    "applicationCategory": "HealthApplication",
+    "url": "https://www.vaxfile.app/de/",
+    "description": "VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS.",
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "name": "Kostenlos"
+      },
+      {
+        "@type": "Offer",
+        "price": "7.99",
+        "priceCurrency": "EUR",
+        "name": "VaxFile Premium"
+      }
+    ]
+  }
+  </script>
+
+  <!-- All CSS identical to en/index.html — copy verbatim -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      font-size: 16px; font-weight: 400; line-height: 1.5;
+      color: #355B4F; background-color: #F6FBF8;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: #1A5F3A; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #1A5F3A; outline-offset: 2px; border-radius: 4px; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .site-header { position: sticky; top: 0; z-index: 50; width: 100%; height: 64px; background-color: #FFFFFF; border-bottom: 0.5px solid #E0E0E0; display: flex; align-items: center; }
+    .header-inner { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .brand img { width: 32px; height: 32px; }
+    .wordmark { font-size: 17px; font-weight: 500; color: #1A5F3A; letter-spacing: -0.01em; }
+    .btn-pill { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px; background-color: #1A5F3A; color: #FFFFFF; font-size: 16px; font-weight: 500; border-radius: 999px; text-decoration: none; border: none; cursor: pointer; transition: background-color 0.15s ease; }
+    .btn-pill:hover { background-color: #144E2F; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .lang-toggle { display: inline-flex; align-items: center; gap: 8px; }
+    .lang-link { font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 400; color: #888888; text-decoration: none; }
+    .lang-link.active { font-weight: 500; color: #1A5F3A; pointer-events: none; }
+    .lang-sep { color: #E0E0E0; }
+    .hero { background-color: #F6FBF8; padding: 48px 0 56px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+    .eyebrow { font-size: 13px; font-weight: 500; color: #2E7D52; letter-spacing: 0.05em; text-transform: uppercase; margin: 0 0 16px; }
+    .hero h1 { font-size: 40px; line-height: 1.1; font-weight: 700; color: #1F4D3A; letter-spacing: -0.02em; margin: 0 0 16px; }
+    .hero-sub { font-size: 16px; color: #355B4F; margin: 0 0 28px; max-width: 540px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 24px; }
+    .appstore-badge { display: inline-block; }
+    .appstore-badge img { height: 48px; width: auto; }
+    .android-note { font-size: 13px; color: #888888; margin: 0; }
+    .trust-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .trust-tag { display: inline-flex; align-items: center; gap: 4px; background-color: #E8F5EE; color: #1A5F3A; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 999px; }
+    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; min-height: 360px; }
+    .phone-fan { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; }
+    .phone { border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); width: 145px; height: auto; background: #FFFFFF; }
+    .phone-fan .phone:nth-child(1) { transform: rotate(-6deg) translateX(14px); z-index: 1; }
+    .phone-fan .phone:nth-child(2) { transform: translateY(-12px); z-index: 3; width: 165px; }
+    .phone-fan .phone:nth-child(3) { transform: rotate(6deg) translateX(-14px); z-index: 1; }
+    .problem { background-color: #1A5F3A; color: #FFFFFF; padding: 40px 20px; text-align: center; }
+    .problem-inner { max-width: 700px; margin: 0 auto; }
+    .problem-statement { font-size: 20px; font-weight: 500; line-height: 1.4; color: #FFFFFF; margin: 0 0 12px; }
+    .problem-fix { font-size: 18px; font-weight: 500; color: #A8D5BA; margin: 0; }
+    section.section { padding: 56px 0; }
+    .section-bg-white { background-color: #FFFFFF; }
+    .section-bg-soft { background-color: #F6FBF8; }
+    .section h2 { font-size: 28px; font-weight: 700; color: #1F4D3A; letter-spacing: -0.01em; margin: 0 0 8px; text-align: center; }
+    .section-sub { font-size: 16px; color: #355B4F; margin: 0 auto 40px; max-width: 600px; text-align: center; }
+    .features-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+    .feature-card { background-color: #FFFFFF; border: 0.5px solid #E0E0E0; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .feature-icon { width: 32px; height: 32px; color: #1A5F3A; margin-bottom: 16px; }
+    .feature-heading-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+    .feature-heading { font-size: 18px; font-weight: 700; color: #1F4D3A; margin: 0; }
+    .premium-badge { display: inline-flex; align-items: center; background-color: #E8F5EE; color: #1A5F3A; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 999px; }
+    .feature-body { font-size: 14px; color: #355B4F; margin: 0; }
+    .premium-strip { background-color: #E8F5EE; border-radius: 16px; padding: 32px 28px; margin-top: 40px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+    .premium-strip-eyebrow { font-size: 12px; font-weight: 500; color: #2E7D52; letter-spacing: 0.05em; text-transform: uppercase; margin: 0; }
+    .premium-strip h3 { font-size: 22px; font-weight: 700; color: #1F4D3A; margin: 0; line-height: 1.2; }
+    .premium-strip p { font-size: 15px; color: #355B4F; margin: 0; }
+    .premium-features-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .premium-features-list li { background-color: #FFFFFF; color: #1A5F3A; font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 999px; border: 1px solid #C8E6D4; }
+    .premium-price { font-size: 14px; color: #5B7A70; margin: 0; }
+    .shot-strip { display: flex; gap: 4px; overflow-x: auto; padding: 8px 4px 24px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .shot-strip::-webkit-scrollbar { height: 6px; }
+    .shot-strip::-webkit-scrollbar-thumb { background: #E0E0E0; border-radius: 999px; }
+    .shot-item { flex: 0 0 min(85%, 320px); scroll-snap-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; scroll-snap-stop: always; }
+    .shot-item img { width: 100%; max-width: 320px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
+    .shot-caption { font-size: 13px; font-weight: 500; color: #355B4F; text-align: center; max-width: 220px; }
+    .carousel-indicators { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 4px; }
+    .carousel-dot { width: 12px; height: 12px; border-radius: 999px; border: 1px solid #1A5F3A; background: #FFFFFF; padding: 0; cursor: pointer; }
+    .carousel-dot[aria-current="true"] { background: #1A5F3A; }
+    .trust-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 32px; text-align: center; }
+    .trust-item .feature-icon { margin-left: auto; margin-right: auto; }
+    .trust-heading { font-size: 18px; font-weight: 700; color: #1F4D3A; margin: 0 0 8px; }
+    .trust-body { font-size: 14px; color: #355B4F; margin: 0 auto; max-width: 320px; }
+    .download { background-color: #1A5F3A; padding: 80px 20px; text-align: center; color: #FFFFFF; }
+    .download-icon { width: 80px; height: 80px; border-radius: 18px; margin: 0 auto 24px; }
+    .download h2 { color: #FFFFFF; font-size: 28px; font-weight: 700; line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.01em; }
+    .download-sub { color: #FFFFFF; opacity: 0.85; font-size: 16px; margin: 0 auto 24px; max-width: 520px; }
+    .download .appstore-badge img { height: 52px; }
+    .download-android { color: #FFFFFF; opacity: 0.7; font-size: 13px; margin: 16px 0 0; }
+    .site-footer { background-color: #FFFFFF; border-top: 1px solid #E0E0E0; padding: 32px 16px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+    .footer-brand { display: flex; align-items: center; gap: 8px; }
+    .footer-brand img { width: 24px; height: 24px; }
+    .footer-brand .wordmark { font-size: 15px; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 24px; }
+    .footer-link { font-size: 14px; font-weight: 500; color: #1A5F3A; text-decoration: none; }
+    .footer-link:hover { text-decoration: underline; }
+    .footer-badge img { height: 36px; }
+    .copyright { font-size: 12px; color: #888888; margin: 0; }
+    @media (min-width: 640px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+      .cta-stack { flex-direction: row; align-items: center; gap: 16px; }
+      .cta-stack .android-note { margin-left: 4px; }
+      section.section { padding: 72px 0; }
+      .download h2 { font-size: 36px; }
+      .problem-statement { font-size: 24px; }
+      .shot-item { flex-basis: min(65%, 360px); }
+      .premium-strip { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    }
+    @media (min-width: 1024px) {
+      .hero { padding: 80px 0; }
+      .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 88px; }
+      .hero h1 { font-size: 56px; }
+      .features-grid { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+      .shot-strip { gap: 6px; }
+      .shot-item { flex-basis: min(44%, 360px); }
+      .shot-caption { max-width: 320px; }
+      .section h2 { font-size: 32px; }
+      .hero-visual { min-height: 460px; padding-left: 12px; }
+      .phone { width: 200px; }
+      .phone-fan .phone:nth-child(2) { width: 230px; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    (function() {
+      var hash = window.location.hash;
+      var search = window.location.search;
+      var params = hash || search || '';
+      if (params.includes('type=signup') || params.includes('type=recovery')) {
+        var type = params.includes('type=signup') ? 'confirm' : 'reset-password';
+        window.location.href = 'vaxfile://' + type + params;
+      }
+    })();
+  </script>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a aria-label="VaxFile Startseite" class="brand" href="index.html">
+        <img src="../assets/icon.png" alt="" width="32" height="32">
+        <span class="wordmark">VaxFile</span>
+      </a>
+      <div class="header-actions">
+        <a href="#download" class="btn-pill">Kostenlos laden</a>
+        <div class="lang-toggle" aria-label="Sprache wechseln">
+          <a class="lang-link" href="/en/index.html" onclick="sessionStorage.setItem('vaxfile-lang', 'en')">EN</a>
+          <span class="lang-sep">|</span>
+          <span class="lang-link active">DE</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Für Eltern. Für mehr Sicherheit.</p>
+          <h1>Jede Impfung. Jedes Kind. Immer dabei.</h1>
+          <p class="hero-sub">VaxFile bewahrt die Impfdaten deiner Kinder sicher und übersichtlich — zu Hause und auf Reisen, über Ländergrenzen hinweg.</p>
+          <div class="cta-stack">
+            <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="VaxFile im App Store laden">
+              <img src="../assets/download-on-the-app-store.svg" alt="Laden im App Store">
+            </a>
+            <p class="android-note">Android demnächst verfügbar</p>
+          </div>
+          <div class="trust-tags" role="list">
+            <span class="trust-tag" role="listitem">🔒 Privat &amp; sicher</span>
+            <span class="trust-tag" role="listitem">🇩🇪 🇬🇧 🇳🇱 3 Länder</span>
+            <span class="trust-tag" role="listitem">👶 Für Familien gemacht</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="false">
+          <div class="phone-fan">
+            <img class="phone" src="../assets/home_with_child.png" alt="VaxFile Startbildschirm mit Kinderprofil">
+            <img class="phone" src="../assets/schedule.png" alt="Impfkalender mit anstehenden und überfälligen Impfungen">
+            <img class="phone" src="../assets/vaccination_recorded.png" alt="Detailansicht eines Impfeintrags">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+      <div class="problem-inner">
+        <p class="problem-statement">Impfausweise gehen verloren. Gesundheitssysteme sprechen nicht miteinander. Und jedes Land hat seine eigenen Anforderungen.</p>
+        <p class="problem-fix">VaxFile löst das.</p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section section-bg-white">
+      <div class="container">
+        <h2>Alles, was du brauchst — immer zur Hand</h2>
+        <p class="section-sub">Kostenlos für ein Kind. Mehr mit Premium.</p>
+        <div class="features-grid">
+          <article class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16l7-3 7 3z"></path></svg>
+            <div class="feature-heading-row"><h3 class="feature-heading">Alle Impfungen an einem Ort</h3></div>
+            <p class="feature-body">Impfungen eintragen und die Unterlagen deiner Kinder sicher, übersichtlich und jederzeit griffbereit aufbewahren.</p>
+          </article>
+          <article class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <div class="feature-heading-row"><h3 class="feature-heading">Smarte Erinnerungen</h3></div>
+            <p class="feature-body">Keine Impfung mehr verpassen. Benachrichtigungen vor dem Fälligkeitsdatum — nicht danach.</p>
+          </article>
+          <article class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <div class="feature-heading-row"><h3 class="feature-heading">🇩🇪 🇬🇧 🇳🇱 Drei Länder</h3></div>
+            <p class="feature-body">Unterstützt den STIKO-Impfkalender (Deutschland), den NHS-Impfplan (UK) und das RIVM-Programm (Niederlande). Weitere Länder folgen.</p>
+          </article>
+          <article class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <div class="feature-heading-row"><h3 class="feature-heading">Mehrere Kinder</h3><span class="premium-badge">Premium</span></div>
+            <p class="feature-body">Eine App für die ganze Familie. Jedes Kind erhält sein eigenes Profil und seinen eigenen Impfplan.</p>
+          </article>
+          <article class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <div class="feature-heading-row"><h3 class="feature-heading">Kalender-Integration</h3><span class="premium-badge">Premium</span></div>
+            <p class="feature-body">Anstehende Impftermine direkt in den Kalender übertragen. Kein Termin wird mehr vergessen.</p>
+          </article>
+          <article class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <div class="feature-heading-row"><h3 class="feature-heading">Scannen &amp; digitalisieren</h3><span class="premium-badge">Premium</span></div>
+            <p class="feature-body">Impfausweis fotografieren — VaxFile liest die Einträge per KI und importiert sie automatisch.</p>
+          </article>
+        </div>
+
+        <!-- Premium strip -->
+        <div class="premium-strip">
+          <div>
+            <p class="premium-strip-eyebrow">VaxFile Premium</p>
+            <h3>Einmalig bezahlen. Alles freischalten.</h3>
+            <p>Unbegrenzte Kinderprofile, Mehrländer-Impfpläne, Kalendersynchronisation und KI-Dokumentenscan.</p>
+          </div>
+          <ul class="premium-features-list">
+            <li>Unbegrenzte Kinder</li>
+            <li>Mehrere Länder pro Kind</li>
+            <li>Kalender-Integration</li>
+            <li>KI-Dokumentenscan</li>
+          </ul>
+          <p class="premium-price">7,99 € — Einmalkauf, kein Abo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="section section-bg-soft">
+      <div class="container">
+        <h2>Für den Alltag gemacht</h2>
+        <p class="section-sub">Klar, einfach und so gestaltet, wie Eltern wirklich denken.</p>
+        <div class="shot-strip" id="screenshots-carousel" role="region" aria-roledescription="Karussell" aria-label="VaxFile App-Screenshots">
+          <figure class="shot-item" id="slide-1" role="group" aria-roledescription="Folie" aria-label="1 von 4">
+            <img src="../assets/schedule.png" alt="Impfkalender mit Statusanzeigen">
+            <figcaption class="shot-caption">Anstehende Impfungen immer im Blick</figcaption>
+          </figure>
+          <figure class="shot-item" id="slide-2" role="group" aria-roledescription="Folie" aria-label="2 von 4">
+            <img src="../assets/home_with_child(1).png" alt="Startbildschirm mit überfälliger Impfanzeige">
+            <figcaption class="shot-caption">Erinnerungen im Kalender und direkt in der App</figcaption>
+          </figure>
+          <figure class="shot-item" id="slide-3" role="group" aria-roledescription="Folie" aria-label="3 von 4">
+            <img src="../assets/record_vaccination_form.png" alt="Formular zum Eintragen einer Impfung">
+            <figcaption class="shot-caption">Impfung in Sekunden eintragen</figcaption>
+          </figure>
+          <figure class="shot-item" id="slide-4" role="group" aria-roledescription="Folie" aria-label="4 von 4">
+            <img src="../assets/scan.png" alt="Scan-Funktion für Papier-Impfausweise">
+            <figcaption class="shot-caption">Papier-Impfausweis scannen und alle Einträge auf einmal importieren</figcaption>
+          </figure>
+        </div>
+        <div class="carousel-indicators" aria-label="Karussell-Navigation">
+          <button type="button" class="carousel-dot" data-slide="0" aria-label="Screenshot 1 anzeigen" aria-controls="slide-1" aria-current="true"></button>
+          <button type="button" class="carousel-dot" data-slide="1" aria-label="Screenshot 2 anzeigen" aria-controls="slide-2" aria-current="false"></button>
+          <button type="button" class="carousel-dot" data-slide="2" aria-label="Screenshot 3 anzeigen" aria-controls="slide-3" aria-current="false"></button>
+          <button type="button" class="carousel-dot" data-slide="3" aria-label="Screenshot 4 anzeigen" aria-controls="slide-4" aria-current="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="section section-bg-white">
+      <div class="container">
+        <h2>Vertrauen als Grundlage</h2>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <h3 class="trust-heading">Deine Daten gehören dir</h3>
+            <p class="trust-body">Verschlüsselt, sicher in der EU gespeichert und niemals für Werbezwecke verkauft oder weitergegeben.</p>
+          </div>
+          <div class="trust-item">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <h3 class="trust-heading">Zuverlässig von Anfang an</h3>
+            <p class="trust-body">Impfpläne basieren auf offiziellen Empfehlungen von STIKO, NHS und RIVM — stets aktuell gehalten.</p>
+          </div>
+          <div class="trust-item">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <h3 class="trust-heading">Immer besser werdend</h3>
+            <p class="trust-body">Von einem Elternteil für Eltern entwickelt. Euer Feedback prägt jedes Update.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="download">
+      <img class="download-icon" src="../assets/icon.png" alt="VaxFile App-Icon" width="80" height="80">
+      <h2>Die Gesundheitsakte deines Kindes — immer in der Tasche.</h2>
+      <p class="download-sub">Kostenlos laden. Premium-Funktionen als Einmalkauf verfügbar.</p>
+      <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="VaxFile im App Store laden">
+        <img src="../assets/download-on-the-app-store.svg" alt="Laden im App Store">
+      </a>
+      <p class="download-android">Android — demnächst verfügbar</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/icon.png" alt="" width="24" height="24">
+        <span class="wordmark">VaxFile</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a class="footer-link" href="support.html">Support</a>
+        <a class="footer-link" href="privacy.html">Datenschutz</a>
+        <a class="footer-link" href="impressum.html">Impressum</a>
+      </nav>
+      <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="footer-badge" aria-label="VaxFile im App Store laden">
+        <img src="../assets/download-on-the-app-store.svg" alt="Laden im App Store">
+      </a>
+      <p class="copyright">© 2026 Little Handy Apps. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var carousel = document.getElementById('screenshots-carousel');
+      if (!carousel) return;
+      var slides = Array.prototype.slice.call(carousel.querySelectorAll('.shot-item'));
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.carousel-dot'));
+      if (!slides.length || dots.length !== slides.length) return;
+      function setActiveSlide(index, shouldScroll) {
+        dots.forEach(function (dot, i) { dot.setAttribute('aria-current', i === index ? 'true' : 'false'); });
+        if (shouldScroll) { slides[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); }
+      }
+      dots.forEach(function (dot, index) { dot.addEventListener('click', function () { setActiveSlide(index, true); }); });
+      var ticking = false;
+      carousel.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(function () {
+          var carouselRect = carousel.getBoundingClientRect();
+          var center = carouselRect.left + carouselRect.width / 2;
+          var closestIndex = 0; var closestDistance = Infinity;
+          slides.forEach(function (slide, index) {
+            var rect = slide.getBoundingClientRect();
+            var slideCenter = rect.left + rect.width / 2;
+            var distance = Math.abs(center - slideCenter);
+            if (distance < closestDistance) { closestDistance = distance; closestIndex = index; }
+          });
+          setActiveSlide(closestIndex, false);
+          ticking = false;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

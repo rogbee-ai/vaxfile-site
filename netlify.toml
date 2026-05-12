@@ -1,6 +1,4 @@
-[build]
-
 [[redirects]]
-  from = "/dashboard"
-  to = "/dashboard/index.html"
+  from = "/"
+  to = "/index.html"
   status = 200

@@ -26,6 +26,14 @@ function getDateFilterSql(dateFrom: string): string {
   return "timestamp >= now() - INTERVAL '30 day'"
 }
 
+function getPlatformWhereClause(platform: string): string {
+  const normalized = ['ios', 'android', 'all'].includes(platform) ? platform : 'all'
+  if (normalized === 'all') return ''
+  const platformValue = normalized === 'ios' ? 'iOS' : 'Android'
+  return `
+          AND JSONExtractString(properties, '$os') = '${platformValue}'`
+}
+
 function getApiUrl(): string {
   const projectId = Deno.env.get('POSTHOG_PROJECT_ID')
   if (!projectId) {
@@ -120,6 +128,8 @@ Deno.serve(async (req) => {
     const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
     const dateFilterSql = getDateFilterSql(dateFrom)
+    const platformParam = requestUrl.searchParams.get('platform') ?? 'all'
+    const platformWhereClause = getPlatformWhereClause(platformParam)
     const testUserId = Deno.env.get('TEST_USER_ID') ?? ''
 
     const apiUrl = getApiUrl()
@@ -133,7 +143,7 @@ Deno.serve(async (req) => {
         WHERE event = 'coming_soon_shown'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFilterSql})
+          AND (${dateFilterSql})${platformWhereClause}
         GROUP BY feature
         ORDER BY count DESC
       `,
@@ -147,7 +157,7 @@ Deno.serve(async (req) => {
         WHERE event = 'coming_soon_shown'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFilterSql})
+          AND (${dateFilterSql})${platformWhereClause}
         GROUP BY day
         ORDER BY day ASC
       `,

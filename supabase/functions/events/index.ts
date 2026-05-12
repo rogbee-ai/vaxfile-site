@@ -11,6 +11,22 @@ function mapRangeToDateFrom(range: string): string {
   return 'all'
 }
 
+function getPlatformWhereClause(platform: string): { normalized: 'ios' | 'android' | 'all'; sql: string } {
+  const normalized = (['ios', 'android', 'all'].includes(platform) ? platform : 'all') as
+    | 'ios'
+    | 'android'
+    | 'all'
+  if (normalized === 'all') {
+    return { normalized: 'all', sql: '' }
+  }
+  const platformValue = normalized === 'ios' ? 'iOS' : 'Android'
+  return {
+    normalized,
+    sql: `
+          AND JSONExtractString(properties, '$os') = '${platformValue}'`,
+  }
+}
+
 function getApiUrl(): string {
   const projectId = Deno.env.get('POSTHOG_PROJECT_ID')
   if (!projectId) {
@@ -100,6 +116,8 @@ Deno.serve(async (req) => {
     const range = url.searchParams.get('range') ?? 'all'
     const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
+    const platformParam = url.searchParams.get('platform') ?? 'all'
+    const { normalized: normalizedPlatform, sql: platformWhereClause } = getPlatformWhereClause(platformParam)
     const testUserId = Deno.env.get('TEST_USER_ID') ?? ''
 
     const apiUrl = getApiUrl()
@@ -113,7 +131,7 @@ Deno.serve(async (req) => {
         WHERE event = 'user_signed_up'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
       `,
     }
 
@@ -125,7 +143,7 @@ Deno.serve(async (req) => {
         WHERE event = 'app_open'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
       `,
     }
 
@@ -137,7 +155,7 @@ Deno.serve(async (req) => {
         WHERE event = 'vaccination_logged'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
       `,
     }
 
@@ -149,7 +167,7 @@ Deno.serve(async (req) => {
         WHERE event = 'vaccination_logged'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
         GROUP BY day
         ORDER BY day ASC
       `,
@@ -163,7 +181,7 @@ Deno.serve(async (req) => {
         WHERE event = 'user_logged_in'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})
+          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
         GROUP BY country
         ORDER BY count DESC
         LIMIT 20
@@ -180,6 +198,7 @@ Deno.serve(async (req) => {
 
     return new Response(
       JSON.stringify({
+        platform: normalizedPlatform,
         signUps: readScalarFromResponse(signUpsRaw),
         appOpens: readScalarFromResponse(appOpensRaw),
         vaccinesLogged: readScalarFromResponse(vaccinesLoggedRaw),

@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://www.vaxfile.app/en/impressum.html">
+  <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/impressum.html" />
+  <link rel="alternate" hreflang="de" href="https://www.vaxfile.app/de/impressum.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/impressum.html" />
+  <link rel="icon" href="../assets/favicon.png" type="image/png" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Impressum — VaxFile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,6 +51,7 @@
       padding: 0 16px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
     }
 
@@ -165,15 +170,26 @@
         gap: 24px;
       }
     }
+  
+    .lang-toggle { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; }
+    .lang-link { font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 400; color: #888888; text-decoration: none; }
+    .lang-link.active { font-weight: 500; color: #1A5F3A; pointer-events: none; }
+    .lang-sep { color: #E0E0E0; }
+
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" aria-label="VaxFile home" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
-        <img src="index_files/icon.png" alt="VaxFile logo" class="header-logo" width="32" height="32" />
+        <img src="../assets/icon.png" alt="VaxFile logo" class="header-logo" width="32" height="32" />
         <span class="wordmark">VaxFile</span>
       </a>
+          <div class="lang-toggle" aria-label="Language switcher">
+        <span class="lang-link active">EN</span>
+        <span class="lang-sep">|</span>
+        <a class="lang-link" href="/de/impressum.html" onclick="sessionStorage.setItem('vaxfile-lang', 'de')">DE</a>
+      </div>
     </div>
   </header>
 
