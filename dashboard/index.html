@@ -108,7 +108,7 @@
 
       // ─── Components ───────────────────────────────────────────────────────────────
 
-      const StatCard = ({ label, value, sub, color = theme.accent, dimmed = false }) => (
+      const StatCard = ({ label, value, sub, color = theme.accent, dimmed = false, valueMuted = false }) => (
         <div style={{
           background: theme.surface, border: `1px solid ${theme.border}`,
           borderRadius: 12, padding: "20px 22px", position: "relative", overflow: "hidden",
@@ -120,7 +120,13 @@
             background: color, opacity: 0.8,
           }} />
           <div style={{ color: theme.muted, fontSize: 12, fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>{label}</div>
-          <div style={{ color: theme.text, fontSize: 32, fontFamily: "'Syne', sans-serif", fontWeight: 700, lineHeight: 1 }}>{typeof value === "number" ? value.toLocaleString() : value}</div>
+          <div style={{
+            color: valueMuted ? theme.muted : theme.text,
+            fontSize: valueMuted ? 15 : 32,
+            fontFamily: valueMuted ? "'DM Sans', sans-serif" : "'Syne', sans-serif",
+            fontWeight: valueMuted ? 500 : 700,
+            lineHeight: valueMuted ? 1.25 : 1,
+          }}>{typeof value === "number" ? value.toLocaleString() : value}</div>
           {sub && <div style={{ color: theme.muted, fontSize: 12, marginTop: 6, fontFamily: "'DM Mono', monospace" }}>{sub}</div>}
         </div>
       );
@@ -338,9 +344,9 @@
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   {/* Top KPIs */}
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="New Users" value={d.newUsers} color={theme.accent} dimmed={loading} sub={platform !== "all" ? "(all platforms)" : undefined} />
+                    <StatCard label="New Users" value={platform !== "all" ? "No platform data" : d.newUsers} color={theme.accent} dimmed={loading} valueMuted={platform !== "all"} />
                     <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" dimmed={loading} />
-                    <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} dimmed={loading} sub={platform !== "all" ? "(all platforms)" : undefined} />
+                    <StatCard label="Children Added" value={platform !== "all" ? "No platform data" : d.childrenAdded} color={theme.success} dimmed={loading} valueMuted={platform !== "all"} />
                     <StatCard label="Vaccines Logged" value={d.vaccinesLogged} color="#f59e0b" dimmed={loading} />
                   </div>
 
@@ -379,6 +385,21 @@
                   {/* Children by Country */}
                   <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
                     <SectionHeader icon="🌍" title="Children Added by Country" source="Supabase" />
+                    {platform !== "all" ? (
+                      <div style={{
+                        height: 180,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: theme.muted,
+                        fontSize: 14,
+                        fontFamily: "'DM Sans', sans-serif",
+                        textAlign: "center",
+                        padding: "0 16px",
+                      }}>
+                        No platform-specific data available
+                      </div>
+                    ) : (
                     <ResponsiveContainer width="100%" height={180}>
                       <BarChart data={d.childrenByCountry} layout="vertical">
                         <CartesianGrid strokeDasharray="3 3" stroke={theme.border} horizontal={false} />
@@ -392,6 +413,7 @@
                         </Bar>
                       </BarChart>
                     </ResponsiveContainer>
+                    )}
                   </div>
 
                   {/* Users by Country */}
