@@ -29,9 +29,8 @@ function getDateFilterSql(dateFrom: string): string {
 function getPlatformWhereClause(platform: string): string {
   const normalized = ['ios', 'android', 'all'].includes(platform) ? platform : 'all'
   if (normalized === 'all') return ''
-  const platformValue = normalized === 'ios' ? 'iOS' : 'Android'
   return `
-          AND JSONExtractString(properties, '$os') = '${platformValue}'`
+          AND JSONExtractString(properties, 'platform') = '${normalized}'`
 }
 
 function getApiUrl(): string {

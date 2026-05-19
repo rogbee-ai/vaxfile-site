@@ -347,7 +347,7 @@
                     <StatCard label="New Users" value={platform !== "all" ? "No platform data" : d.newUsers} color={theme.accent} dimmed={loading} valueMuted={platform !== "all"} />
                     <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" dimmed={loading} />
                     <StatCard label="Children Added" value={platform !== "all" ? "No platform data" : d.childrenAdded} color={theme.success} dimmed={loading} valueMuted={platform !== "all"} />
-                    <StatCard label="Vaccines Logged" value={d.vaccinesLogged} color="#f59e0b" dimmed={loading} />
+                    <StatCard label="Vaccines Logged" value={platform !== "all" ? "No platform data" : d.vaccinesLogged} color="#f59e0b" dimmed={loading} valueMuted={platform !== "all"} />
                   </div>
 
                   {/* Trend Chart */}

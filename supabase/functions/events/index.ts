@@ -19,11 +19,10 @@ function getPlatformWhereClause(platform: string): { normalized: 'ios' | 'androi
   if (normalized === 'all') {
     return { normalized: 'all', sql: '' }
   }
-  const platformValue = normalized === 'ios' ? 'iOS' : 'Android'
   return {
     normalized,
     sql: `
-          AND JSONExtractString(properties, '$os') = '${platformValue}'`,
+          AND JSONExtractString(properties, 'platform') = '${normalized}'`,
   }
 }
 
