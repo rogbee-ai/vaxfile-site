@@ -362,8 +362,8 @@
                           </linearGradient>
                           {platform === "all" && (
                             <linearGradient id="colorVax" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor={theme.success} stopOpacity={0.3} />
-                              <stop offset="95%" stopColor={theme.success} stopOpacity={0} />
+                              <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.3} />
+                              <stop offset="95%" stopColor="#f59e0b" stopOpacity={0} />
                             </linearGradient>
                           )}
                         </defs>
@@ -373,12 +373,12 @@
                         <Tooltip content={<CustomTooltip />} />
                         <Area type="monotone" dataKey="value" name="App Opens" stroke={theme.accent} fill="url(#colorUsers)" strokeWidth={2} />
                         {platform === "all" && (
-                          <Area type="monotone" dataKey="vaccines" name="Vaccines Logged" stroke={theme.success} fill="url(#colorVax)" strokeWidth={2} />
+                          <Area type="monotone" dataKey="vaccines" name="Vaccines Logged" stroke="#f59e0b" fill="url(#colorVax)" strokeWidth={2} />
                         )}
                       </AreaChart>
                     </ResponsiveContainer>
                     <div style={{ display: "flex", gap: 16, marginTop: 8, justifyContent: "center" }}>
-                      {(platform === "all" ? [["App Opens", theme.accent], ["Vaccines Logged", theme.success]] : [["App Opens", theme.accent]]).map(([l, c]) => (
+                      {(platform === "all" ? [["App Opens", theme.accent], ["Vaccines Logged", "#f59e0b"]] : [["App Opens", theme.accent]]).map(([l, c]) => (
                         <div key={l} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, fontFamily: "'DM Mono', monospace", color: theme.muted }}>
                           <div style={{ width: 12, height: 2, background: c, borderRadius: 1 }} />{l}
                         </div>
