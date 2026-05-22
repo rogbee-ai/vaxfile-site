@@ -8,7 +8,7 @@
     (function() {
       var lang = navigator.language || navigator.userLanguage || 'en';
       var saved = sessionStorage.getItem('vaxfile-lang');
-      var target = saved || (lang.startsWith('de') ? 'de' : 'en');
+      var target = saved || (lang.startsWith('de') ? 'de' : lang.startsWith('nl') ? 'nl' : lang.startsWith('es') ? 'es' : 'en');
       if (!saved) sessionStorage.setItem('vaxfile-lang', target);
       window.location.replace('/' + target + '/');
     })();

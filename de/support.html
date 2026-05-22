@@ -6,6 +6,8 @@
   <link rel="canonical" href="https://www.vaxfile.app/de/support.html">
   <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/support.html" />
   <link rel="alternate" hreflang="de" href="https://www.vaxfile.app/de/support.html" />
+  <link rel="alternate" hreflang="es" href="https://www.vaxfile.app/es/support.html" />
+  <link rel="alternate" hreflang="nl" href="https://www.vaxfile.app/nl/support.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/support.html" />
   <link rel="icon" href="../assets/favicon.png" type="image/png" />
   <title>Support — VaxFile</title>
@@ -55,10 +57,15 @@
     .footer-link:hover { text-decoration: underline; }
     .copyright { font-size: 12px; font-weight: 400; color: #888888; margin: 0; }
     @media (min-width: 640px) { .footer-row { flex-direction: row; gap: 24px; } h1 { font-size: 36px; } }
-    .lang-toggle { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; }
-    .lang-link { font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 400; color: #888888; text-decoration: none; }
-    .lang-link.active { font-weight: 500; color: #1A5F3A; pointer-events: none; }
-    .lang-sep { color: #E0E0E0; }
+    .lang-switcher { position: relative; display: inline-block; }
+    .lang-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 500; color: #1A5F3A; background: transparent; border: none; border-radius: 999px; cursor: pointer; transition: background-color 0.15s ease; }
+    .lang-btn:hover { background-color: #E8F5EE; }
+    .lang-btn svg { flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 6px); right: 0; min-width: 110px; background: #FFFFFF; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.10); overflow: hidden; z-index: 100; }
+    .lang-switcher.open .lang-dropdown { display: block; }
+    .lang-option { display: block; width: 100%; padding: 10px 16px; font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 400; color: #355B4F; background: transparent; border: none; text-align: left; cursor: pointer; text-decoration: none; transition: background-color 0.1s ease; }
+    .lang-option:hover { background-color: #E8F5EE; color: #1A5F3A; }
+    .lang-option.active { font-weight: 500; color: #1A5F3A; }
   </style>
 </head>
 <body>
@@ -68,10 +75,17 @@
         <img src="../assets/icon.png" alt="VaxFile Logo" class="header-logo" width="32" height="32" />
         <span class="wordmark">VaxFile</span>
       </a>
-      <div class="lang-toggle" aria-label="Sprache wechseln">
-        <a class="lang-link" href="/en/support.html" onclick="sessionStorage.setItem('vaxfile-lang', 'en')">EN</a>
-        <span class="lang-sep">|</span>
-        <span class="lang-link active">DE</span>
+                  <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false">
+          DE
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="#1A5F3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown" role="menu">
+            <a class="lang-option" href="/en/support.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','en')">EN</a>
+            <a class="lang-option active" href="#" role="menuitem">DE</a>
+            <a class="lang-option" href="/es/support.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','es')">ES</a>
+            <a class="lang-option" href="/nl/support.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','nl')">NL</a>
+        </div>
       </div>
     </div>
   </header>
@@ -238,6 +252,9 @@
         <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="VaxFile im App Store laden">
           <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Laden im App Store" />
         </a>
+        <a href="https://play.google.com/store/apps/details?id=com.vaxfile.app" class="appstore-badge" aria-label="Get VaxFile on Google Play">
+          <img src="../assets/google-play-badge.png" alt="Get it on Google Play" style="height: 52px; width: auto; display: block;">
+        </a>
         <a href="support.html" class="footer-link">Support</a>
         <a href="privacy.html" class="footer-link">Datenschutz</a>
         <a href="impressum.html" class="footer-link">Impressum</a>
@@ -245,5 +262,28 @@
       <p class="copyright">© 2026 Little Handy Apps. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
+
+  <script>
+    (function() {
+      var switcher = document.getElementById('lang-switcher');
+      var btn = document.getElementById('lang-btn');
+      if (!switcher || !btn) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var open = switcher.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function() {
+        switcher.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          switcher.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

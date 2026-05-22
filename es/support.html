@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="https://www.vaxfile.app/es/support.html">
+  <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/support.html" />
+  <link rel="alternate" hreflang="de" href="https://www.vaxfile.app/de/support.html" />
+  <link rel="alternate" hreflang="es" href="https://www.vaxfile.app/es/support.html" />
+  <link rel="alternate" hreflang="nl" href="https://www.vaxfile.app/nl/support.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/support.html" />
+  <link rel="icon" href="../assets/favicon.png" type="image/png" />
+  <title>Soporte — VaxFile</title>
+  <meta name="description" content="Soporte de VaxFile — respuestas a preguntas frecuentes sobre la creación de cuentas, registro de vacunas, calendarios, recordatorios y gestión de la cuenta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #355B4F;
+      background-color: #F6FBF8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: #1A5F3A; }
+    a:focus-visible { outline: 2px solid #1A5F3A; outline-offset: 2px; border-radius: 2px; }
+
+    .site-header {
+      width: 100%;
+      height: 64px;
+      background-color: #FFFFFF;
+      border-bottom: 0.5px solid #E0E0E0;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .header-logo {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+
+    .wordmark {
+      font-size: 17px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      color: #1A5F3A;
+      letter-spacing: -0.5px;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 16px 48px;
+    }
+
+    .hero {
+      padding: 48px 0 32px;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1F4D3A;
+      margin: 0 0 12px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: #355B4F;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .faq-section { margin-top: 40px; }
+    .faq-section:first-of-type { margin-top: 8px; }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1A5F3A;
+      margin: 0 0 12px;
+      line-height: 1.3;
+    }
+
+    details {
+      border-bottom: 1px solid #E0E0E0;
+      padding: 0;
+    }
+    details:first-of-type { border-top: 1px solid #E0E0E0; }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 16px 32px 16px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: #1F4D3A;
+      position: relative;
+      line-height: 1.4;
+    }
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 22px;
+      font-weight: 400;
+      color: #1A5F3A;
+      line-height: 1;
+      transition: transform 0.15s ease;
+    }
+    details[open] summary::after {
+      content: "−";
+    }
+
+    summary:focus-visible {
+      outline: 2px solid #1A5F3A;
+      outline-offset: -2px;
+      border-radius: 2px;
+    }
+
+    .answer {
+      padding: 0 32px 20px 0;
+      font-size: 16px;
+      font-weight: 400;
+      color: #355B4F;
+      line-height: 1.55;
+    }
+    .answer p { margin: 0 0 10px; }
+    .answer p:last-child { margin: 0; }
+
+    .contact-card {
+      margin-top: 48px;
+      background-color: #E8F5EE;
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      color: #1F4D3A;
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .contact-card p {
+      margin: 0;
+      font-size: 15px;
+      color: #355B4F;
+    }
+
+    .contact-card a {
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .contact-card a:hover { text-decoration: underline; }
+
+    .site-footer {
+      width: 100%;
+      background-color: #FFFFFF;
+      border-top: 1px solid #E0E0E0;
+      padding: 24px 16px;
+      margin-top: 48px;
+    }
+
+    .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .appstore-badge { display: inline-block; }
+    .appstore-badge img { height: 40px; width: auto; display: block; }
+
+    .footer-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1A5F3A;
+      text-decoration: none;
+    }
+    .footer-link:hover { text-decoration: underline; }
+
+    .copyright {
+      font-size: 12px;
+      font-weight: 400;
+      color: #888888;
+      margin: 0;
+    }
+
+    @media (min-width: 640px) {
+      .footer-row {
+        flex-direction: row;
+        gap: 24px;
+      }
+      h1 { font-size: 36px; }
+    }
+  
+    .lang-switcher { position: relative; display: inline-block; }
+    .lang-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 500; color: #1A5F3A; background: transparent; border: none; border-radius: 999px; cursor: pointer; transition: background-color 0.15s ease; }
+    .lang-btn:hover { background-color: #E8F5EE; }
+    .lang-btn svg { flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 6px); right: 0; min-width: 110px; background: #FFFFFF; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.10); overflow: hidden; z-index: 100; }
+    .lang-switcher.open .lang-dropdown { display: block; }
+    .lang-option { display: block; width: 100%; padding: 10px 16px; font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 400; color: #355B4F; background: transparent; border: none; text-align: left; cursor: pointer; text-decoration: none; transition: background-color 0.1s ease; }
+    .lang-option:hover { background-color: #E8F5EE; color: #1A5F3A; }
+    .lang-option.active { font-weight: 500; color: #1A5F3A; }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" aria-label="VaxFile inicio" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+        <img src="../assets/icon.png" alt="Logo de VaxFile" class="header-logo" width="32" height="32" />
+        <span class="wordmark">VaxFile</span>
+      </a>
+                      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false">
+          ES
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="#1A5F3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-dropdown" role="menu">
+            <a class="lang-option" href="/en/support.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','en')">EN</a>
+            <a class="lang-option" href="/de/support.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','de')">DE</a>
+            <a class="lang-option active" href="#" role="menuitem">ES</a>
+            <a class="lang-option" href="/nl/support.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','nl')">NL</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>¿En qué podemos ayudarte?</h1>
+      <p class="hero-sub">Encuentra respuestas a continuación o escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p>
+    </section>
+
+    <section class="faq-section">
+      <h2>Primeros pasos</h2>
+
+      <details>
+        <summary>¿Cómo creo una cuenta?</summary>
+        <div class="answer"><p>Descarga VaxFile del App Store y pulsa "Registrarse". Introduce tu dirección de correo electrónico y una contraseña (mínimo 8 caracteres, con un número y un carácter especial). Recibirás un correo de confirmación — pulsa el enlace para verificar tu cuenta e inicia sesión.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Cómo añado un hijo?</summary>
+        <div class="answer"><p>Una vez que hayas iniciado sesión, pulsa el botón + en la pantalla de inicio. Introduce el nombre, fecha de nacimiento, sexo y país de tu hijo. También puedes añadir una foto de perfil. Pulsa Guardar.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Qué países están disponibles?</summary>
+        <div class="answer"><p>VaxFile actualmente es compatible con Alemania (calendario STIKO), Reino Unido (calendario NHS) y Países Bajos (calendario RIVM). Próximamente habrá más países. Para solicitar un país, escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Puedo añadir hijos de varios países?</summary>
+        <div class="answer"><p>Sí, con VaxFile Premium. Puedes asignar varios calendarios de países a un mismo hijo, lo que resulta útil para familias que han vivido en más de un país. Las pestañas Calendario y Recibidas mostrarán un selector de país para cambiar entre calendarios.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2>VaxFile Premium</h2>
+
+      <details>
+        <summary>¿Qué es VaxFile Premium?</summary>
+        <div class="answer"><p>VaxFile Premium es una compra única que desbloquea: perfiles de hijos ilimitados, calendarios de varios países por hijo, integración con el calendario e importación de documentos con IA. Las cuentas gratuitas admiten un hijo con un calendario de país.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Cómo compro Premium?</summary>
+        <div class="answer"><p>Pulsa el aviso de actualización cuando intentes añadir un segundo hijo, cambiar de país o usar una función Premium. La compra se realiza a través del App Store — 7,99 € como pago único, para siempre.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Cómo restauro una compra anterior?</summary>
+        <div class="answer"><p>Pulsa "Restaurar compra" en la parte inferior de la pantalla de actualización Premium o ve a Ajustes en la app. Tu compra se restaurará siempre que hayas iniciado sesión con el mismo Apple ID que usaste para comprarla.</p></div>
+      </details>
+
+      <details>
+        <summary>He comprado Premium pero no aparece como activo</summary>
+        <div class="answer"><p>Intenta pulsar "Restaurar compra" en la app. Si no funciona, asegúrate de que has iniciado sesión con el mismo Apple ID utilizado para la compra. Si el problema persiste, escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2>Registros de vacunación</h2>
+
+      <details>
+        <summary>¿Cómo registro una vacuna?</summary>
+        <div class="answer"><p>Abre el perfil de un hijo, ve a la pestaña Recibidas y pulsa el botón +. Selecciona la vacuna y la dosis, introduce la fecha y otros datos, y pulsa Guardar.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Puedo registrar una vacuna desde la pestaña Calendario?</summary>
+        <div class="answer"><p>Sí. Pulsa cualquier elemento vencido o próximo en la pestaña Calendario para abrir el formulario de registro con la vacuna y el número de dosis ya rellenados.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Cómo escaneo una cartilla de vacunación en papel?</summary>
+        <div class="answer"><p>Esta es una función Premium. En la pestaña Recibidas, pulsa el icono de la cámara. Elige si quieres hacer una foto o seleccionar una de tu biblioteca. VaxFile utiliza IA para leer la cartilla y rellenar previamente el formulario de registro — puedes revisar y editar cada entrada antes de guardar. El escaneo funciona mejor con fotos claras y bien iluminadas. Los resultados pueden variar y siempre deben revisarse con atención.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Qué precisión tiene el escáner de documentos?</summary>
+        <div class="answer"><p>El escaneo de documentos utiliza IA y está diseñado para ahorrar tiempo, no para sustituir una revisión cuidadosa. Funciona bien para la mayoría de las cartillas de vacunación estándar (Impfausweis alemán, Rijksvaccinatieboekje neerlandés, Red Book británico), pero puede omitir entradas o cometer errores ocasionalmente, especialmente con registros manuscritos. Revisa siempre cada entrada escaneada antes de guardar.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Cómo edito o elimino una entrada?</summary>
+        <div class="answer"><p>Pulsa una entrada para abrir la vista de detalle y luego pulsa Editar en la parte superior derecha. Desde la pantalla de edición puedes actualizar los datos o eliminar la entrada por completo.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Por qué aparece una vacuna como vencida?</summary>
+        <div class="answer"><p>Una vacuna aparece como vencida cuando ha pasado la edad recomendada y no existe ninguna entrada de registro para esa vacuna y dosis. Consulta la pestaña Calendario para más detalles. Si ya has recibido la vacuna, regístrala para marcarla como completada.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2>Calendario</h2>
+
+      <details>
+        <summary>¿De dónde proviene el calendario de vacunación?</summary>
+        <div class="answer"><p>Los calendarios se basan en las directrices nacionales oficiales — el calendario de vacunación STIKO (RKI) para Alemania, el calendario de inmunización infantil rutinaria del NHS para el Reino Unido y el programa nacional de inmunización del RIVM para los Países Bajos. VaxFile es únicamente una herramienta de registro y no proporciona asesoramiento médico. Consulta siempre a tu médico o profesional sanitario.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Cómo se calcula la fecha límite?</summary>
+        <div class="answer"><p>Las fechas límite se calculan a partir de la fecha de nacimiento de tu hijo utilizando la edad recomendada en semanas del calendario oficial.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Qué significa "Pendiente este año" para la vacuna de la gripe?</summary>
+        <div class="answer"><p>La vacuna de la gripe es anual. "Pendiente este año" significa que no se ha registrado ninguna vacuna de la gripe para el año calendario actual y tu hijo tiene edad suficiente para recibirla.</p></div>
+      </details>
+
+      <details>
+        <summary>Mi hijo tiene calendarios de dos países — ¿cómo funciona?</summary>
+        <div class="answer"><p>Con Premium, puedes asignar varios calendarios de países a un hijo. En las pestañas Calendario y Recibidas, usa el selector de país en la parte superior para cambiar entre calendarios. Cada calendario se sigue de forma independiente y puedes registrar vacunas en cualquiera de ellos.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2>Notificaciones y recordatorios</h2>
+
+      <details>
+        <summary>¿Cómo activo los recordatorios?</summary>
+        <div class="answer"><p>La primera vez que abras la pestaña Recibidas de un hijo sin entradas, VaxFile ofrecerá activar los recordatorios. Pulsa "Activar recordatorios" y permite las notificaciones cuando se te solicite.</p></div>
+      </details>
+
+      <details>
+        <summary>He desactivado las notificaciones. ¿Cómo las reactivo?</summary>
+        <div class="answer"><p>Ve a Ajustes del iPhone &gt; VaxFile &gt; Notificaciones y activa Permitir notificaciones. Luego abre VaxFile — el aviso de recordatorio volverá a aparecer en cualquier pestaña Recibidas vacía.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Puedo añadir fechas de vacunación a mi calendario?</summary>
+        <div class="answer"><p>Sí, con VaxFile Premium. En la pestaña Calendario, pulsa el icono del calendario junto a cualquier vacuna próxima o pendiente para añadirla al calendario de tu dispositivo. El evento aparecerá en la app de calendario que uses en tu dispositivo.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2>Cuenta y datos</h2>
+
+      <details>
+        <summary>¿Cómo elimino mi cuenta?</summary>
+        <div class="answer"><p>Escríbenos a <a href="mailto:support@vaxfile.app?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta">support@vaxfile.app</a> con el asunto "Solicitud de eliminación de cuenta". Incluye la dirección de correo electrónico asociada a tu cuenta. Eliminaremos todos tus datos en un plazo de 30 días.</p></div>
+      </details>
+
+      <details>
+        <summary>¿Dónde se almacenan mis datos?</summary>
+        <div class="answer"><p>Tus datos se almacenan de forma segura en los servidores de Supabase en Fráncfort, Alemania. Están cifrados en tránsito y nunca se venden ni se comparten con terceros con fines publicitarios. Consulta nuestra <a href="privacy.html">Política de privacidad</a> para más detalles.</p></div>
+      </details>
+
+      <details>
+        <summary>¿El escaneo de documentos almacena mis fotos?</summary>
+        <div class="answer"><p>No. Cuando escaneas un documento, la foto se envía de forma segura a OpenAI para su procesamiento y ni VaxFile ni OpenAI la almacenan más allá de la solicitud inmediata. No se conservan imágenes tras completar el escaneo.</p></div>
+      </details>
+
+      <details>
+        <summary>He olvidado mi contraseña. ¿Cómo la restablezco?</summary>
+        <div class="answer"><p>En la pantalla de inicio de sesión, pulsa "¿Olvidaste tu contraseña?" e introduce tu dirección de correo electrónico. Recibirás un enlace de restablecimiento por correo. El enlace te llevará a vaxfile.app donde podrás establecer una nueva contraseña.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2>Solución de problemas</h2>
+
+      <details>
+        <summary>La app no carga o muestra un error</summary>
+        <div class="answer"><p>Comprueba tu conexión a internet. VaxFile requiere una conexión activa para cargar y sincronizar datos. Si el problema persiste, cierra la app y vuelve a abrirla.</p></div>
+      </details>
+
+      <details>
+        <summary>No recibo el correo de confirmación</summary>
+        <div class="answer"><p>Revisa tu carpeta de spam. Si no está ahí, espera unos minutos e inténtalo de nuevo. Si aún no lo has recibido, escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
+      </details>
+
+      <details>
+        <summary>Falta una vacuna en el calendario</summary>
+        <div class="answer"><p>El calendario solo incluye vacunas de los programas de rutina oficiales (STIKO para Alemania, NHS para el Reino Unido, RIVM para los Países Bajos). Si crees que falta una vacuna, escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p></div>
+      </details>
+
+      <details>
+        <summary>El escaneo de documentos ha devuelto resultados incorrectos o incompletos</summary>
+        <div class="answer"><p>El escaneo con IA funciona mejor con fotos claras, bien iluminadas y tomadas de frente. Intenta volver a hacer la foto con mejor iluminación y menos ángulo. Si los resultados son sistemáticamente incorrectos para un tipo de documento concreto, escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a> — tus comentarios nos ayudan a mejorar la precisión.</p></div>
+      </details>
+    </section>
+
+    <section class="contact-card" aria-labelledby="still-need-help">
+      <h2 id="still-need-help">¿Necesitas más ayuda?</h2>
+      <p>Escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a> — intentamos responder en un plazo de 2 días hábiles.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-row">
+        <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="Descargar VaxFile en el App Store">
+          <img
+            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+            alt="Descargar en el App Store"
+          />
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.vaxfile.app" class="appstore-badge" aria-label="Obtener VaxFile en Google Play">
+          <img src="../assets/google-play-badge.png" alt="Disponible en Google Play" style="height: 52px; width: auto; display: block;">
+        </a>
+        <a href="support.html" class="footer-link">Soporte</a>
+        <a href="privacy.html" class="footer-link">Privacidad</a>
+        <a href="impressum.html" class="footer-link">Aviso legal</a>
+      </div>
+      <p class="copyright">© 2026 Little Handy Apps. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var switcher = document.getElementById('lang-switcher');
+      var btn = document.getElementById('lang-btn');
+      if (!switcher || !btn) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var open = switcher.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function() {
+        switcher.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          switcher.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
