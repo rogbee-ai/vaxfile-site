@@ -450,7 +450,7 @@
               {activeTab === "errors" && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="Total Crashes" value={d.crashes} color={theme.danger} sub="iOS" dimmed={loading} />
+                    <StatCard label="Total Crashes" value={d.crashes} color={theme.danger} dimmed={loading} />
                     <StatCard label="Total Errors" value={d.errors} color={theme.warning} sub="All types" dimmed={loading} />
                   </div>
 
