@@ -88,6 +88,13 @@
         ],
         fakeDoorTrend: [],
         totalIntentTaps: 0,
+        upsellByFeature: [],
+        purchaseTappedByFeature: [],
+        purchasedByFeature: [],
+        purchasedTrend: [],
+        totalUpsells: 0,
+        totalPurchaseTapped: 0,
+        totalPurchased: 0,
       };
 
       // ─── Theme ────────────────────────────────────────────────────────────────────
@@ -194,11 +201,12 @@
           const fetchData = async () => {
             setLoading(true);
             try {
-              const [growth, events, intent, errors] = await Promise.all([
+              const [growth, events, intent, errors, purchases] = await Promise.all([
                 fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rangeParam}&platform=${platform}`),
                 fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/events?range=${rangeParam}&platform=${platform}`),
                 fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/intent?range=${rangeParam}&platform=${platform}`),
                 fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/errors?range=${rangeParam}&platform=${platform}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/purchases?range=${rangeParam}&platform=${platform}`),
               ]);
 
               const usersTrend = (growth.usersTrend || []).map((point) => ({
@@ -229,6 +237,16 @@
                     value: Number(point.value) || 0,
                   })),
                   totalIntentTaps: Number(intent.totalIntentTaps) || 0,
+                  upsellByFeature: purchases.upsellByFeature || [],
+                  purchaseTappedByFeature: purchases.purchaseTappedByFeature || [],
+                  purchasedByFeature: purchases.purchasedByFeature || [],
+                  purchasedTrend: (purchases.purchasedTrend || []).map((point) => ({
+                    day: point.day,
+                    value: Number(point.value) || 0,
+                  })),
+                  totalUpsells: Number(purchases.totalUpsells) || 0,
+                  totalPurchaseTapped: Number(purchases.totalPurchaseTapped) || 0,
+                  totalPurchased: Number(purchases.totalPurchased) || 0,
                 });
               }
             } catch (error) {
@@ -255,6 +273,7 @@
           { id: "overview", label: "Overview" },
           { id: "errors", label: "Errors" },
           { id: "premium", label: "Premium Intent" },
+          { id: "purchases", label: "Purchase Behaviour" },
         ];
 
         return (
@@ -565,6 +584,106 @@
                         These taps show which locked features users actually want — before building them. The most-tapped feature is your strongest signal for what to prioritise in V2.
                       </div>
                     </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── PURCHASE BEHAVIOUR TAB ── */}
+              {activeTab === "purchases" && (
+                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
+                    <StatCard label="Upsell Views" value={d.totalUpsells} color="#6366f1" dimmed={loading} />
+                    <StatCard label="Purchase Tapped" value={d.totalPurchaseTapped} color="#f59e0b" dimmed={loading} />
+                    <StatCard label="Purchased" value={d.totalPurchased} color={theme.success} dimmed={loading} />
+                  </div>
+
+                  <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+                    <SectionHeader icon="💰" title="Conversion Funnel" source="PostHog" />
+                    <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 12 }}>
+                      {[
+                        { label: "Upsell Views", count: d.totalUpsells, color: "#6366f1" },
+                        { label: "Purchase Tapped", count: d.totalPurchaseTapped, color: "#f59e0b" },
+                        { label: "Purchased", count: d.totalPurchased, color: theme.success },
+                      ].map((step) => {
+                        const max = d.totalUpsells || 1;
+                        const pct = (step.count / max) * 100;
+                        return (
+                          <div key={step.label}>
+                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                              <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 14, color: theme.text }}>{step.label}</span>
+                              <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 22, color: theme.text }}>{step.count.toLocaleString()}</span>
+                            </div>
+                            <div style={{ background: theme.border, borderRadius: 6, height: 10, overflow: "hidden" }}>
+                              <div style={{
+                                width: `${pct}%`, height: "100%",
+                                background: step.color,
+                                borderRadius: 6, transition: "width 0.5s ease",
+                                opacity: 0.85,
+                              }} />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+                    <SectionHeader icon="🎯" title="By Feature" source="PostHog" />
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20, marginTop: 12 }}>
+                      {[
+                        { title: "Upsell Views", items: d.upsellByFeature, color: "#6366f1" },
+                        { title: "Purchase Tapped", items: d.purchaseTappedByFeature, color: "#f59e0b" },
+                        { title: "Purchased", items: d.purchasedByFeature, color: theme.success },
+                      ].map((column) => (
+                        <div key={column.title}>
+                          <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: theme.muted, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.06em" }}>{column.title}</div>
+                          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                            {(column.items.length ? column.items : [{ feature: "none", label: "No data", icon: "—", count: 0 }]).map((item) => {
+                              const max = column.items[0]?.count || 1;
+                              const pct = (item.count / max) * 100;
+                              return (
+                                <div key={item.feature}>
+                                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: 6, minWidth: 0 }}>
+                                      <span style={{ fontSize: 14 }}>{item.icon}</span>
+                                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 12, color: theme.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{item.label}</span>
+                                    </div>
+                                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: theme.text, flexShrink: 0, marginLeft: 8 }}>{item.count.toLocaleString()}</span>
+                                  </div>
+                                  <div style={{ background: theme.border, borderRadius: 4, height: 6, overflow: "hidden" }}>
+                                    <div style={{
+                                      width: `${pct}%`, height: "100%",
+                                      background: column.color,
+                                      borderRadius: 4, transition: "width 0.5s ease",
+                                      opacity: 0.85,
+                                    }} />
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
+                    <SectionHeader icon="📈" title="Purchases Over Time" source="PostHog" />
+                    <ResponsiveContainer width="100%" height={180}>
+                      <AreaChart data={d.purchasedTrend}>
+                        <defs>
+                          <linearGradient id="gradPurchases" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor={theme.success} stopOpacity={0.35} />
+                            <stop offset="95%" stopColor={theme.success} stopOpacity={0} />
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" stroke={theme.border} />
+                        <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                        <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Area type="monotone" dataKey="value" name="Purchases" stroke={theme.success} fill="url(#gradPurchases)" strokeWidth={2} dot={false} />
+                      </AreaChart>
+                    </ResponsiveContainer>
                   </div>
                 </div>
               )}
