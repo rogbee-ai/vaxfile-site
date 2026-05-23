@@ -452,8 +452,6 @@
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
                     <StatCard label="Total Crashes" value={d.crashes} color={theme.danger} sub="iOS" dimmed={loading} />
                     <StatCard label="Total Errors" value={d.errors} color={theme.warning} sub="All types" dimmed={loading} />
-                    <StatCard label="Crash Rate" value={`${((d.crashes / (d.activeUsers || 1)) * 100).toFixed(2)}%`} color={theme.danger} sub="of active sessions" dimmed={loading} />
-                    <StatCard label="Error Rate" value={`${((d.errors / (d.activeUsers || 1)) * 100).toFixed(1)}%`} color={theme.warning} sub="of active sessions" dimmed={loading} />
                   </div>
 
                   <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
@@ -476,18 +474,6 @@
                     </div>
                   </div>
 
-                  <div style={{
-                    background: `linear-gradient(135deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02))`,
-                    border: `1px solid rgba(239,68,68,0.2)`,
-                    borderRadius: 12, padding: "16px 20px",
-                    display: "flex", alignItems: "flex-start", gap: 12,
-                  }}>
-                    <span style={{ fontSize: 20 }}>⚠️</span>
-                    <div>
-                      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, marginBottom: 4 }}>Crash spike detected</div>
-                      <div style={{ color: theme.muted, fontSize: 13, lineHeight: 1.5 }}>iOS crashes up 23% in last 24h. Likely related to iOS 18.4.1 update. <span style={{ color: theme.accent, cursor: "pointer" }}>View in App Store Connect →</span></div>
-                    </div>
-                  </div>
                 </div>
               )}
 
