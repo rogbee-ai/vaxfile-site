@@ -97,6 +97,10 @@ Deno.serve(async (req) => {
 
   try {
     const requestUrl = new URL(req.url)
+    const platform = requestUrl.searchParams.get('platform') ?? 'all'
+    const platformFilter = platform !== 'all'
+      ? `AND JSONExtractString(properties, 'platform') = '${platform}'`
+      : ''
     const range = requestUrl.searchParams.get('range') ?? 'all'
     const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
@@ -113,6 +117,7 @@ Deno.serve(async (req) => {
         WHERE event = '$exception'
 
           AND (${dateFilterSql})
+          ${platformFilter}
       `,
     }
 
@@ -124,6 +129,7 @@ Deno.serve(async (req) => {
         WHERE event = '$exception'
 
           AND (${dateFilterSql})
+          ${platformFilter}
         GROUP BY name
         ORDER BY count DESC
         LIMIT 5
