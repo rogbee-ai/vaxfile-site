@@ -17,6 +17,7 @@ function getDateFilterSql(range: string): string {
   if (range === '24h') return "timestamp >= now() - INTERVAL '1 day'"
   if (range === '7d') return "timestamp >= now() - INTERVAL '7 day'"
   if (range === '30d') return "timestamp >= now() - INTERVAL '30 day'"
+  if (range === 'since_v2' || range === '2026-05-26') return "timestamp >= '2026-05-26 00:00:00'"
   return 'true'
 }
 
@@ -113,7 +114,7 @@ Deno.serve(async (req) => {
   try {
     const requestUrl = new URL(req.url)
     const range = requestUrl.searchParams.get('range') ?? 'all'
-    const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
+    const normalizedRange = ['24h', '7d', '30d', 'all', 'since_v2'].includes(range) ? range : 'all'
     const platform = requestUrl.searchParams.get('platform') ?? 'all'
     const testUserId = Deno.env.get('TEST_USER_ID') ?? ''
     const platformFilter = platform !== 'all'

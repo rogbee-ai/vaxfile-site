@@ -8,7 +8,16 @@ function mapRangeToDateFrom(range: string): string {
   if (range === '24h') return '-1d'
   if (range === '7d') return '-7d'
   if (range === '30d') return '-30d'
+  if (range === 'since_v2') return '2026-05-26'
   return 'all'
+}
+
+function getDateFilterSql(dateFrom: string): string {
+  if (dateFrom === 'all') return 'true'
+  if (dateFrom === 'since_v2' || dateFrom === '2026-05-26') return "timestamp >= '2026-05-26 00:00:00'"
+  if (dateFrom === '-1d') return "timestamp >= now() - INTERVAL '1 day'"
+  if (dateFrom === '-7d') return "timestamp >= now() - INTERVAL '7 day'"
+  return "timestamp >= now() - INTERVAL '30 day'"
 }
 
 function getPlatformWhereClause(platform: string): { normalized: 'ios' | 'android' | 'all'; sql: string } {
@@ -113,8 +122,9 @@ Deno.serve(async (req) => {
   try {
     const url = new URL(req.url)
     const range = url.searchParams.get('range') ?? 'all'
-    const normalizedRange = ['24h', '7d', '30d', 'all'].includes(range) ? range : 'all'
+    const normalizedRange = ['24h', '7d', '30d', 'all', 'since_v2'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
+    const dateFilterSql = getDateFilterSql(dateFrom)
     const platformParam = url.searchParams.get('platform') ?? 'all'
     const { normalized: normalizedPlatform, sql: platformWhereClause } = getPlatformWhereClause(platformParam)
     const testUserId = Deno.env.get('TEST_USER_ID') ?? ''
@@ -130,7 +140,7 @@ Deno.serve(async (req) => {
         WHERE event = 'user_signed_up'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
+          AND (${dateFilterSql})${platformWhereClause}
       `,
     }
 
@@ -142,7 +152,7 @@ Deno.serve(async (req) => {
         WHERE event = 'app_open'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
+          AND (${dateFilterSql})${platformWhereClause}
       `,
     }
 
@@ -154,7 +164,7 @@ Deno.serve(async (req) => {
         WHERE event = 'vaccination_logged'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
+          AND (${dateFilterSql})${platformWhereClause}
       `,
     }
 
@@ -166,7 +176,7 @@ Deno.serve(async (req) => {
         WHERE event = 'vaccination_logged'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
+          AND (${dateFilterSql})${platformWhereClause}
         GROUP BY day
         ORDER BY day ASC
       `,
@@ -180,7 +190,7 @@ Deno.serve(async (req) => {
         WHERE event = 'user_logged_in'
           AND distinct_id != '${testUserId}'
 
-          AND (${dateFrom === 'all' ? 'true' : `timestamp >= now() - INTERVAL '${dateFrom === '-1d' ? '1 day' : dateFrom === '-7d' ? '7 day' : '30 day'}'`})${platformWhereClause}
+          AND (${dateFilterSql})${platformWhereClause}
         GROUP BY country
         ORDER BY count DESC
         LIMIT 20
