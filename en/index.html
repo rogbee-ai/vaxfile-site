@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VaxFile — Vaccine Records for Your Family, Always With You</title>
-  <meta name="description" content="VaxFile helps parents track their children's vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
+  <title>VaxFile — Child Vaccination Records Across Countries | For Expat Families</title>
+  <meta name="description" content="VaxFile helps expat families track their children's vaccinations across Germany, UK, Netherlands and Spain — one app, every schedule, always up to date. Free on iOS.">
   <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.vaxfile.app/en/">
   <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/" />
@@ -15,16 +15,16 @@
   <link rel="icon" href="../assets/favicon.png" type="image/png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="VaxFile — Vaccine Records for Your Family, Always With You">
-  <meta property="og:description" content="VaxFile helps parents track their children's vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
+  <meta property="og:title" content="VaxFile — Child Vaccination Records Across Countries | For Expat Families">
+  <meta property="og:description" content="VaxFile helps expat families track their children's vaccinations across Germany, UK, Netherlands and Spain — one app, every schedule, always up to date. Free on iOS.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.vaxfile.app/en/">
   <meta property="og:image" content="https://www.vaxfile.app/assets/icon.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VaxFile — Vaccine Records for Your Family, Always With You">
-  <meta name="twitter:description" content="VaxFile helps parents track their children's vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.">
+  <meta name="twitter:title" content="VaxFile — Child Vaccination Records Across Countries | For Expat Families">
+  <meta name="twitter:description" content="VaxFile helps expat families track their children's vaccinations across Germany, UK, Netherlands and Spain — one app, every schedule, always up to date. Free on iOS.">
   <meta name="twitter:image" content="https://www.vaxfile.app/assets/icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,10 @@
     "applicationCategory": "HealthApplication",
     "url": "https://www.vaxfile.app/en/",
     "description": "VaxFile helps parents track their children's vaccinations across countries, store records digitally, and never miss a due date. Free on iOS.",
+    "audience": {
+      "@type": "PeopleAudience",
+      "audienceType": "Expat families, international parents, families living abroad"
+    },
     "offers": [
       {
         "@type": "Offer",
@@ -279,6 +283,74 @@
       font-weight: 500;
       color: #A8D5BA;
       margin: 0;
+    }
+    .expat-callout {
+      background-color: #E8F5EE;
+      padding: 56px 0;
+    }
+    .expat-callout-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .expat-callout-text .expat-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      color: #2E7D52;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+    .expat-callout-text h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1F4D3A;
+      letter-spacing: -0.01em;
+      margin: 0 0 16px;
+      text-align: left;
+    }
+    .expat-callout-text p {
+      font-size: 16px;
+      color: #355B4F;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 520px;
+    }
+    .expat-callout-images {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .expat-callout-images .shot {
+      overflow: hidden;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      flex: 1;
+      max-width: 200px;
+    }
+    .expat-callout-images .shot img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+      height: 300px;
+    }
+    @media (min-width: 1024px) {
+      .expat-callout-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+      .expat-callout-images .shot {
+        max-width: 220px;
+      }
+      .expat-callout-images .shot img {
+        height: 340px;
+      }
     }
 
     /* ---------- Section base ---------- */
@@ -635,7 +707,7 @@
         <div class="hero-text">
           <p class="eyebrow">For parents. For peace of mind</p>
           <h1>Every vaccine. Every child. Always with you.</h1>
-          <p class="hero-sub">VaxFile keeps your children's vaccination records safe, organised, and always to hand — across countries and health systems.</p>
+          <p class="hero-sub">VaxFile keeps your children's vaccination records safe and organised — whether you follow one schedule or three, in German, Dutch, English, or Spanish.</p>
           <div class="cta-stack">
             <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="Download VaxFile on the App Store">
               <img src="../assets/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 44px; width: auto; display: block;">
@@ -645,9 +717,9 @@
             </a>
           </div>
           <div class="trust-tags" role="list">
+            <span class="trust-tag" role="listitem">🌍 Built for expat families</span>
             <span class="trust-tag" role="listitem">🔒 Private &amp; secure</span>
-            <span class="trust-tag" role="listitem">🇩🇪 🇬🇧 🇳🇱 🇪🇸 4 countries</span>
-            <span class="trust-tag" role="listitem">👶 Built for families</span>
+            <span class="trust-tag" role="listitem">👶 4 countries &amp; growing</span>
           </div>
         </div>
         <div class="hero-visual" aria-hidden="false">
@@ -663,8 +735,26 @@
     <!-- Problem -->
     <section class="problem">
       <div class="problem-inner">
-        <p class="problem-statement">Paper vaccine cards get lost. Health systems don't talk to each other. And every country has different requirements.</p>
+        <p class="problem-statement">Paper vaccine cards get lost. Health systems don't talk to each other. Every country has different requirements. And when you move, you start all over again.</p>
         <p class="problem-fix">VaxFile fixes that.</p>
+      </div>
+    </section>
+
+    <section class="expat-callout">
+      <div class="expat-callout-inner">
+        <div class="expat-callout-text">
+          <p class="expat-eyebrow">For expat families</p>
+          <h2>Moved countries? Your child's vaccines don't reset.</h2>
+          <p>Whether your child was born in Germany, vaccinated in the Netherlands, and is now growing up in the UK — VaxFile holds all the schedules side by side. See what's done, what's due, and what each country still requires. No more piecing it together from paper booklets in three languages.</p>
+        </div>
+        <div class="expat-callout-images">
+          <div class="shot">
+            <img src="../assets/screenshots/en/home_with_child.png" alt="VaxFile home screen showing a child profile with multiple countries">
+          </div>
+          <div class="shot">
+            <img src="../assets/screenshots/en/schedule.png" alt="VaxFile showing two country vaccination schedules side by side for one child">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -687,7 +777,7 @@
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
             <div class="feature-heading-row"><h3 class="feature-heading">🇩🇪 🇬🇧 🇳🇱 🇪🇸 Four countries</h3></div>
-            <p class="feature-body">Supports Germany (STIKO), United Kingdom (NHS), Netherlands (RIVM), and Spain (AEP) schedules. More countries coming.</p>
+            <p class="feature-body">Germany (STIKO), United Kingdom (NHS), Netherlands (RIVM), and Spain (AEP). Each child can follow multiple country schedules simultaneously — perfect for expat families.</p>
           </article>
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>

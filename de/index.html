@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VaxFile — Impfungen im Blick, immer und überall</title>
-  <meta name="description" content="VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS.">
+  <title>VaxFile — Impfpass für Kinder über Ländergrenzen | Für Expat-Familien</title>
+  <meta name="description" content="VaxFile hilft Expat-Familien, die Impfungen ihrer Kinder in Deutschland, Großbritannien, den Niederlanden und Spanien zu verfolgen — eine App, alle Impfpläne, immer aktuell. Kostenlos für iOS.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.vaxfile.app/de/">
   <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/" />
@@ -15,16 +15,16 @@
   <link rel="icon" href="../assets/favicon.png" type="image/png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="VaxFile — Impfungen im Blick, immer und überall">
-  <meta property="og:description" content="VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS.">
+  <meta property="og:title" content="VaxFile — Impfpass für Kinder über Ländergrenzen | Für Expat-Familien">
+  <meta property="og:description" content="VaxFile hilft Expat-Familien, die Impfungen ihrer Kinder in Deutschland, Großbritannien, den Niederlanden und Spanien zu verfolgen — eine App, alle Impfpläne, immer aktuell. Kostenlos für iOS.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.vaxfile.app/de/">
   <meta property="og:image" content="https://www.vaxfile.app/assets/icon.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VaxFile — Impfungen im Blick, immer und überall">
-  <meta name="twitter:description" content="VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS.">
+  <meta name="twitter:title" content="VaxFile — Impfpass für Kinder über Ländergrenzen | Für Expat-Familien">
+  <meta name="twitter:description" content="VaxFile hilft Expat-Familien, die Impfungen ihrer Kinder in Deutschland, Großbritannien, den Niederlanden und Spanien zu verfolgen — eine App, alle Impfpläne, immer aktuell. Kostenlos für iOS.">
   <meta name="twitter:image" content="https://www.vaxfile.app/assets/icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,10 @@
     "applicationCategory": "HealthApplication",
     "url": "https://www.vaxfile.app/de/",
     "description": "VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS.",
+    "audience": {
+      "@type": "PeopleAudience",
+      "audienceType": "Expat-Familien, internationale Eltern, Familien im Ausland"
+    },
     "offers": [
       {
         "@type": "Offer",
@@ -124,6 +128,74 @@
     .problem-inner { max-width: 700px; margin: 0 auto; }
     .problem-statement { font-size: 20px; font-weight: 500; line-height: 1.4; color: #FFFFFF; margin: 0 0 12px; }
     .problem-fix { font-size: 18px; font-weight: 500; color: #A8D5BA; margin: 0; }
+    .expat-callout {
+      background-color: #E8F5EE;
+      padding: 56px 0;
+    }
+    .expat-callout-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .expat-callout-text .expat-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      color: #2E7D52;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+    .expat-callout-text h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1F4D3A;
+      letter-spacing: -0.01em;
+      margin: 0 0 16px;
+      text-align: left;
+    }
+    .expat-callout-text p {
+      font-size: 16px;
+      color: #355B4F;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 520px;
+    }
+    .expat-callout-images {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .expat-callout-images .shot {
+      overflow: hidden;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      flex: 1;
+      max-width: 200px;
+    }
+    .expat-callout-images .shot img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+      height: 300px;
+    }
+    @media (min-width: 1024px) {
+      .expat-callout-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+      .expat-callout-images .shot {
+        max-width: 220px;
+      }
+      .expat-callout-images .shot img {
+        height: 340px;
+      }
+    }
     section.section { padding: 56px 0; }
     .section-bg-white { background-color: #FFFFFF; }
     .section-bg-soft { background-color: #F6FBF8; }
@@ -240,7 +312,7 @@
         <div class="hero-text">
           <p class="eyebrow">Für Eltern. Für mehr Sicherheit.</p>
           <h1>Jede Impfung. Jedes Kind. Immer dabei.</h1>
-          <p class="hero-sub">VaxFile bewahrt die Impfdaten deiner Kinder sicher und übersichtlich — zu Hause und auf Reisen, über Ländergrenzen hinweg.</p>
+          <p class="hero-sub">VaxFile bewahrt die Impfdaten deiner Kinder sicher und übersichtlich — egal ob du einem Impfplan folgst oder drei, auf Deutsch, Niederländisch oder Englisch.</p>
           <div class="cta-stack">
             <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="VaxFile im App Store laden">
               <img src="../assets/download-on-the-app-store.svg" alt="Laden im App Store" style="height: 44px; width: auto; display: block;">
@@ -250,9 +322,9 @@
             </a>
           </div>
           <div class="trust-tags" role="list">
+            <span class="trust-tag" role="listitem">🌍 Für Expat-Familien</span>
             <span class="trust-tag" role="listitem">🔒 Privat &amp; sicher</span>
-            <span class="trust-tag" role="listitem">🇩🇪 🇬🇧 🇳🇱 🇪🇸 4 Länder</span>
-            <span class="trust-tag" role="listitem">👶 Für Familien gemacht</span>
+            <span class="trust-tag" role="listitem">👶 4 Länder &amp; wächst</span>
           </div>
         </div>
         <div class="hero-visual" aria-hidden="false">
@@ -268,8 +340,26 @@
     <!-- Problem -->
     <section class="problem">
       <div class="problem-inner">
-        <p class="problem-statement">Impfausweise gehen verloren. Gesundheitssysteme sprechen nicht miteinander. Und jedes Land hat seine eigenen Anforderungen.</p>
+        <p class="problem-statement">Impfausweise gehen verloren. Gesundheitssysteme sprechen nicht miteinander. Jedes Land hat seine eigenen Anforderungen. Und wenn du umziehst, fängst du von&nbsp;vorne&nbsp;an.</p>
         <p class="problem-fix">VaxFile löst das.</p>
+      </div>
+    </section>
+
+    <section class="expat-callout">
+      <div class="expat-callout-inner">
+        <div class="expat-callout-text">
+          <p class="expat-eyebrow">Für Expat-Familien</p>
+          <h2>Umgezogen? Die Impfungen deines Kindes fangen nicht bei null an.</h2>
+          <p>Ob dein Kind in Deutschland geboren wurde, in den Niederlanden geimpft wurde und jetzt in Großbritannien aufwächst — VaxFile zeigt alle Impfpläne nebeneinander. Sieh auf einen Blick, was erledigt ist, was ansteht und was jedes Land noch erfordert. Kein mühsames Zusammenstückeln aus Papierausweisen in drei Sprachen.</p>
+        </div>
+        <div class="expat-callout-images">
+          <div class="shot">
+            <img src="../assets/screenshots/de/home_with_child.png" alt="VaxFile Startbildschirm mit Kinderprofil und mehreren Ländern">
+          </div>
+          <div class="shot">
+            <img src="../assets/screenshots/de/schedule.png" alt="VaxFile zeigt zwei Länder-Impfpläne nebeneinander für ein Kind">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -292,7 +382,7 @@
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
             <div class="feature-heading-row"><h3 class="feature-heading">🇩🇪 🇬🇧 🇳🇱 🇪🇸 Vier Länder</h3></div>
-            <p class="feature-body">Unterstützt den STIKO-Impfkalender (Deutschland), den NHS-Impfplan (UK), das RIVM-Programm (Niederlande) und Spanien (AEP). Weitere Länder folgen.</p>
+            <p class="feature-body">Deutschland (STIKO), Vereinigtes Königreich (NHS), Niederlande (RIVM) und Spanien (AEP). Jedes Kind kann gleichzeitig mehrere Länderpläne verfolgen — ideal für Expat-Familien.</p>
           </article>
           <article class="feature-card">
             <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
