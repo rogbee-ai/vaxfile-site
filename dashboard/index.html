@@ -272,7 +272,6 @@
         const tabs = [
           { id: "overview", label: "Overview" },
           { id: "errors", label: "Errors" },
-          { id: "premium", label: "Premium Intent" },
           { id: "purchases", label: "Purchase Behaviour" },
         ];
 
@@ -300,13 +299,8 @@
               position: "sticky", top: 0, background: theme.bg, zIndex: 10,
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <div style={{
-                  width: 28, height: 28, borderRadius: 8,
-                  background: `linear-gradient(135deg, ${theme.accent}, #6366f1)`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 14,
-                }}>💉</div>
-                <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 17, letterSpacing: "-0.02em" }}>VaxTrack</span>
+                <img src="../favicon.png" alt="VaxFile" style={{ width: 28, height: 28, borderRadius: 8 }} />
+                <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 17, letterSpacing: "-0.02em" }}>VaxFile</span>
                 <span style={{ color: theme.muted, fontFamily: "'DM Mono', monospace", fontSize: 11 }}>Analytics</span>
               </div>
 
@@ -496,97 +490,6 @@
                 </div>
               )}
 
-              {/* ── PREMIUM INTENT TAB ── */}
-              {activeTab === "premium" && (
-                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-
-                  {/* Total taps stat */}
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard
-                      label="Total intent taps"
-                      value={d.totalIntentTaps || d.fakeDoors.reduce((s, f) => s + f.count, 0)}
-                      color={theme.accent}
-                      sub="All fake doors"
-                      dimmed={loading}
-                    />
-                    <StatCard
-                      label="Top signal"
-                      value={(d.fakeDoors[0]?.icon || "👶") + " " + (d.fakeDoors[0]?.label || "Add 2nd child")}
-                      color="#6366f1"
-                      sub={`${d.fakeDoors[0]?.count || 0} taps`}
-                      dimmed={loading}
-                    />
-                  </div>
-
-                  {/* Fake door breakdown */}
-                  <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
-                    <SectionHeader icon="🚪" title="Fake Door Taps by Feature" source="PostHog" />
-                    <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 12 }}>
-                      {d.fakeDoors.map((fd, i) => {
-                        const max = d.fakeDoors[0].count;
-                        const pct = (fd.count / max) * 100;
-                        const colors = [theme.accent, "#6366f1", theme.success];
-                        return (
-                          <div key={fd.feature}>
-                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ fontSize: 18 }}>{fd.icon}</span>
-                                <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 14, color: theme.text }}>{fd.label}</span>
-                                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: theme.muted, background: theme.border, padding: "2px 7px", borderRadius: 99 }}>{fd.feature}</span>
-                              </div>
-                              <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 22, color: theme.text }}>{fd.count.toLocaleString()}</span>
-                            </div>
-                            <div style={{ background: theme.border, borderRadius: 6, height: 10, overflow: "hidden" }}>
-                              <div style={{
-                                width: `${pct}%`, height: "100%",
-                                background: colors[i],
-                                borderRadius: 6, transition: "width 0.5s ease",
-                                opacity: 0.85,
-                              }} />
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Trend over time */}
-                  <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px" }}>
-                    <SectionHeader icon="📈" title="Intent Taps Over Time" source="PostHog" />
-                    <ResponsiveContainer width="100%" height={180}>
-                      <AreaChart data={d.fakeDoorTrend}>
-                        <defs>
-                          <linearGradient id="gradIntent" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor={theme.accent} stopOpacity={0.35} />
-                            <stop offset="95%" stopColor={theme.accent} stopOpacity={0} />
-                          </linearGradient>
-                        </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke={theme.border} />
-                        <XAxis dataKey="day" stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
-                        <YAxis stroke={theme.muted} tick={{ fontSize: 11, fontFamily: "'DM Mono', monospace" }} />
-                        <Tooltip content={<CustomTooltip />} />
-                        <Area type="monotone" dataKey="value" name="Intent taps" stroke={theme.accent} fill="url(#gradIntent)" strokeWidth={2} dot={false} />
-                      </AreaChart>
-                    </ResponsiveContainer>
-                  </div>
-
-                  {/* Context note */}
-                  <div style={{
-                    background: `linear-gradient(135deg, rgba(59,130,246,0.08), rgba(99,102,241,0.04))`,
-                    border: `1px solid rgba(59,130,246,0.2)`,
-                    borderRadius: 12, padding: "16px 20px",
-                    display: "flex", alignItems: "flex-start", gap: 12,
-                  }}>
-                    <span style={{ fontSize: 20 }}>💡</span>
-                    <div>
-                      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, marginBottom: 4 }}>What this tells you</div>
-                      <div style={{ color: theme.muted, fontSize: 13, lineHeight: 1.6 }}>
-                        These taps show which locked features users actually want — before building them. The most-tapped feature is your strongest signal for what to prioritise in V2.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
 
               {/* ── PURCHASE BEHAVIOUR TAB ── */}
               {activeTab === "purchases" && (

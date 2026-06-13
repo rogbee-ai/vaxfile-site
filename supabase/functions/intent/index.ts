@@ -16,13 +16,13 @@ function mapRangeToDateFrom(range: string): string {
   if (range === '24h') return '-1d'
   if (range === '7d') return '-7d'
   if (range === '30d') return '-30d'
-  if (range === 'since_v2') return '2026-05-29'
+  if (range === 'since_v2') return '2026-06-12'
   return 'all'
 }
 
 function getDateFilterSql(dateFrom: string): string {
   if (dateFrom === 'all') return 'true'
-  if (dateFrom === 'since_v2' || dateFrom === '2026-05-29') return "timestamp >= '2026-05-29 00:00:00'"
+  if (dateFrom === 'since_v2' || dateFrom === '2026-06-12') return "timestamp >= '2026-06-12 00:00:00'"
   if (dateFrom === '-1d') return "timestamp >= now() - INTERVAL '1 day'"
   if (dateFrom === '-7d') return "timestamp >= now() - INTERVAL '7 day'"
   return "timestamp >= now() - INTERVAL '30 day'"

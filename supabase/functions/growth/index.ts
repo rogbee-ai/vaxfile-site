@@ -22,7 +22,7 @@ function getFromDate(range: string): string {
   }
 
   if (range === 'since_v2') {
-    return '2026-05-29T00:00:00.000Z'
+    return '2026-06-12T00:00:00.000Z'
   }
 
   // all
