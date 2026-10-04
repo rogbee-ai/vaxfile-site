@@ -2,3 +2,49 @@
   from = "/"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/de/privacy.html"
+  status = 302
+  conditions = {Language = ["de"]}
+
+[[redirects]]
+  from = "/privacy"
+  to = "/nl/privacy.html"
+  status = 302
+  conditions = {Language = ["nl"]}
+
+[[redirects]]
+  from = "/privacy"
+  to = "/es/privacy.html"
+  status = 302
+  conditions = {Language = ["es"]}
+
+[[redirects]]
+  from = "/privacy"
+  to = "/en/privacy.html"
+  status = 302
+
+[[redirects]]
+  from = "/support"
+  to = "/de/support.html"
+  status = 302
+  conditions = {Language = ["de"]}
+
+[[redirects]]
+  from = "/support"
+  to = "/nl/support.html"
+  status = 302
+  conditions = {Language = ["nl"]}
+
+[[redirects]]
+  from = "/support"
+  to = "/es/support.html"
+  status = 302
+  conditions = {Language = ["es"]}
+
+[[redirects]]
+  from = "/support"
+  to = "/en/support.html"
+  status = 302
