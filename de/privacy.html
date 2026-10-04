@@ -11,7 +11,7 @@
   <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/privacy.html" />
   <link rel="icon" href="../assets/favicon.png" type="image/png" />
   <title>Datenschutzerklärung — VaxFile</title>
-  <meta name="description" content="Datenschutzerklärung von VaxFile — wie Little Handy Apps deine Daten erhebt, verwendet und schützt." />
+  <meta name="description" content="Datenschutzerklärung von VaxFile — welche Daten Little Handy Apps verarbeitet, warum, und deine Rechte." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -35,6 +35,7 @@
     h3 { font-size: 16px; font-weight: 700; color: #1F4D3A; margin: 20px 0 8px; }
     p { margin: 0 0 12px; }
     p:last-child { margin-bottom: 0; }
+    .contact-canvas { display: block; max-width: 100%; height: auto; margin: 0 0 16px; }
     ul { margin: 0 0 12px; padding-left: 20px; }
     li { margin-bottom: 6px; }
     .site-footer { width: 100%; background-color: #FFFFFF; border-top: 1px solid #E0E0E0; padding: 24px 16px; margin-top: 48px; }
@@ -81,103 +82,108 @@
 
   <main>
     <h1>Datenschutzerklärung</h1>
-    <p class="updated">Little Handy Apps — Zuletzt aktualisiert: Mai 2026</p>
+    <p class="updated">Zuletzt aktualisiert: Oktober 2026</p>
 
     <section>
       <h2>1. Wer wir sind</h2>
-      <p>VaxFile ist eine App zur Verwaltung von Impfnachweisen, entwickelt von Little Handy Apps. Bei Fragen zu dieser Richtlinie kontaktiere uns unter <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p>
+      <p>VaxFile ist eine App zur Impfdokumentation von Little Handy Apps. Verantwortlich für deine Daten ist:</p>
+      <canvas id="contact-canvas" class="contact-canvas" aria-label="Kontaktadresse" role="img"></canvas>
+      <p>E-Mail: <a href="mailto:support@vaxfile.app">support@vaxfile.app</a></p>
     </section>
 
     <section>
-      <h2>2. Welche Daten wir erheben</h2>
-      <h3>Kontodaten</h3>
-      <p>Bei der Kontoerstellung erheben wir deine E-Mail-Adresse und ein Passwort (als sicherer Hash gespeichert, niemals im Klartext).</p>
-      <h3>Profildaten</h3>
-      <p>Von dir eingegebene Informationen über deine Kinder oder Familienmitglieder: Name, Geburtsdatum, Geschlecht, Land und ein optionales Profilfoto.</p>
-      <h3>Impfeinträge</h3>
-      <p>Von dir erstellte Impfprotokolle: Impfstoffname, Datum der Verabreichung, Dosierungsnummer, wer es verabreicht hat, und optionale Notizen.</p>
-      <h3>Gescannte Dokumentbilder (Premium-Funktion)</h3>
-      <p>Wenn du die optionale Dokumentscan-Funktion verwendest, werden aufgenommene Fotos vorübergehend zur Verarbeitung an OpenAI übertragen. Bilder werden ausschließlich zur Extraktion von Impfdaten verwendet und von OpenAI nicht über die unmittelbare Verarbeitungsanfrage hinaus gespeichert. VaxFile speichert keine Bilder. Diese Funktion ist vollständig optional.</p>
-      <h3>Nutzungsdaten</h3>
-      <p>Wir erheben anonymisierte Nutzungsereignisse (z. B. welche Funktionen du verwendest, wie oft du die App öffnest) über PostHog, einen DSGVO-konformen Analyseanbieter mit EU-Hosting. Diese Daten können nicht zur persönlichen Identifikation verwendet werden.</p>
-      <h3>Gerätedaten</h3>
-      <p>Wir speichern ein Push-Benachrichtigungs-Token auf deinem Gerät und in unserer Datenbank, um dir Impferinnerungen zu senden. Wir nutzen dies nicht für Marketingzwecke.</p>
+      <h2>2. Welche Daten wir verarbeiten</h2>
+      <p><strong>Kontodaten:</strong> deine E-Mail-Adresse und dein Passwort (nur als sicherer Hash gespeichert).</p>
+      <p><strong>Familienprofile:</strong> Name, Geburtsdatum, Geschlecht, Land und optionales Foto jeder Person, die du hinzufügst.</p>
+      <p><strong>Impfeinträge:</strong> Impfstoff, Datum, Dosis, wer geimpft hat, und deine Notizen. Impfeinträge sind Gesundheitsdaten, eine besondere Kategorie personenbezogener Daten nach der DSGVO.</p>
+      <p><strong>Gescannte Dokumente (optional, Premium):</strong> Fotos von Impfdokumenten, die du scannen möchtest.</p>
+      <p><strong>Nutzungsstatistiken (optional):</strong> nur, wenn du zustimmst. Welche Funktionen du nutzt und wie oft du die App öffnest, verknüpft mit deiner Konto-ID, aber nicht mit deiner E-Mail-Adresse, sowie technische Geräteinformationen. Keine Impfdaten, keine IP-Adresse und kein Standort.</p>
+      <p><strong>Käufe:</strong> Wenn du Premium kaufst, deine Konto-ID und die Kaufdetails.</p>
+      <p><strong>Nur auf deinem Gerät:</strong> Impferinnerungen, Kalendereinträge und PDF-Exporte werden auf deinem Gerät erstellt. Wir erhalten sie nicht.</p>
     </section>
 
     <section>
-      <h2>3. Wie wir deine Daten verwenden</h2>
-      <p>Wir verwenden deine Daten ausschließlich zur Bereitstellung des VaxFile-Dienstes:</p>
+      <h2>3. Zwecke und Rechtsgrundlagen</h2>
       <ul>
-        <li>Um dir personalisierte Impfpläne für Deutschland, das Vereinigte Königreich, die Niederlande und Spanien anzuzeigen</li>
-        <li>Um dich zu erinnern, wenn Impfungen fällig sind</li>
-        <li>Um das Eintragen und Überprüfen von Impfnachweisen zu ermöglichen</li>
-        <li>Um gescannte Impfdokumente per KI zu verarbeiten (Premium-Funktion, optional)</li>
-        <li>Um PDF-Impfausweise zu erstellen und zu exportieren (Premium-Funktion, optional)</li>
-        <li>Um die App auf Basis anonymisierter Nutzungsmuster zu verbessern</li>
+        <li>Einrichtung und Betrieb deines Kontos: Erfüllung unseres Vertrags mit dir (Art. 6 Abs. 1 lit. b DSGVO).</li>
+        <li>Speichern und Anzeigen von Impfeinträgen und Impfplänen: deine ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a und Art. 9 Abs. 2 lit. a DSGVO), die du bei der Registrierung erteilst.</li>
+        <li>Auslesen gescannter Dokumente: deine ausdrückliche Einwilligung, jedes Mal, wenn du einen Scan startest.</li>
+        <li>Verbesserung der App mit Nutzungsstatistiken: deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), nur wenn du zustimmst.</li>
+        <li>Abwicklung von Käufen: Erfüllung unseres Vertrags mit dir.</li>
       </ul>
-      <p>Wir verwenden deine Daten nicht für Werbung. Wir verkaufen deine Daten nicht. Wir geben deine Daten nicht an Dritte weiter, außer wie unten beschrieben.</p>
+      <p>Wir verwenden deine Daten niemals für Werbung und verkaufen sie niemals.</p>
     </section>
 
     <section>
-      <h2>4. Drittanbieter</h2>
-      <h3>Supabase</h3>
-      <p>Deine Konto-, Profil- und Impfdaten werden bei Supabase gespeichert, einem DSGVO-konformen Datenbankanbieter. Supabase-Server befinden sich in Frankfurt, Deutschland (eu-central-1). Die Datenschutzrichtlinie von Supabase ist unter <a href="https://supabase.com/privacy">supabase.com/privacy</a> verfügbar.</p>
-      <h3>OpenAI (nur Premium-Funktion)</h3>
-      <p>Die optionale Dokumentscan-Funktion nutzt die OpenAI-API, um Impfdaten aus Fotos zu extrahieren. Wenn du diese Funktion verwendest, wird dein Bild sicher an OpenAI übermittelt und verarbeitet, um strukturierte Impfdaten zurückzugeben. Bilder werden von OpenAI nicht über die Verarbeitungsanfrage hinaus gespeichert und nicht zum Training von OpenAI-Modellen verwendet. Die Nutzung dieser Funktion unterliegt der Datenschutzrichtlinie von OpenAI, verfügbar unter <a href="https://openai.com/privacy">openai.com/privacy</a>. Diese Funktion ist vollständig optional.</p>
-      <h3>PostHog</h3>
-      <p>Anonymisierte Nutzungsanalysen werden von PostHog verarbeitet, gehostet in der PostHog EU-Cloud. Es werden keine personenbezogenen Daten an PostHog gesendet. Die Datenschutzrichtlinie von PostHog ist unter <a href="https://posthog.com/privacy">posthog.com/privacy</a> verfügbar.</p>
-      <h3>RevenueCat (nur Premium-Funktion)</h3>
-      <p>In-App-Käufe werden von RevenueCat verwaltet. Wenn du VaxFile Premium kaufst, wird dein Kauf über Apple abgewickelt und RevenueCat erfasst die Berechtigung. Die Datenschutzrichtlinie von RevenueCat ist unter <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a> verfügbar.</p>
-      <h3>Apple</h3>
-      <p>Push-Benachrichtigungen werden über den Apple Push Notification Service (APNs) zugestellt. Apple hat keinen Zugang zu den Inhalten deiner Impfeinträge. In-App-Käufe werden von Apple abgewickelt.</p>
-    </section>
-
-    <section>
-      <h2>5. Kalender-Integration (Premium-Funktion)</h2>
-      <p>VaxFile Premium kann bevorstehende Impferinnerungen zum Kalender deines Geräts hinzufügen. Diese Funktion erstellt ausschließlich Kalendereinträge auf deinem Gerät. VaxFile liest, greift nicht auf und überträgt keine vorhandenen Kalenderdaten. Kalendereinträge werden vollständig auf dem Gerät erstellt und nicht mit einem Server geteilt.</p>
-    </section>
-
-    <section>
-      <h2>6. PDF-Export (Premium-Funktion)</h2>
-      <p>VaxFile Premium kann eine PDF-Datei des Impfausweises deines Kindes zum Herunterladen und Teilen erstellen. Die PDF-Erstellung erfolgt vollständig auf dem Gerät und verwendet die bereits in der App gespeicherten Daten. Während des PDF-Exports werden keine Daten an einen Server übertragen. Die erstellte PDF-Datei wird über den Standard-Teilen-Dialog deines Geräts geteilt und von VaxFile nicht gespeichert.</p>
-    </section>
-
-    <section>
-      <h2>7. Datenspeicherung und Sicherheit</h2>
-      <p>Alle Daten werden in der EU (Frankfurt) gespeichert. Daten sind bei der Übertragung mit TLS verschlüsselt. Der Zugriff auf deine Daten wird durch Row-Level-Security-Richtlinien eingeschränkt — kein anderer Nutzer kann auf deine Einträge zugreifen. Profilfotos werden in einem privaten Speicher-Bucket gespeichert, der nur für dein Konto zugänglich ist.</p>
-    </section>
-
-    <section>
-      <h2>8. Deine Rechte gemäß DSGVO</h2>
-      <p>Als Nutzer in der Europäischen Union oder im Vereinigten Königreich hast du das Recht auf:</p>
+      <h2>4. Dienstleister</h2>
+      <p>Wir teilen Daten nur mit Dienstleistern, die für den Betrieb von VaxFile nötig sind, auf Grundlage von Auftragsverarbeitungsverträgen:</p>
       <ul>
-        <li>Auskunft über die von uns gespeicherten personenbezogenen Daten</li>
-        <li>Berichtigung unrichtiger Daten</li>
-        <li>Löschung deiner Daten</li>
-        <li>Widerspruch gegen oder Einschränkung der Verarbeitung deiner Daten</li>
-        <li>Datenübertragbarkeit</li>
+        <li><strong>Supabase</strong> speichert dein Konto, deine Familienprofile und Impfeinträge auf Servern in Frankfurt.</li>
+        <li><strong>OpenAI</strong> (USA) liest gescannte Fotos aus und gibt die Impfdaten zurück. OpenAI verwendet sie nicht zum Training und speichert sie höchstens 30 Tage zur Missbrauchsüberwachung.</li>
+        <li><strong>PostHog</strong> (EU-Cloud) verarbeitet Nutzungsstatistiken, nur wenn du zustimmst.</li>
+        <li><strong>RevenueCat</strong> (USA) verwaltet Premium-Käufe. RevenueCat erhält deine Konto-ID und die Kaufdetails, aber keine Impfdaten.</li>
+        <li><strong>Apple und Google</strong> wickeln In-App-Käufe über den App Store und Google Play ab.</li>
       </ul>
-      <p>Um eines dieser Rechte auszuüben, schreibe uns an <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>. Wir antworten innerhalb von 30 Tagen.</p>
     </section>
 
     <section>
-      <h2>9. Datenspeicherungsdauer</h2>
-      <p>Wir speichern deine Daten, solange dein Konto aktiv ist. Wenn du die Kontolöschung beantragst, löschen wir alle deine personenbezogenen Daten innerhalb von 30 Tagen.</p>
+      <h2>5. Übermittlung außerhalb der EU</h2>
+      <p>OpenAI und RevenueCat haben ihren Sitz in den USA. Diese Übermittlungen stützen sich auf das EU-US Data Privacy Framework, ergänzend auf EU-Standardvertragsklauseln.</p>
     </section>
 
     <section>
-      <h2>10. Kinderdaten</h2>
-      <p>VaxFile ist für die Nutzung durch Eltern und Erziehungsberechtigte konzipiert. Wir erheben wissentlich keine Daten direkt von Kindern. Alle Daten über Kinder werden von dem Elternteil oder der Erziehungsperson eingegeben, die das Konto besitzt.</p>
+      <h2>6. Speicherung und Sicherheit</h2>
+      <p>Dein Konto, deine Profile und Impfeinträge werden in der EU (Frankfurt) gespeichert und bei der Übertragung sowie im Ruhezustand verschlüsselt. Row-Level-Security stellt sicher, dass keine anderen Nutzer auf deine Einträge zugreifen können. Profilfotos liegen in einem privaten Speicherbereich, auf den nur dein Konto zugreifen kann.</p>
     </section>
 
     <section>
-      <h2>11. Änderungen dieser Richtlinie</h2>
-      <p>Wir können diese Richtlinie von Zeit zu Zeit aktualisieren. Wir werden dich über wesentliche Änderungen über die App informieren. Die aktuelle Version ist immer unter <a href="privacy.html">vaxfile.app/privacy</a> verfügbar.</p>
+      <h2>7. Speicherdauer</h2>
+      <ul>
+        <li><strong>Konto, Profile und Impfeinträge:</strong> solange dein Konto besteht. Wenn du dein Konto löschst, löschen wir diese Daten innerhalb von 30 Tagen.</li>
+        <li><strong>Gescannte Fotos:</strong> werden von VaxFile nicht gespeichert. OpenAI speichert sie höchstens 30 Tage.</li>
+        <li><strong>Nutzungsstatistiken:</strong> werden von PostHog bis zu 1 Jahr gespeichert und gelöscht, wenn du dein Konto löschst. Wenn du die Statistiken abschaltest, werden keine neuen mehr erfasst.</li>
+        <li><strong>Kaufdaten:</strong> solange steuer- und handelsrechtliche Pflichten es erfordern.</li>
+      </ul>
     </section>
 
     <section>
-      <h2>12. Kontakt</h2>
-      <p>Little Handy Apps<br /><a href="mailto:support@vaxfile.app">support@vaxfile.app</a></p>
+      <h2>8. Deine Rechte</h2>
+      <p>Unabhängig davon, wo du lebst, hast du das Recht:</p>
+      <ul>
+        <li>Auskunft über die Daten zu erhalten, die wir über dich speichern</li>
+        <li>unrichtige Daten berichtigen zu lassen</li>
+        <li>deine Daten löschen zu lassen</li>
+        <li>die Verarbeitung einschränken zu lassen oder ihr zu widersprechen</li>
+        <li>deine Daten in einem übertragbaren Format zu erhalten</li>
+        <li>deine Einwilligung jederzeit zu widerrufen, ohne dass die Rechtmäßigkeit der bisherigen Verarbeitung berührt wird. Nutzungsstatistiken kannst du in den Einstellungen abschalten. Die Einwilligung für deine Impfeinträge zu widerrufen bedeutet, dein Konto zu löschen, da VaxFile ohne sie nicht funktioniert.</li>
+        <li>dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, zum Beispiel in dem Land, in dem du lebst. Unsere zuständige Aufsichtsbehörde ist die Berliner Beauftragte für Datenschutz und Informationsfreiheit. In der Schweiz kannst du dich an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) wenden.</li>
+      </ul>
+      <p>Um deine Rechte auszuüben, schreib uns an <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>. Wir antworten innerhalb eines Monats.</p>
+    </section>
+
+    <section>
+      <h2>9. Musst du Daten angeben?</h2>
+      <p>Kein Gesetz verpflichtet dich dazu. Um VaxFile zu nutzen, brauchst du ein Konto und musst der Speicherung deiner Impfeinträge zustimmen. Scannen und Nutzungsstatistiken sind optional.</p>
+    </section>
+
+    <section>
+      <h2>10. Automatisierte Entscheidungen</h2>
+      <p>Wir treffen keine Entscheidungen über dich, die ausschließlich auf automatisierter Verarbeitung beruhen. Der KI-Scan schlägt nur Einträge vor, die du vor dem Speichern prüfst.</p>
+    </section>
+
+    <section>
+      <h2>11. Daten von Kindern</h2>
+      <p>VaxFile richtet sich an Eltern und Betreuungspersonen. Alle Daten über Kinder werden von dem Elternteil oder der Betreuungsperson eingegeben, der das Konto gehört. Wir erheben wissentlich keine Daten direkt von Kindern.</p>
+    </section>
+
+    <section>
+      <h2>12. Diese Website</h2>
+      <p>vaxfile.app wird von Netlify gehostet. Netlify verarbeitet deine IP-Adresse in Server-Logs, um die Website auszuliefern. Die Website verwendet keine Analyse-Tools und keine Cookies.</p>
+    </section>
+
+    <section>
+      <h2>13. Änderungen und Kontakt</h2>
+      <p>Über wesentliche Änderungen informieren wir dich in der App. Die aktuelle Version findest du immer unter <a href="privacy.html">vaxfile.app/privacy</a>. Fragen? Schreib uns an <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p>
     </section>
   </main>
 
@@ -197,6 +203,40 @@
       <p class="copyright">© 2026 Little Handy Apps. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      function drawContact() {
+        var canvas = document.getElementById('contact-canvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var dpr = window.devicePixelRatio || 1;
+        var lines = ['R Beeftink', 'Boyenstr 33', '10115 Berlin', 'Deutschland'];
+        var fontSize = 16;
+        var lineHeight = Math.round(fontSize * 1.6);
+        var paddingY = 4;
+        var fontStack = "'DM Sans', system-ui, -apple-system, sans-serif";
+        ctx.font = '400 ' + fontSize + 'px ' + fontStack;
+        var maxWidth = 0;
+        for (var i = 0; i < lines.length; i++) { var w = ctx.measureText(lines[i]).width; if (w > maxWidth) maxWidth = w; }
+        var cssWidth = Math.ceil(maxWidth) + 2;
+        var cssHeight = lineHeight * lines.length + paddingY * 2;
+        canvas.style.width = cssWidth + 'px';
+        canvas.style.height = cssHeight + 'px';
+        canvas.width = Math.round(cssWidth * dpr);
+        canvas.height = Math.round(cssHeight * dpr);
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, cssWidth, cssHeight);
+        ctx.fillStyle = '#355B4F';
+        ctx.font = '400 ' + fontSize + 'px ' + fontStack;
+        ctx.textBaseline = 'top';
+        for (var j = 0; j < lines.length; j++) { ctx.fillText(lines[j], 0, paddingY + j * lineHeight + (lineHeight - fontSize) / 2); }
+      }
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(drawContact).catch(drawContact); }
+      else if (document.readyState === 'complete') { drawContact(); }
+      else { window.addEventListener('load', drawContact); }
+    })();
+  </script>
 
   <script>
     (function() {

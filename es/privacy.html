@@ -11,7 +11,7 @@
   <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/privacy.html" />
   <link rel="icon" href="../assets/favicon.png" type="image/png" />
   <title>Política de privacidad — VaxFile</title>
-  <meta name="description" content="Política de privacidad de VaxFile — cómo Little Handy Apps recopila, utiliza y protege tus datos." />
+  <meta name="description" content="Política de privacidad de VaxFile — qué datos trata Little Handy Apps, por qué y tus derechos." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -113,6 +113,13 @@
     p { margin: 0 0 12px; }
     p:last-child { margin-bottom: 0; }
 
+    .contact-canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 0 16px;
+    }
+
     ul {
       margin: 0 0 12px;
       padding-left: 20px;
@@ -206,114 +213,113 @@
 
   <main>
     <h1>Política de privacidad</h1>
-    <p class="updated">Little Handy Apps — Última actualización: mayo de 2026</p>
+    <p class="updated">Última actualización: octubre de 2026</p>
 
     <section>
       <h2>1. Quiénes somos</h2>
-      <p>VaxFile es una app de registro de vacunaciones desarrollada por Little Handy Apps. Si tienes preguntas sobre esta política, contacta con nosotros en <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p>
+      <p>VaxFile es una app de registros de vacunación de Little Handy Apps. El responsable del tratamiento de tus datos es:</p>
+      <canvas
+        id="contact-canvas"
+        class="contact-canvas"
+        aria-label="Dirección de contacto"
+        role="img"
+      ></canvas>
+      <p>Correo electrónico: <a href="mailto:support@vaxfile.app">support@vaxfile.app</a></p>
     </section>
 
     <section>
-      <h2>2. Qué datos recopilamos</h2>
-
-      <h3>Datos de la cuenta</h3>
-      <p>Al crear una cuenta recopilamos tu dirección de correo electrónico y una contraseña (almacenada como un hash seguro, nunca en texto plano).</p>
-
-      <h3>Datos del perfil</h3>
-      <p>Información que introduces sobre tus hijos o familiares: nombre, fecha de nacimiento, sexo, país y una foto de perfil opcional.</p>
-
-      <h3>Registros de vacunación</h3>
-      <p>Registros de vacunación que creas: nombre de la vacuna, fecha de administración, número de dosis, quién la administró y notas opcionales.</p>
-
-      <h3>Imágenes de documentos escaneados (función Premium)</h3>
-      <p>Si utilizas la función opcional de escaneo de documentos, las fotos que hagas se transmiten temporalmente a OpenAI para su procesamiento. Las imágenes se utilizan únicamente para extraer datos de vacunación y OpenAI no las almacena más allá de la solicitud de procesamiento inmediata. VaxFile no almacena imágenes. Esta función es completamente opcional.</p>
-
-      <h3>Datos de uso</h3>
-      <p>Recopilamos eventos de uso anonimizados (p. ej., qué funciones usas, con qué frecuencia abres la app) a través de PostHog, un proveedor de análisis conforme al RGPD alojado en la UE. Estos datos no pueden utilizarse para identificarte personalmente.</p>
-
-      <h3>Datos del dispositivo</h3>
-      <p>Almacenamos un token de notificación push en tu dispositivo y en nuestra base de datos para enviarte recordatorios de vacunación. No lo utilizamos con fines publicitarios.</p>
+      <h2>2. Qué datos tratamos</h2>
+      <p><strong>Datos de la cuenta:</strong> tu dirección de correo electrónico y tu contraseña (guardada solo como hash seguro).</p>
+      <p><strong>Perfiles familiares:</strong> nombre, fecha de nacimiento, sexo, país y foto opcional de cada persona que añadas.</p>
+      <p><strong>Registros de vacunación:</strong> vacuna, fecha, dosis, quién la administró y tus notas. Los registros de vacunación son datos de salud, una categoría especial de datos personales según el RGPD.</p>
+      <p><strong>Documentos escaneados (opcional, Premium):</strong> fotos de documentos de vacunación que decidas escanear.</p>
+      <p><strong>Estadísticas de uso (opcional):</strong> solo si das tu consentimiento. Qué funciones usas y con qué frecuencia abres la app, vinculado a tu ID de cuenta pero no a tu correo electrónico, además de información técnica del dispositivo. Sin datos de vacunación, sin dirección IP y sin ubicación.</p>
+      <p><strong>Compras:</strong> si compras Premium, tu ID de cuenta y los detalles de la compra.</p>
+      <p><strong>Solo en tu dispositivo:</strong> los recordatorios de vacunas, las entradas del calendario y las exportaciones en PDF se crean en tu dispositivo. No los recibimos.</p>
     </section>
 
     <section>
-      <h2>3. Cómo utilizamos tus datos</h2>
-      <p>Utilizamos tus datos únicamente para prestar el servicio VaxFile:</p>
+      <h2>3. Finalidades y bases legales</h2>
       <ul>
-        <li>Para mostrarte calendarios de vacunación personalizados para Alemania, Reino Unido, Países Bajos y España</li>
-        <li>Para recordarte cuándo hay vacunas pendientes</li>
-        <li>Para permitirte registrar y revisar los registros de vacunación</li>
-        <li>Para procesar documentos de vacunación escaneados con IA (función Premium, opcional)</li>
-        <li>Para generar y exportar registros de vacunación en PDF (función Premium, opcional)</li>
-        <li>Para mejorar la app en función de patrones de uso anonimizados</li>
+        <li>Crear y gestionar tu cuenta: ejecución de nuestro contrato contigo (art. 6.1.b RGPD).</li>
+        <li>Guardar y mostrar registros y calendarios de vacunación: tu consentimiento explícito (art. 6.1.a y art. 9.2.a RGPD), que das al registrarte.</li>
+        <li>Leer documentos escaneados: tu consentimiento explícito, cada vez que decides escanear.</li>
+        <li>Mejorar la app con estadísticas de uso: tu consentimiento (art. 6.1.a RGPD), solo si lo das.</li>
+        <li>Procesar compras: ejecución de nuestro contrato contigo.</li>
       </ul>
-      <p>No utilizamos tus datos para publicidad. No vendemos tus datos. No compartimos tus datos con terceros, salvo lo descrito a continuación.</p>
+      <p>Nunca usamos tus datos para publicidad ni los vendemos.</p>
     </section>
 
     <section>
-      <h2>4. Terceros</h2>
-
-      <h3>Supabase</h3>
-      <p>Tu cuenta, perfil y datos de vacunación se almacenan en Supabase, un proveedor de bases de datos conforme al RGPD. Los servidores de Supabase están ubicados en Fráncfort, Alemania (eu-central-1). La política de privacidad de Supabase está disponible en <a href="https://supabase.com/privacy">supabase.com/privacy</a>.</p>
-
-      <h3>OpenAI (solo función Premium)</h3>
-      <p>La función opcional de escaneo de documentos utiliza la API de OpenAI para extraer datos de vacunación de las fotos. Cuando utilizas esta función, tu imagen se envía de forma segura a OpenAI y se procesa para devolver datos de vacunación estructurados. OpenAI no almacena las imágenes más allá de la solicitud de procesamiento y no las utiliza para entrenar modelos de OpenAI. El uso de esta función está sujeto a la política de privacidad de OpenAI, disponible en <a href="https://openai.com/privacy">openai.com/privacy</a>. Esta función es completamente opcional — puedes usar VaxFile sin utilizar nunca el escaneo de documentos.</p>
-
-      <h3>PostHog</h3>
-      <p>Los análisis de uso anonimizados son procesados por PostHog, alojado en la nube UE de PostHog. No se envía información de identificación personal a PostHog. La política de privacidad de PostHog está disponible en <a href="https://posthog.com/privacy">posthog.com/privacy</a>.</p>
-
-      <h3>RevenueCat (solo función Premium)</h3>
-      <p>Las compras dentro de la app son gestionadas por RevenueCat. Cuando compras VaxFile Premium, tu compra es procesada por Apple y RevenueCat registra la licencia. La política de privacidad de RevenueCat está disponible en <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a>.</p>
-
-      <h3>Apple</h3>
-      <p>Las notificaciones push se entregan a través del servicio de notificaciones push de Apple (APNs). Apple no tiene acceso al contenido de tus registros de vacunación. Las compras dentro de la app son procesadas por Apple.</p>
-    </section>
-
-    <section>
-      <h2>5. Integración con el calendario (función Premium)</h2>
-      <p>VaxFile Premium puede añadir recordatorios de vacunación próximos al calendario de tu dispositivo. Esta función solo crea eventos en el calendario de tu dispositivo. VaxFile no lee, accede ni transmite ningún dato de calendario existente. Los eventos del calendario se crean completamente en el dispositivo y no se comparten con ningún servidor.</p>
-    </section>
-
-    <section>
-      <h2>6. Exportación PDF (función Premium)</h2>
-      <p>VaxFile Premium puede generar un PDF del historial de vacunación de tu hijo para descargarlo y compartirlo. La generación del PDF se realiza completamente en el dispositivo utilizando los datos ya almacenados en la app. No se transmite ningún dato a ningún servidor durante la exportación PDF. El PDF resultante se comparte a través del panel de compartir estándar de tu dispositivo y no es almacenado por VaxFile.</p>
-    </section>
-
-    <section>
-      <h2>7. Almacenamiento y seguridad de los datos</h2>
-      <p>Todos los datos se almacenan en la UE (Fráncfort). Los datos están cifrados en tránsito mediante TLS. El acceso a tus datos está restringido por políticas de seguridad a nivel de fila — ningún otro usuario puede acceder a tus registros. Las fotos de perfil se almacenan en un bucket de almacenamiento privado accesible únicamente desde tu cuenta.</p>
-    </section>
-
-    <section>
-      <h2>8. Tus derechos bajo el RGPD</h2>
-      <p>Como usuario en la Unión Europea o el Reino Unido tienes derecho a:</p>
+      <h2>4. Proveedores de servicios</h2>
+      <p>Solo compartimos datos con los proveedores necesarios para que VaxFile funcione, mediante contratos de encargo del tratamiento:</p>
       <ul>
-        <li>Acceder a los datos personales que conservamos sobre ti</li>
-        <li>Corregir datos inexactos</li>
-        <li>Solicitar la eliminación de tus datos</li>
-        <li>Oponerte al tratamiento de tus datos o solicitar su limitación</li>
-        <li>Portabilidad de datos</li>
+        <li><strong>Supabase</strong> guarda tu cuenta, perfiles familiares y registros de vacunación en servidores en Fráncfort (Alemania).</li>
+        <li><strong>OpenAI</strong> (Estados Unidos) lee las fotos escaneadas y devuelve los datos de vacunación. OpenAI no las usa para entrenamiento y las conserva como máximo 30 días para la detección de abusos.</li>
+        <li><strong>PostHog</strong> (nube de la UE) trata las estadísticas de uso, solo si das tu consentimiento.</li>
+        <li><strong>RevenueCat</strong> (Estados Unidos) gestiona las compras Premium. Recibe tu ID de cuenta y los detalles de la compra, pero ningún dato de vacunación.</li>
+        <li><strong>Apple y Google</strong> procesan las compras dentro de la app a través del App Store y Google Play.</li>
       </ul>
-      <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>. Responderemos en un plazo de 30 días.</p>
     </section>
 
     <section>
-      <h2>9. Conservación de datos</h2>
-      <p>Conservamos tus datos mientras tu cuenta esté activa. Si solicitas la eliminación de tu cuenta, eliminaremos todos tus datos personales en un plazo de 30 días.</p>
+      <h2>5. Transferencias fuera de la UE</h2>
+      <p>OpenAI y RevenueCat tienen su sede en Estados Unidos. Estas transferencias se basan en el Marco de Privacidad de Datos UE-EE. UU., con las cláusulas contractuales tipo de la UE como respaldo.</p>
     </section>
 
     <section>
-      <h2>10. Datos de menores</h2>
-      <p>VaxFile está diseñado para ser utilizado por padres y tutores. No recopilamos conscientemente datos directamente de menores. Todos los datos sobre los hijos son introducidos por el padre, madre o tutor que gestiona la cuenta.</p>
+      <h2>6. Almacenamiento y seguridad</h2>
+      <p>Tu cuenta, perfiles y registros de vacunación se guardan en la UE (Fráncfort), cifrados en tránsito y en reposo. La seguridad a nivel de fila garantiza que ningún otro usuario pueda acceder a tus registros. Las fotos de perfil se guardan en un espacio privado al que solo puede acceder tu cuenta.</p>
     </section>
 
     <section>
-      <h2>11. Cambios en esta política</h2>
-      <p>Podemos actualizar esta política periódicamente. Te notificaremos los cambios significativos a través de la app. La versión actual siempre está disponible en <a href="privacy.html">vaxfile.app/privacy</a>.</p>
+      <h2>7. Plazos de conservación</h2>
+      <ul>
+        <li><strong>Cuenta, perfiles y registros de vacunación:</strong> mientras exista tu cuenta. Si eliminas tu cuenta, borramos estos datos en un plazo de 30 días.</li>
+        <li><strong>Fotos escaneadas:</strong> VaxFile no las guarda. OpenAI las conserva como máximo 30 días.</li>
+        <li><strong>Estadísticas de uso:</strong> PostHog las conserva hasta 1 año y se eliminan cuando eliminas tu cuenta. Si desactivas las estadísticas, dejan de recopilarse nuevas.</li>
+        <li><strong>Datos de compras:</strong> durante el tiempo que exija la normativa fiscal y contable.</li>
+      </ul>
     </section>
 
     <section>
-      <h2>12. Contacto</h2>
-      <p>Little Handy Apps<br /><a href="mailto:support@vaxfile.app">support@vaxfile.app</a></p>
+      <h2>8. Tus derechos</h2>
+      <p>Vivas donde vivas, tienes derecho a:</p>
+      <ul>
+        <li>acceder a los datos que tenemos sobre ti</li>
+        <li>rectificar datos inexactos</li>
+        <li>que se supriman tus datos</li>
+        <li>limitar el tratamiento u oponerte a él</li>
+        <li>recibir tus datos en un formato portable</li>
+        <li>retirar tu consentimiento en cualquier momento, sin que ello afecte al tratamiento anterior. Puedes desactivar las estadísticas de uso en Ajustes. Retirar el consentimiento para tus registros de vacunación significa eliminar tu cuenta, ya que VaxFile no puede funcionar sin ellos.</li>
+        <li>presentar una reclamación ante una autoridad de protección de datos, por ejemplo en el país donde vives. Nuestra autoridad de control es la Comisionada de Protección de Datos y Libertad de Información de Berlín (Berliner Beauftragte für Datenschutz und Informationsfreiheit). En Suiza, puedes dirigirte al Comisionado Federal de Protección de Datos e Información (FDPIC).</li>
+      </ul>
+      <p>Para ejercer tus derechos, escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>. Respondemos en un plazo de un mes.</p>
+    </section>
+
+    <section>
+      <h2>9. ¿Estás obligado a facilitar datos?</h2>
+      <p>Ninguna ley te obliga. Para usar VaxFile necesitas una cuenta y dar tu consentimiento para que guardemos tus registros de vacunación. El escaneo y las estadísticas de uso son opcionales.</p>
+    </section>
+
+    <section>
+      <h2>10. Decisiones automatizadas</h2>
+      <p>No tomamos decisiones sobre ti basadas únicamente en un tratamiento automatizado. El escaneo con IA solo sugiere registros, que revisas antes de guardarlos.</p>
+    </section>
+
+    <section>
+      <h2>11. Datos de menores</h2>
+      <p>VaxFile está pensada para madres, padres y cuidadores. Todos los datos sobre menores los introduce la persona adulta titular de la cuenta. No recopilamos a sabiendas datos directamente de menores.</p>
+    </section>
+
+    <section>
+      <h2>12. Este sitio web</h2>
+      <p>vaxfile.app está alojado en Netlify, que trata tu dirección IP en los registros del servidor para mostrar el sitio. El sitio web no usa herramientas de análisis ni cookies.</p>
+    </section>
+
+    <section>
+      <h2>13. Cambios y contacto</h2>
+      <p>Te informaremos en la app de los cambios importantes. La versión actual está siempre en <a href="privacy.html">vaxfile.app/privacy</a>. ¿Preguntas? Escríbenos a <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p>
     </section>
   </main>
 
@@ -336,6 +342,63 @@
       <p class="copyright">© 2026 Little Handy Apps. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      function drawContact() {
+        var canvas = document.getElementById('contact-canvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var dpr = window.devicePixelRatio || 1;
+
+        var lines = [
+          'R Beeftink',
+          'Boyenstr 33',
+          '10115 Berlín',
+          'Alemania'
+        ];
+
+        var fontSize = 16;
+        var lineHeight = Math.round(fontSize * 1.6);
+        var paddingY = 4;
+        var fontStack = "'DM Sans', system-ui, -apple-system, sans-serif";
+
+        // Measure widest line
+        ctx.font = '400 ' + fontSize + "px " + fontStack;
+        var maxWidth = 0;
+        for (var i = 0; i < lines.length; i++) {
+          var w = ctx.measureText(lines[i]).width;
+          if (w > maxWidth) maxWidth = w;
+        }
+
+        var cssWidth = Math.ceil(maxWidth) + 2;
+        var cssHeight = lineHeight * lines.length + paddingY * 2;
+
+        canvas.style.width = cssWidth + 'px';
+        canvas.style.height = cssHeight + 'px';
+        canvas.width = Math.round(cssWidth * dpr);
+        canvas.height = Math.round(cssHeight * dpr);
+
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, cssWidth, cssHeight);
+        ctx.fillStyle = '#355B4F';
+        ctx.font = '400 ' + fontSize + "px " + fontStack;
+        ctx.textBaseline = 'top';
+
+        for (var j = 0; j < lines.length; j++) {
+          ctx.fillText(lines[j], 0, paddingY + j * lineHeight + (lineHeight - fontSize) / 2);
+        }
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(drawContact).catch(drawContact);
+      } else if (document.readyState === 'complete') {
+        drawContact();
+      } else {
+        window.addEventListener('load', drawContact);
+      }
+    })();
+  </script>
 
   <script>
     (function() {

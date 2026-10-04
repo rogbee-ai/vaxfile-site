@@ -10,8 +10,8 @@
   <link rel="alternate" hreflang="nl" href="https://www.vaxfile.app/nl/privacy.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/privacy.html" />
   <link rel="icon" href="../assets/favicon.png" type="image/png" />
-  <title>Privacybeleid — VaxFile</title>
-  <meta name="description" content="VaxFile Privacybeleid — hoe Little Handy Apps jouw gegevens verzamelt, gebruikt en beschermt." />
+  <title>Privacyverklaring — VaxFile</title>
+  <meta name="description" content="Privacyverklaring van VaxFile — welke gegevens Little Handy Apps verwerkt, waarom, en je rechten." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -113,6 +113,13 @@
     p { margin: 0 0 12px; }
     p:last-child { margin-bottom: 0; }
 
+    .contact-canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 0 16px;
+    }
+
     ul {
       margin: 0 0 12px;
       padding-left: 20px;
@@ -205,115 +212,114 @@
   </header>
 
   <main>
-    <h1>Privacybeleid</h1>
-    <p class="updated">Little Handy Apps — Laatst bijgewerkt: mei 2026</p>
+    <h1>Privacyverklaring</h1>
+    <p class="updated">Laatst bijgewerkt: oktober 2026</p>
 
     <section>
       <h2>1. Wie we zijn</h2>
-      <p>VaxFile is een app voor het bijhouden van vaccinatiegegevens, ontwikkeld door Little Handy Apps. Als je vragen hebt over dit beleid, neem dan contact met ons op via <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p>
+      <p>VaxFile is een app voor vaccinatiegegevens van Little Handy Apps. Verantwoordelijk voor je gegevens is:</p>
+      <canvas
+        id="contact-canvas"
+        class="contact-canvas"
+        aria-label="Contactadres"
+        role="img"
+      ></canvas>
+      <p>E-mail: <a href="mailto:support@vaxfile.app">support@vaxfile.app</a></p>
     </section>
 
     <section>
-      <h2>2. Welke gegevens we verzamelen</h2>
-
-      <h3>Accountgegevens</h3>
-      <p>Bij het aanmaken van een account verzamelen we je e-mailadres en een wachtwoord (opgeslagen als een beveiligde hash, nooit in platte tekst).</p>
-
-      <h3>Profielgegevens</h3>
-      <p>Informatie die je invoert over je kinderen of familieleden: naam, geboortedatum, geslacht, land en een optionele profielfoto.</p>
-
-      <h3>Vaccinatiegegevens</h3>
-      <p>Vaccinatielogboeken die je aanmaakt: vaccinatienaam, datum van toediening, dosisnummer, wie het heeft toegediend en optionele notities.</p>
-
-      <h3>Gescande documentafbeeldingen (Premium-functie)</h3>
-      <p>Als je de optionele documentscanfunctie gebruikt, worden foto's die je maakt tijdelijk naar OpenAI verzonden voor verwerking. Afbeeldingen worden uitsluitend gebruikt om vaccinatiegegevens te extraheren en worden door OpenAI niet opgeslagen na het onmiddellijke verwerkingsverzoek. VaxFile slaat geen afbeeldingen op. Deze functie is volledig optioneel.</p>
-
-      <h3>Gebruiksgegevens</h3>
-      <p>We verzamelen geanonimiseerde gebruiksgebeurtenissen (bijv. welke functies je gebruikt, hoe vaak je de app opent) via PostHog, een AVG-conforme analyseprovider gehost in de EU. Deze gegevens kunnen niet worden gebruikt om je persoonlijk te identificeren.</p>
-
-      <h3>Apparaatgegevens</h3>
-      <p>We slaan een pushmeldingstoken op je apparaat en in onze database op om je vaccinatieherinneringen te sturen. We gebruiken dit niet voor marketingdoeleinden.</p>
+      <h2>2. Welke gegevens we verwerken</h2>
+      <p><strong>Accountgegevens:</strong> je e-mailadres en wachtwoord (alleen opgeslagen als veilige hash).</p>
+      <p><strong>Gezinsprofielen:</strong> naam, geboortedatum, geslacht, land en optionele foto van elke persoon die je toevoegt.</p>
+      <p><strong>Vaccinatiegegevens:</strong> vaccin, datum, dosis, wie het vaccin heeft gegeven, en je notities. Vaccinatiegegevens zijn gezondheidsgegevens, een bijzondere categorie persoonsgegevens onder de AVG.</p>
+      <p><strong>Gescande documenten (optioneel, Premium):</strong> foto's van vaccinatiedocumenten die je zelf scant.</p>
+      <p><strong>Gebruiksstatistieken (optioneel):</strong> alleen als je daarmee instemt. Welke functies je gebruikt en hoe vaak je de app opent, gekoppeld aan je account-ID maar niet aan je e-mailadres, plus technische apparaatgegevens. Geen vaccinatiegegevens, geen IP-adres en geen locatie.</p>
+      <p><strong>Aankopen:</strong> als je Premium koopt, je account-ID en aankoopgegevens.</p>
+      <p><strong>Alleen op je apparaat:</strong> vaccinatieherinneringen, agenda-items en PDF-exports worden op je apparaat gemaakt. Wij ontvangen ze niet.</p>
     </section>
 
     <section>
-      <h2>3. Hoe we je gegevens gebruiken</h2>
-      <p>We gebruiken je gegevens uitsluitend om de VaxFile-service te leveren:</p>
+      <h2>3. Doelen en rechtsgronden</h2>
       <ul>
-        <li>Om je gepersonaliseerde vaccinatieschema's te tonen voor Duitsland, het Verenigd Koninkrijk, Nederland en Spanje</li>
-        <li>Om je te herinneren wanneer vaccinaties verschuldigd zijn</li>
-        <li>Om je in staat te stellen vaccinatiegegevens te registreren en te bekijken</li>
-        <li>Om gescande vaccinatiedocumenten te verwerken met AI (Premium-functie, optioneel)</li>
-        <li>Om PDF-vaccinatieoverzichten te genereren en te exporteren (Premium-functie, optioneel)</li>
-        <li>Om de app te verbeteren op basis van geanonimiseerde gebruikspatronen</li>
+        <li>Je account aanmaken en beheren: uitvoering van onze overeenkomst met jou (art. 6 lid 1 sub b AVG).</li>
+        <li>Vaccinatiegegevens en schema's opslaan en tonen: je uitdrukkelijke toestemming (art. 6 lid 1 sub a en art. 9 lid 2 sub a AVG), die je geeft bij het aanmaken van je account.</li>
+        <li>Gescande documenten uitlezen: je uitdrukkelijke toestemming, telkens wanneer je kiest om te scannen.</li>
+        <li>De app verbeteren met gebruiksstatistieken: je toestemming (art. 6 lid 1 sub a AVG), alleen als je daarmee instemt.</li>
+        <li>Aankopen verwerken: uitvoering van onze overeenkomst met jou.</li>
       </ul>
-      <p>We gebruiken je gegevens niet voor advertenties. We verkopen je gegevens niet. We delen je gegevens niet met derden, behalve zoals hieronder beschreven.</p>
+      <p>We gebruiken je gegevens nooit voor advertenties en verkopen ze nooit.</p>
     </section>
 
     <section>
-      <h2>4. Derden</h2>
-
-      <h3>Supabase</h3>
-      <p>Je account-, profiel- en vaccinatiegegevens worden opgeslagen bij Supabase, een AVG-conforme databaseprovider. Supabase-servers bevinden zich in Frankfurt, Duitsland (eu-central-1). Het privacybeleid van Supabase is beschikbaar op <a href="https://supabase.com/privacy">supabase.com/privacy</a>.</p>
-
-      <h3>OpenAI (alleen Premium-functie)</h3>
-      <p>De optionele documentscanfunctie gebruikt de OpenAI API om vaccinatiegegevens uit foto's te extraheren. Wanneer je deze functie gebruikt, wordt je afbeelding veilig naar OpenAI verzonden en verwerkt om gestructureerde vaccinatiegegevens terug te sturen. Afbeeldingen worden niet door OpenAI opgeslagen na het verwerkingsverzoek en worden niet gebruikt om OpenAI-modellen te trainen. Het gebruik van deze functie is onderworpen aan het privacybeleid van OpenAI, beschikbaar op <a href="https://openai.com/privacy">openai.com/privacy</a>. Deze functie is volledig optioneel — je kunt VaxFile gebruiken zonder ooit documentscannen te gebruiken.</p>
-
-      <h3>PostHog</h3>
-      <p>Geanonimiseerde gebruiksanalyses worden verwerkt door PostHog, gehost op de PostHog EU-cloud. Er wordt geen persoonlijk identificeerbare informatie naar PostHog gestuurd. Het privacybeleid van PostHog is beschikbaar op <a href="https://posthog.com/privacy">posthog.com/privacy</a>.</p>
-
-      <h3>RevenueCat (alleen Premium-functie)</h3>
-      <p>In-app-aankopen worden beheerd door RevenueCat. Wanneer je VaxFile Premium koopt, wordt je aankoop verwerkt door Apple en registreert RevenueCat de licentie. Het privacybeleid van RevenueCat is beschikbaar op <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a>.</p>
-
-      <h3>Apple</h3>
-      <p>Pushmeldingen worden geleverd via Apple Push Notification Service (APNs). Apple heeft geen toegang tot de inhoud van je vaccinatiegegevens. In-app-aankopen worden verwerkt door Apple.</p>
-    </section>
-
-    <section>
-      <h2>5. Agenda-integratie (Premium-functie)</h2>
-      <p>VaxFile Premium kan aankomende vaccinatieherinneringen toevoegen aan de agenda van je apparaat. Deze functie maakt alleen agenda-afspraken aan op je apparaat. VaxFile leest, opent of verzendt geen bestaande agendagegevens. Agenda-afspraken worden volledig op het apparaat aangemaakt en worden niet gedeeld met een server.</p>
-    </section>
-
-    <section>
-      <h2>6. PDF-export (Premium-functie)</h2>
-      <p>VaxFile Premium kan een PDF van het vaccinatieoverzicht van je kind genereren voor downloaden en delen. PDF-generatie vindt volledig op het apparaat plaats met behulp van gegevens die al in de app zijn opgeslagen. Er worden geen gegevens naar een server verzonden tijdens de PDF-export. De gegenereerde PDF wordt gedeeld via het standaard deelscherm van je apparaat en wordt niet opgeslagen door VaxFile.</p>
-    </section>
-
-    <section>
-      <h2>7. Gegevensopslag en beveiliging</h2>
-      <p>Alle gegevens worden opgeslagen in de EU (Frankfurt). Gegevens zijn versleuteld tijdens overdracht met TLS. Toegang tot je gegevens wordt beperkt door row-level beveiligingsbeleid — geen andere gebruiker heeft toegang tot jouw gegevens. Profielfoto's worden opgeslagen in een privé-opslagbucket die alleen toegankelijk is voor jouw account.</p>
-    </section>
-
-    <section>
-      <h2>8. Jouw rechten onder de AVG</h2>
-      <p>Als gebruiker in de Europese Unie of het Verenigd Koninkrijk heb je het recht op:</p>
+      <h2>4. Dienstverleners</h2>
+      <p>We delen gegevens alleen met dienstverleners die nodig zijn om VaxFile te laten werken, op basis van verwerkersovereenkomsten:</p>
       <ul>
-        <li>Inzage in de persoonsgegevens die we van je bewaren</li>
-        <li>Correctie van onjuiste gegevens</li>
-        <li>Verwijdering van je gegevens</li>
-        <li>Bezwaar maken tegen of beperking van de verwerking van je gegevens</li>
-        <li>Gegevensoverdraagbaarheid</li>
+        <li><strong>Supabase</strong> slaat je account, gezinsprofielen en vaccinatiegegevens op servers in Frankfurt, Duitsland op.</li>
+        <li><strong>OpenAI</strong> (Verenigde Staten) leest gescande foto's uit en geeft de vaccinatiegegevens terug. OpenAI gebruikt ze niet voor training en bewaart ze maximaal 30 dagen voor misbruikcontrole.</li>
+        <li><strong>PostHog</strong> (EU-cloud) verwerkt gebruiksstatistieken, alleen als je daarmee instemt.</li>
+        <li><strong>RevenueCat</strong> (Verenigde Staten) beheert Premium-aankopen en ontvangt je account-ID en aankoopgegevens, maar geen vaccinatiegegevens.</li>
+        <li><strong>Apple en Google</strong> verwerken in-app-aankopen via de App Store en Google Play.</li>
       </ul>
-      <p>Stuur ons een e-mail op <a href="mailto:support@vaxfile.app">support@vaxfile.app</a> om een van deze rechten uit te oefenen. We reageren binnen 30 dagen.</p>
     </section>
 
     <section>
-      <h2>9. Bewaartermijn</h2>
-      <p>We bewaren je gegevens zolang je account actief is. Als je accountverwijdering aanvraagt, verwijderen we al je persoonsgegevens binnen 30 dagen.</p>
+      <h2>5. Doorgifte buiten de EU</h2>
+      <p>OpenAI en RevenueCat zijn gevestigd in de Verenigde Staten. Deze doorgiften zijn gebaseerd op het EU-VS Data Privacy Framework, met EU-standaardcontractbepalingen als aanvulling.</p>
     </section>
 
     <section>
-      <h2>10. Gegevens van kinderen</h2>
-      <p>VaxFile is ontworpen voor gebruik door ouders en verzorgers. We verzamelen niet bewust gegevens rechtstreeks van kinderen. Alle gegevens over kinderen worden ingevoerd door de ouder of verzorger die het account beheert.</p>
+      <h2>6. Opslag en beveiliging</h2>
+      <p>Je account, profielen en vaccinatiegegevens worden opgeslagen in de EU (Frankfurt) en versleuteld tijdens verzending en opslag. Row-level security zorgt ervoor dat geen andere gebruiker bij je gegevens kan. Profielfoto's staan in een privé-opslag die alleen toegankelijk is voor je account.</p>
     </section>
 
     <section>
-      <h2>11. Wijzigingen in dit beleid</h2>
-      <p>We kunnen dit beleid van tijd tot tijd bijwerken. We stellen je op de hoogte van belangrijke wijzigingen via de app. De huidige versie is altijd beschikbaar op <a href="privacy.html">vaxfile.app/privacy</a>.</p>
+      <h2>7. Bewaartermijnen</h2>
+      <ul>
+        <li><strong>Account, profielen en vaccinatiegegevens:</strong> zolang je account bestaat. Als je je account verwijdert, verwijderen we deze gegevens binnen 30 dagen.</li>
+        <li><strong>Gescande foto's:</strong> worden niet door VaxFile opgeslagen. OpenAI bewaart ze maximaal 30 dagen.</li>
+        <li><strong>Gebruiksstatistieken:</strong> worden door PostHog maximaal 1 jaar bewaard en verwijderd als je je account verwijdert. Als je de statistieken uitzet, worden er geen nieuwe meer verzameld.</li>
+        <li><strong>Aankoopgegevens:</strong> zolang fiscale en boekhoudkundige wetgeving dat vereist.</li>
+      </ul>
     </section>
 
     <section>
-      <h2>12. Contact</h2>
-      <p>Little Handy Apps<br /><a href="mailto:support@vaxfile.app">support@vaxfile.app</a></p>
+      <h2>8. Je rechten</h2>
+      <p>Waar je ook woont, je hebt het recht op:</p>
+      <ul>
+        <li>inzage in de gegevens die we over je hebben</li>
+        <li>correctie van onjuiste gegevens</li>
+        <li>verwijdering van je gegevens</li>
+        <li>beperking van of bezwaar tegen de verwerking</li>
+        <li>ontvangst van je gegevens in een overdraagbaar formaat</li>
+        <li>intrekking van je toestemming op elk moment, zonder gevolgen voor de verwerking daarvoor. Gebruiksstatistieken zet je uit in Instellingen. Je toestemming voor je vaccinatiegegevens intrekken betekent je account verwijderen, omdat VaxFile niet zonder die gegevens werkt.</li>
+        <li>het indienen van een klacht bij een toezichthouder voor gegevensbescherming, bijvoorbeeld in het land waar je woont. Onze toezichthouder is de Berliner Beauftragte für Datenschutz und Informationsfreiheit (de Berlijnse toezichthouder voor gegevensbescherming). In Zwitserland kun je terecht bij de federale toezichthouder voor gegevensbescherming en openbaarheid (FDPIC).</li>
+      </ul>
+      <p>Wil je een van deze rechten uitoefenen? Mail ons via <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>. We reageren binnen een maand.</p>
+    </section>
+
+    <section>
+      <h2>9. Ben je verplicht gegevens te verstrekken?</h2>
+      <p>Geen enkele wet verplicht je daartoe. Om VaxFile te gebruiken heb je een account nodig en moet je toestemming geven voor het opslaan van je vaccinatiegegevens. Scannen en gebruiksstatistieken zijn optioneel.</p>
+    </section>
+
+    <section>
+      <h2>10. Geautomatiseerde besluitvorming</h2>
+      <p>We nemen geen besluiten over je die uitsluitend op geautomatiseerde verwerking zijn gebaseerd. De AI-scan stelt alleen gegevens voor, die je controleert voordat je ze opslaat.</p>
+    </section>
+
+    <section>
+      <h2>11. Gegevens van kinderen</h2>
+      <p>VaxFile is bedoeld voor ouders en verzorgers. Alle gegevens over kinderen worden ingevoerd door de ouder of verzorger die het account beheert. We verzamelen niet bewust gegevens rechtstreeks van kinderen.</p>
+    </section>
+
+    <section>
+      <h2>12. Deze website</h2>
+      <p>vaxfile.app wordt gehost door Netlify, dat je IP-adres verwerkt in serverlogs om de site te leveren. De website gebruikt geen analytics en geen cookies.</p>
+    </section>
+
+    <section>
+      <h2>13. Wijzigingen en contact</h2>
+      <p>Over belangrijke wijzigingen informeren we je in de app. De actuele versie staat altijd op <a href="privacy.html">vaxfile.app/privacy</a>. Vragen? Mail ons via <a href="mailto:support@vaxfile.app">support@vaxfile.app</a>.</p>
     </section>
   </main>
 
@@ -336,6 +342,63 @@
       <p class="copyright">© 2026 Little Handy Apps. Alle rechten voorbehouden.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      function drawContact() {
+        var canvas = document.getElementById('contact-canvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var dpr = window.devicePixelRatio || 1;
+
+        var lines = [
+          'R Beeftink',
+          'Boyenstr 33',
+          '10115 Berlin',
+          'Duitsland'
+        ];
+
+        var fontSize = 16;
+        var lineHeight = Math.round(fontSize * 1.6);
+        var paddingY = 4;
+        var fontStack = "'DM Sans', system-ui, -apple-system, sans-serif";
+
+        // Measure widest line
+        ctx.font = '400 ' + fontSize + "px " + fontStack;
+        var maxWidth = 0;
+        for (var i = 0; i < lines.length; i++) {
+          var w = ctx.measureText(lines[i]).width;
+          if (w > maxWidth) maxWidth = w;
+        }
+
+        var cssWidth = Math.ceil(maxWidth) + 2;
+        var cssHeight = lineHeight * lines.length + paddingY * 2;
+
+        canvas.style.width = cssWidth + 'px';
+        canvas.style.height = cssHeight + 'px';
+        canvas.width = Math.round(cssWidth * dpr);
+        canvas.height = Math.round(cssHeight * dpr);
+
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, cssWidth, cssHeight);
+        ctx.fillStyle = '#355B4F';
+        ctx.font = '400 ' + fontSize + "px " + fontStack;
+        ctx.textBaseline = 'top';
+
+        for (var j = 0; j < lines.length; j++) {
+          ctx.fillText(lines[j], 0, paddingY + j * lineHeight + (lineHeight - fontSize) / 2);
+        }
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(drawContact).catch(drawContact);
+      } else if (document.readyState === 'complete') {
+        drawContact();
+      } else {
+        window.addEventListener('load', drawContact);
+      }
+    })();
+  </script>
 
   <script>
     (function() {
