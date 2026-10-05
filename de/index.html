@@ -33,34 +33,73 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "VaxFile",
-    "operatingSystem": "iOS, Android",
-    "applicationCategory": "HealthApplication",
-    "url": "https://www.vaxfile.app/de/",
-    "description": "VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS und Android.",
-    "audience": {
-      "@type": "PeopleAudience",
-      "audienceType": "Expat-Familien, internationale Eltern, Familien im Ausland"
-    },
-    "offers": [
-      {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "name": "Kostenlos"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "@id": "https://www.vaxfile.app/#app",
+      "name": "VaxFile",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "HealthApplication",
+      "url": "https://www.vaxfile.app/de/",
+      "inLanguage": [
+        "en",
+        "de",
+        "nl",
+        "es"
+      ],
+      "description": "VaxFile hilft Eltern, die Impfungen ihrer Kinder länderübergreifend zu verfolgen, Impfausweise digital zu speichern und keinen Termin mehr zu verpassen. Kostenlos für iOS und Android.",
+      "audience": {
+        "@type": "PeopleAudience",
+        "audienceType": "Expat-Familien, internationale Eltern, Familien im Ausland"
       },
-      {
-        "@type": "Offer",
-        "price": "7.99",
-        "priceCurrency": "EUR",
-        "name": "VaxFile Premium"
-      }
-    ]
-  }
-  </script>
+      "downloadUrl": [
+        "https://apps.apple.com/app/id6763343268",
+        "https://play.google.com/store/apps/details?id=com.vaxfile.app"
+      ],
+      "installUrl": [
+        "https://apps.apple.com/app/id6763343268",
+        "https://play.google.com/store/apps/details?id=com.vaxfile.app"
+      ],
+      "sameAs": [
+        "https://apps.apple.com/app/id6763343268",
+        "https://play.google.com/store/apps/details?id=com.vaxfile.app"
+      ],
+      "screenshot": "https://www.vaxfile.app/assets/hero-illustration.png",
+      "publisher": {
+        "@id": "https://www.vaxfile.app/#organization"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "name": "Kostenlos"
+        },
+        {
+          "@type": "Offer",
+          "price": "7.99",
+          "priceCurrency": "EUR",
+          "name": "VaxFile Premium"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.vaxfile.app/#organization",
+      "name": "VaxFile",
+      "url": "https://www.vaxfile.app/",
+      "logo": "https://www.vaxfile.app/assets/icon.png",
+      "email": "support@vaxfile.app",
+      "sameAs": [
+        "https://apps.apple.com/app/id6763343268",
+        "https://play.google.com/store/apps/details?id=com.vaxfile.app"
+      ]
+    }
+  ]
+}
+</script>
 
   <!-- All CSS identical to en/index.html — copy verbatim -->
   <style>
