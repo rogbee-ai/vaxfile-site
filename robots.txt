@@ -1,0 +1,10 @@
+# VaxFile marketing site
+# Open to all search engines and AI assistants (Googlebot, Bingbot, GPTBot,
+# OAI-SearchBot, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended).
+
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /supabase/
+
+Sitemap: https://www.vaxfile.app/sitemap.xml
