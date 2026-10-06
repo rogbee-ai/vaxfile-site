@@ -186,6 +186,14 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.vaxfile.app/en/vaccination-schedules.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/vaccination-schedules.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/vaccination-schedules.html"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.vaxfile.app/en/uk-vaccination-schedule.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/uk-vaccination-schedule.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/uk-vaccination-schedule.html"/>
@@ -196,6 +204,16 @@
   <url>
     <loc>https://www.vaxfile.app/en/germany-vaccination-schedule.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/germany-vaccination-schedule.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vaxfile.app/de/impfkalender-deutschland.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/germany-vaccination-schedule.html"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vaxfile.app/de/impfkalender-deutschland.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/germany-vaccination-schedule.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vaxfile.app/de/impfkalender-deutschland.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/germany-vaccination-schedule.html"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -204,6 +222,16 @@
   <url>
     <loc>https://www.vaxfile.app/en/spain-vaccination-schedule.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/spain-vaccination-schedule.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vaxfile.app/es/calendario-vacunacion-espana.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/spain-vaccination-schedule.html"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vaxfile.app/es/calendario-vacunacion-espana.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/spain-vaccination-schedule.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vaxfile.app/es/calendario-vacunacion-espana.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/spain-vaccination-schedule.html"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
