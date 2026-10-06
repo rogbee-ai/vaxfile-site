@@ -390,7 +390,6 @@
                       value={d.newUsers}
                       color={theme.accent}
                       dimmed={loading}
-                      breakdown={{ ios: d.newUsersIos, android: d.newUsersAndroid }}
                     />
                     <StatCard label="App Opens" value={d.activeUsers} color="#6366f1" dimmed={loading} optIn={true} />
                     <StatCard label="Children Added" value={d.childrenAdded} color={theme.success} dimmed={loading} />
@@ -418,7 +417,7 @@
                       </ResponsiveContainer>
                     </div>
                     <div style={{ background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 12, padding: "20px 22px", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
-                      <SectionHeader icon="🌍" title="New users by country" source="Supabase" />
+                      <SectionHeader icon="🌍" title="Children added by country" source="Supabase" />
                       <ResponsiveContainer width="100%" height={180}>
                         <BarChart data={d.childrenByCountry} layout="vertical">
                           <CartesianGrid strokeDasharray="3 3" stroke={theme.border} horizontal={false} />

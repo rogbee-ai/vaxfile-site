@@ -21,12 +21,15 @@ function getFromDate(range: string): string {
     return new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString()
   }
 
-  if (range === 'since_v2') {
-    return '2026-06-12T00:00:00.000Z'
+  if (range === '3months') {
+    return new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString()
   }
 
-  // all
-  return new Date(0).toISOString()
+  if (range === 'all') {
+    return ''
+  }
+
+  return new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString()
 }
 
 Deno.serve(async (req) => {
@@ -46,30 +49,33 @@ Deno.serve(async (req) => {
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
 
     const url = new URL(req.url)
-    const range = url.searchParams.get('range') ?? 'all'
-    const normalizedRange = ['24h', '7d', '30d', 'all', 'since_v2'].includes(range) ? range : 'all'
+    const range = url.searchParams.get('range') ?? '24h'
+    const normalizedRange = ['24h', '7d', '30d', '3months', 'all'].includes(range) ? range : '24h'
     const fromDate = getFromDate(normalizedRange)
 
     let usersCountQuery = supabase
       .from('users')
       .select('*', { count: 'exact', head: true })
-      .gte('created_at', fromDate)
 
     let childrenQuery = supabase
       .from('profiles')
       .select('country_code', { count: 'exact' })
-      .gte('created_at', fromDate)
 
     let logsCountQuery = supabase
       .from('vaccination_logs')
       .select('*, profiles!inner(user_id)', { count: 'exact', head: true })
-      .gte('created_at', fromDate)
       .neq('profiles.user_id', testUserId)
 
     let usersTrendQuery = supabase
       .from('users')
       .select('created_at')
-      .gte('created_at', fromDate)
+
+    if (fromDate) {
+      usersCountQuery = usersCountQuery.gte('created_at', fromDate)
+      childrenQuery = childrenQuery.gte('created_at', fromDate)
+      logsCountQuery = logsCountQuery.gte('created_at', fromDate)
+      usersTrendQuery = usersTrendQuery.gte('created_at', fromDate)
+    }
 
     if (testUserId) {
       usersCountQuery = usersCountQuery.neq('id', testUserId)
