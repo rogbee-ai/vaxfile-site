@@ -251,7 +251,7 @@
                 fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/intent?range=${rangeParam}`),
                 fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/errors?range=${rangeParam}`),
                 fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/purchases?range=${rangeParam}`),
-                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/revenuecat`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/revenuecat`).catch(() => ({})),
               ]);
 
               const usersTrend = (events.appOpensTrend || []).map((point) => ({
