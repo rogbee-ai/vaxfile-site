@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="canonical" href="https://www.vaxfile.app/en/vaccination-schedules.html">
-  <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/vaccination-schedules.html" />
-  <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/vaccination-schedules.html" />
+  <link rel="canonical" href="https://www.vaxfile.app/en/us-vaccination-schedule.html">
+  <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/us-vaccination-schedule.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/us-vaccination-schedule.html" />
   <link rel="icon" href="../assets/favicon.png" type="image/png" />
-  <title>Childhood vaccination schedules by country | VaxFile</title>
-  <meta name="description" content="Official childhood vaccination schedules for the UK, Germany, Spain, the Netherlands and the US, explained in English for expat families. Checked against the official sources." />
+  <title>US childhood vaccination schedule 2026 (AAP) | VaxFile</title>
+  <meta name="description" content="The AAP 2026 immunization schedule for babies, children and teenagers in the United States, by age. Includes how the AAP and CDC schedules differ and tips for families moving to or from the US." />
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Childhood vaccination schedules by country">
-  <meta property="og:description" content="Official childhood vaccination schedules, explained in English for expat families.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.vaxfile.app/en/vaccination-schedules.html">
+  <meta property="og:title" content="US childhood vaccination schedule 2026 (AAP)">
+  <meta property="og:description" content="Every vaccine in the AAP 2026 schedule by age, and how it differs from the CDC schedule.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://www.vaxfile.app/en/us-vaccination-schedule.html">
   <meta property="og:image" content="https://www.vaxfile.app/assets/og-en.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -283,57 +284,70 @@
       table.schedule td:nth-child(3) { font-size: 14px; color: #5B7A70; margin-top: 6px; }
       table.schedule td:nth-child(3)::before { content: "Protects against: "; font-weight: 500; }
     }
-    .country-card { display: block; background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; text-decoration: none; color: inherit; }
-    .country-card:hover { border-color: #1A5F3A; }
-    .country-card h3 { margin: 0 0 4px; font-size: 18px; color: #1A5F3A; }
-    .country-card p { margin: 0; }
-    .country-card .langs { margin-top: 8px; font-size: 14px; color: #5B7A70; }
   </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "url": "https://www.vaxfile.app/en/vaccination-schedules.html",
-  "name": "Childhood vaccination schedules by country",
-  "inLanguage": "en",
-  "publisher": {
-    "@id": "https://www.vaxfile.app/#organization"
-  },
-  "mainEntity": {
-    "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "United Kingdom childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/uk-vaccination-schedule.html"
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://www.vaxfile.app/en/us-vaccination-schedule.html#page",
+      "url": "https://www.vaxfile.app/en/us-vaccination-schedule.html",
+      "name": "US childhood vaccination schedule",
+      "inLanguage": "en",
+      "description": "The vaccines in the American Academy of Pediatrics 2026 schedule for babies, children and teenagers, by age.",
+      "lastReviewed": "2026-10-06",
+      "about": {
+        "@type": "MedicalCondition",
+        "name": "Vaccine-preventable diseases"
       },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Germany childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/germany-vaccination-schedule.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Spain childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/spain-vaccination-schedule.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Netherlands childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/netherlands-vaccination-schedule.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "name": "United States childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/us-vaccination-schedule.html"
+      "citation": [
+        "https://publications.aap.org/pediatrics/article/157/3/e2025075754/206175/Recommended-Childhood-and-Adolescent-Immunization",
+        "https://www.aap.org/ImmunizationSchedule",
+        "https://www.primarycarealliance.com/aap-2026-immunization-schedule/"
+      ],
+      "publisher": {
+        "@id": "https://www.vaxfile.app/#organization"
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are vaccines required in the US?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no national vaccine requirement. Each state requires certain vaccines for childcare and school, and allows exemptions that differ by state."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are childhood vaccines free in the US?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most health insurance plans cover routine childhood vaccines. Children who are uninsured or on Medicaid may get free vaccines through the federal Vaccines for Children (VFC) program."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my child had vaccines in another country?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Take the records to your pediatrician. They check them against the US schedule, enter them in your child's record and give any missing doses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are there two US schedules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After changes to federal vaccine recommendations in 2025, the American Academy of Pediatrics published its own schedule. The AAP and CDC schedules now differ for some vaccines, such as COVID-19 and the number of HPV doses."
+          }
+        }
+      ]
+    }
+  ]
 }
   </script>
 </head>
@@ -351,9 +365,9 @@
         </button>
         <div class="lang-dropdown" role="menu">
             <a class="lang-option active" href="#" role="menuitem">EN</a>
-            <a class="lang-option" href="/de/impfkalender-deutschland.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','de')">DE</a>
-            <a class="lang-option" href="/es/calendario-vacunacion-espana.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','es')">ES</a>
-            <a class="lang-option" href="/nl/vaccinatieschema-nederland.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','nl')">NL</a>
+            <a class="lang-option" href="/de/" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','de')">DE</a>
+            <a class="lang-option" href="/es/" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','es')">ES</a>
+            <a class="lang-option" href="/nl/" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','nl')">NL</a>
         </div>
       </div>
     </div>
@@ -361,43 +375,98 @@
 
   <main>
     <section class="hero">
-      <h1>Childhood vaccination schedules by country</h1>
-      <p class="hero-sub">Official vaccination schedules for babies, children and teenagers, explained in English for families who live in or move between countries. Each page is checked against the official source and shows when it was last checked.</p>
+      <h1>US childhood vaccination schedule</h1>
+      <p class="hero-sub">The vaccines recommended by the American Academy of Pediatrics (AAP) for babies, children and teenagers, by age. Based on the AAP Recommended Childhood and Adolescent Immunization Schedule 2026.</p>
+      <p class="meta-line">Last checked: 6 October 2026 · Source: <a href="https://publications.aap.org/pediatrics/article/157/3/e2025075754/206175/Recommended-Childhood-and-Adolescent-Immunization" rel="noopener">AAP, immunization schedule 2026 (policy statement)</a></p>
     </section>
 
-    <section class="block" aria-label="Countries">
-      <div class="country-card">
-        <h3><a href="/en/uk-vaccination-schedule.html">United Kingdom vaccination schedule</a></h3>
-        <p>The NHS schedule from 1 September 2026, including the 2026 switch to MMRV and which version applies to your child.</p>
+    <section class="block" aria-labelledby="by-age">
+      <h2 id="by-age">Vaccines by age</h2>
+      <p>Ages are the recommended windows. Your pediatrician often combines doses in one visit. See <a href="#which-schedule">AAP and CDC schedules</a> for why the US has two.</p>
+      <div class="table-wrap">
+        <table class="schedule">
+          <thead><tr><th scope="col">Age</th><th scope="col">Vaccine</th><th scope="col">Protects against</th></tr></thead>
+          <tbody>
+          <tr><td class="age">Birth</td><td>Hepatitis B (within 24 hours)<br>RSV antibody (nirsevimab or clesrovimab), in the first RSV season</td><td>Hepatitis B<br>RSV (respiratory syncytial virus)</td></tr>
+          <tr><td class="age">1 to 2 months</td><td>Hepatitis B, 2nd dose</td><td>Hepatitis B</td></tr>
+          <tr><td class="age">2 months</td><td>DTaP<br>Hib<br>Polio (IPV)<br>Pneumococcal (PCV)<br>Rotavirus (drops by mouth)</td><td>Diphtheria, tetanus, whooping cough<br>Hib<br>Polio<br>Pneumococcal infections<br>Rotavirus</td></tr>
+          <tr><td class="age">4 months</td><td>DTaP, Hib, IPV, PCV and rotavirus, 2nd doses</td><td>As at 2 months</td></tr>
+          <tr><td class="age">6 months</td><td>DTaP, 3rd dose<br>PCV, 3rd dose<br>Hib and rotavirus, 3rd dose (depending on brand)<br>Flu vaccine, every year from now on<br>COVID-19, 2 doses (6 to 23 months)</td><td>As at 2 months<br>Influenza<br>COVID-19</td></tr>
+          <tr><td class="age">6 to 18 months</td><td>Hepatitis B, 3rd dose<br>IPV, 3rd dose</td><td>Hepatitis B<br>Polio</td></tr>
+          <tr><td class="age">12 to 15 months</td><td>Hib booster<br>PCV booster<br>MMR<br>Chickenpox (varicella)</td><td>Hib<br>Pneumococcal infections<br>Measles, mumps, rubella<br>Chickenpox</td></tr>
+          <tr><td class="age">12 to 23 months</td><td>Hepatitis A, 2 doses 6 months apart</td><td>Hepatitis A</td></tr>
+          <tr><td class="age">15 to 18 months</td><td>DTaP, 4th dose</td><td>Diphtheria, tetanus, whooping cough</td></tr>
+          <tr><td class="age">4 to 6 years</td><td>DTaP, 5th dose<br>IPV, 4th dose<br>MMR, 2nd dose<br>Chickenpox, 2nd dose</td><td>Diphtheria, tetanus, whooping cough, polio<br>Measles, mumps, rubella, chickenpox</td></tr>
+          <tr><td class="age">9 to 12 years</td><td>HPV, 2 doses 6 to 12 months apart</td><td>Cancers and genital warts caused by HPV</td></tr>
+          <tr><td class="age">11 to 12 years</td><td>Tdap<br>MenACWY</td><td>Tetanus, diphtheria, whooping cough<br>Meningococcal groups A, C, W and Y</td></tr>
+          <tr><td class="age">16 years</td><td>MenACWY booster</td><td>Meningococcal groups A, C, W and Y</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="country-card">
-        <h3><a href="/en/germany-vaccination-schedule.html">Germany vaccination schedule</a></h3>
-        <p>The STIKO Impfkalender 2026, the measles rule for Kita and school, and the 2026 MenACWY change.</p><p class="langs">Also in <a href="/de/impfkalender-deutschland.html" lang="de">Deutsch</a></p>
-      </div>
-      <div class="country-card">
-        <h3><a href="/en/spain-vaccination-schedule.html">Spain vaccination schedule</a></h3>
-        <p>The national common calendar 2026 and how the regions differ.</p><p class="langs">Also in <a href="/es/calendario-vacunacion-espana.html" lang="es">Español</a></p>
-      </div>
-      <div class="country-card">
-        <h3><a href="/en/netherlands-vaccination-schedule.html">Netherlands vaccination schedule</a></h3>
-        <p>The National Immunisation Programme (Rijksvaccinatieprogramma), including the RSV immunisation for babies.</p><p class="langs">Also in <a href="/nl/vaccinatieschema-nederland.html" lang="nl">Nederlands</a></p>
-      </div>
-      <div class="country-card">
-        <h3><a href="/en/us-vaccination-schedule.html">United States vaccination schedule</a></h3>
-        <p>The AAP 2026 schedule, and how it differs from the CDC schedule.</p>
-      </div>
+      <p class="small">RSV: babies under 8 months get the antibody in their first RSV season, unless the mother had the RSV vaccine during pregnancy. Flu: children under 9 who get the flu vaccine for the first time need 2 doses, 4 weeks apart. MenB is offered from 16 years after a discussion with your pediatrician (shared clinical decision-making). Children with certain health conditions may need extra vaccines.</p>
     </section>
 
-    <section class="block" aria-labelledby="moving">
-      <h2 id="moving">Moving between countries</h2>
-      <p>Schedules differ more than you might expect. Some countries vaccinate against chickenpox, MenB or flu and others don't, and the same vaccine can be due at different ages.</p>
-      <p>When you move, take your child's vaccination records to your new doctor or health centre. They compare them with the local schedule and offer any missing doses. Each country page explains how this works there.</p>
-      <p>VaxFile also includes the schedules of Switzerland, Ireland, Mexico and Australia.</p>
+    <section class="block" aria-labelledby="which-schedule">
+      <h2 id="which-schedule">AAP and CDC schedules</h2>
+      <p>Since 2025 the US has two childhood schedules that differ in some areas: the AAP schedule and the federal CDC schedule.</p>
+      <div class="cohort">
+        <h3>Where they differ</h3>
+        <p>For example, the AAP recommends COVID-19 vaccination for all children aged 6 to 23 months and 2 HPV doses from 9 to 12 years. The CDC schedule leaves COVID-19 to a shared decision with your doctor and recommends 1 HPV dose at 11 to 12 years.</p>
+      </div>
+      <div class="cohort">
+        <h3>Which one this page uses</h3>
+        <p>This page and VaxFile follow the AAP schedule. Ask your pediatrician which schedule their practice follows.</p>
+      </div>
+      <div class="cohort">
+        <h3>School and childcare</h3>
+        <p>Each state decides which vaccines are required for childcare and school, and which exemptions are allowed. Check your state's health department website.</p>
+      </div>
+      <p class="small">Not sure what your child has had? Ask your pediatrician. Many states also keep an immunization registry your pediatrician can check.</p>
+    </section>
+
+    <section class="block" aria-labelledby="moving-to">
+      <h2 id="moving-to">Moving to the US with children</h2>
+      <ul>
+        <li>Find a pediatrician early, ideally one in your health insurance network, and book a first visit.</li>
+        <li>Bring your child's vaccination records from abroad, with an English translation if needed.</li>
+        <li>Childcare and schools ask for an immunization record, often on a state form your pediatrician fills in. Start this before enrolment.</li>
+        <li>Your pediatrician compares your records with the US schedule and gives catch-up doses.</li>
+        <li>Common differences: the US gives hepatitis B at birth, hepatitis A, chickenpox, and a yearly flu vaccine from 6 months, but no MenB for babies.</li>
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="moving-from">
+      <h2 id="moving-from">Moving away from the US</h2>
+      <ul>
+        <li>Ask your pediatrician, or your state's immunization registry, for a printed immunization record before you leave.</li>
+        <li>Keep any school or childcare immunization forms. They list every vaccine with dates.</li>
+        <li>Your new country may schedule vaccines differently. For example, the UK, Germany and Spain vaccinate babies against MenB, and many European countries don't routinely give hepatitis A or a yearly flu vaccine.</li>
+      </ul>
+    </section>
+
+    <section class="faq-section block" aria-labelledby="faq">
+      <h2 id="faq">Questions</h2>
+      <details>
+        <summary>Are vaccines required in the US?</summary>
+        <div class="answer"><p>There is no national vaccine requirement. Each state requires certain vaccines for childcare and school, and allows exemptions that differ by state.</p></div>
+      </details>
+      <details>
+        <summary>Are childhood vaccines free in the US?</summary>
+        <div class="answer"><p>Most health insurance plans cover routine childhood vaccines. Children who are uninsured or on Medicaid may get free vaccines through the federal Vaccines for Children (VFC) program.</p></div>
+      </details>
+      <details>
+        <summary>What if my child had vaccines in another country?</summary>
+        <div class="answer"><p>Take the records to your pediatrician. They check them against the US schedule, enter them in your child's record and give any missing doses.</p></div>
+      </details>
+      <details>
+        <summary>Why are there two US schedules?</summary>
+        <div class="answer"><p>After changes to federal vaccine recommendations in 2025, the American Academy of Pediatrics published its own schedule. The AAP and CDC schedules now differ for some vaccines, such as COVID-19 and the number of HPV doses.</p></div>
+      </details>
     </section>
 
     <section class="cta-card" aria-labelledby="cta">
       <h2 id="cta">Keep track with VaxFile</h2>
-      <p>VaxFile shows your child's schedule for the country you live in, reminds you of upcoming doses, and keeps records from every country you've lived in. Free on iOS and Android.</p>
+      <p>VaxFile shows your child's US schedule, reminds you of upcoming doses, and keeps records from every country you've lived in. Free on iOS and Android.</p>
       <div class="cta-badges">
         <a href="https://apps.apple.com/de/app/vaxfile/id6763343268" class="appstore-badge" aria-label="Download VaxFile on the App Store">
           <img
@@ -411,8 +480,10 @@
       </div>
     </section>
 
-    <section class="disclaimer" aria-label="Disclaimer">
-      <p>These pages summarise official vaccination schedules for information only. They aren't medical advice. Your doctor or nurse decides which vaccines your child needs.</p>
+    <section class="disclaimer" aria-label="Sources:">
+      <p><strong>Sources:</strong> <a href="https://publications.aap.org/pediatrics/article/157/3/e2025075754/206175/Recommended-Childhood-and-Adolescent-Immunization" rel="noopener">AAP, immunization schedule 2026 (policy statement)</a> · <a href="https://www.aap.org/ImmunizationSchedule" rel="noopener">AAP, immunization schedule</a> · <a href="https://www.primarycarealliance.com/aap-2026-immunization-schedule/" rel="noopener">Primary Care Alliance, AAP vs CDC 2026</a></p>
+      <p>This page summarises the AAP schedule for information only. It isn't medical advice. Your pediatrician decides which vaccines your child needs.</p>
+      <p>Last checked against the official sources: 6 October 2026.</p>
     </section>
   </main>
 
