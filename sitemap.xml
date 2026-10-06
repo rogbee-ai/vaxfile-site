@@ -271,4 +271,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.vaxfile.app/en/moving-uk-to-spain-vaccinations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-uk-to-spain-vaccinations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-uk-to-spain-vaccinations.html"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vaxfile.app/en/moving-germany-to-spain-vaccinations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-germany-to-spain-vaccinations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-germany-to-spain-vaccinations.html"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
