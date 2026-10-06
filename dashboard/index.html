@@ -205,11 +205,13 @@
           let cancelled = false;
           const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+          const SUPABASE_ANON_KEY = 'sb_publishable_xQAQ6Y3k6i6EWd7BmE1OXQ_Q25mDaKR';
+
           const fetchJsonWithRetry = async (url, retries = 1, retryDelayMs = 300) => {
             let lastError;
             for (let attempt = 0; attempt <= retries; attempt += 1) {
               try {
-                const response = await fetch(url);
+                const response = await fetch(url, { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } });
                 if (!response.ok) {
                   throw new Error(`HTTP ${response.status}`);
                 }
