@@ -10,16 +10,17 @@ function mapRangeToDateFrom(range: string): string {
   if (range === '24h') return '-1d'
   if (range === '7d') return '-7d'
   if (range === '30d') return '-30d'
-  if (range === 'since_v2') return '2026-06-12'
+  if (range === '3months') return '-90d'
   return 'all'
 }
 
 function getDateFilterSql(dateFrom: string): string {
   if (dateFrom === 'all') return 'true'
-  if (dateFrom === 'since_v2' || dateFrom === '2026-06-12') return "timestamp >= '2026-06-12 00:00:00'"
   if (dateFrom === '-1d') return "timestamp >= now() - INTERVAL '1 day'"
   if (dateFrom === '-7d') return "timestamp >= now() - INTERVAL '7 day'"
-  return "timestamp >= now() - INTERVAL '30 day'"
+  if (dateFrom === '-30d') return "timestamp >= now() - INTERVAL '30 day'"
+  if (dateFrom === '-90d') return "timestamp >= now() - INTERVAL '90 day'"
+  return 'true'
 }
 
 function getApiUrl(): string {
@@ -104,7 +105,7 @@ Deno.serve(async (req) => {
       ? `AND JSONExtractString(properties, 'platform') = '${platform}'`
       : ''
     const range = requestUrl.searchParams.get('range') ?? 'all'
-    const normalizedRange = ['24h', '7d', '30d', 'all', 'since_v2'].includes(range) ? range : 'all'
+    const normalizedRange = ['24h', '7d', '30d', '3months', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
     const dateFilterSql = getDateFilterSql(dateFrom)
 
@@ -116,8 +117,7 @@ Deno.serve(async (req) => {
       query: `
         SELECT count()
         FROM events
-        WHERE event = '$exception'
-
+        WHERE (event = '$exception' OR event = 'app_error')
           AND (${dateFilterSql})
           ${platformFilter}
       `,
@@ -126,15 +126,19 @@ Deno.serve(async (req) => {
     const errorTypesQuery = {
       kind: 'HogQLQuery',
       query: `
-        SELECT properties.$exception_type AS name, count() AS count
+        SELECT
+          multiIf(
+            event = '$exception', coalesce(nullIf(properties.$exception_type, ''), '$exception'),
+            coalesce(nullIf(properties.error_type, ''), 'app_error')
+          ) AS name,
+          count() AS count
         FROM events
-        WHERE event = '$exception'
-
+        WHERE (event = '$exception' OR event = 'app_error')
           AND (${dateFilterSql})
           ${platformFilter}
         GROUP BY name
         ORDER BY count DESC
-        LIMIT 5
+        LIMIT 10
       `,
     }
 
@@ -146,7 +150,10 @@ Deno.serve(async (req) => {
     const totalErrors = readScalarFromResponse(totalErrorsRaw)
     const errorTypes = parseErrorTypes(errorTypesRaw)
     const totalCrashes = errorTypes
-      .filter((entry) => entry.name.toLowerCase().includes('crash'))
+      .filter((entry) => {
+        const n = entry.name.toLowerCase()
+        return n.includes('crash') || n.includes('auth_sign_in_failed') || n === '$exception'
+      })
       .reduce((sum, entry) => sum + entry.count, 0)
 
     return new Response(

@@ -456,10 +456,11 @@
                       ) : d.errorTypes.map((e, i) => {
                         const max = d.errorTypes[0].count;
                         const pct = (e.count / max) * 100;
-                        const iscrash = e.name.includes("Crash");
+                        const iscrash = e.name.toLowerCase().includes("crash") || e.name.startsWith("$exception") || e.name.includes("auth_sign_in_failed");
+                        const displayName = e.name.replace(/_/g, " ").replace(/^\$/, "");
                         return (
                           <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                            <div style={{ width: 140, fontSize: 12, fontFamily: "'DM Mono', monospace", color: iscrash ? theme.danger : theme.muted, flexShrink: 0 }}>{e.name}</div>
+                            <div style={{ width: 140, fontSize: 12, fontFamily: "'DM Mono', monospace", color: iscrash ? theme.danger : theme.muted, flexShrink: 0 }}>{displayName}</div>
                             <div style={{ flex: 1, background: theme.border, borderRadius: 4, height: 8, overflow: "hidden" }}>
                               <div style={{ width: `${pct}%`, height: "100%", background: iscrash ? theme.danger : theme.warning, borderRadius: 4, transition: "width 0.4s ease" }} />
                             </div>
