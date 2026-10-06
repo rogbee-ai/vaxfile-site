@@ -26,7 +26,7 @@ function getFromDate(range: string): string {
   }
 
   if (range === 'since_v2') {
-    return new Date('2026-07-15T00:00:00.000Z').toISOString()
+    return new Date('2026-08-05T00:00:00.000Z').toISOString()
   }
 
   return new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString()

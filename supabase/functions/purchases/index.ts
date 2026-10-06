@@ -17,7 +17,7 @@ function getDateFilterSql(range: string): string {
   if (range === '24h') return "timestamp >= now() - INTERVAL '1 day'"
   if (range === '7d') return "timestamp >= now() - INTERVAL '7 day'"
   if (range === '30d') return "timestamp >= now() - INTERVAL '30 day'"
-  if (range === 'since_v2') return "timestamp >= '2026-07-15 00:00:00'"
+  if (range === 'since_v2') return "timestamp >= '2026-08-05 00:00:00'"
   return 'true'
 }
 
