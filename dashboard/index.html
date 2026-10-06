@@ -141,9 +141,9 @@
             position: "absolute", top: 0, left: 0, right: 0, height: 2,
             background: color, opacity: 0.7,
           }} />
-          <div style={{ display: "flex", alignItems: "center", marginBottom: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
             <div style={{ color: theme.muted, fontSize: 12, fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase" }}>{label}</div>
-            {optIn && <OptInBadge />}
+            {optIn && <div style={{ flexShrink: 0 }}><OptInBadge /></div>}
           </div>
           <div style={{
             color: valueMuted ? theme.muted : theme.text,
@@ -167,11 +167,15 @@
       );
 
       const SectionHeader = ({ icon, title, source, optIn = false }) => (
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-          <span style={{ fontSize: 18 }}>{icon}</span>
-          <span style={{ color: theme.text, fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16 }}>{title}</span>
-          {source && <span style={{ color: theme.muted, fontSize: 11, fontFamily: "'DM Mono', monospace", background: "#f1f5f9", border: "1px solid #e2e8f0", padding: "2px 8px", borderRadius: 99, marginLeft: 4 }}>{source}</span>}
-          {optIn && <OptInBadge />}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ fontSize: 18 }}>{icon}</span>
+            <span style={{ color: theme.text, fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16 }}>{title}</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 4, flexShrink: 0, whiteSpace: "nowrap" }}>
+            {source && <span style={{ color: theme.muted, fontSize: 11, fontFamily: "'DM Mono', monospace", background: "#f1f5f9", border: "1px solid #e2e8f0", padding: "2px 8px", borderRadius: 99 }}>{source}</span>}
+            {optIn && <OptInBadge />}
+          </div>
         </div>
       );
 
