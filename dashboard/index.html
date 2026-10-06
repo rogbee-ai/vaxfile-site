@@ -95,8 +95,7 @@
         totalPurchaseTapped: 0,
         totalPurchased: 0,
         allTimePurchased: 0,
-        rcActiveSubscribers: null,
-        rcAllTimeCustomers: null,
+        rcRevenue: null,
       };
 
       // ─── Theme ────────────────────────────────────────────────────────────────────
@@ -294,8 +293,7 @@
                   totalPurchaseTapped: Number(purchases.totalPurchaseTapped) || 0,
                   totalPurchased: Number(purchases.totalPurchased) || 0,
                   allTimePurchased: Number(purchases.allTimePurchased) || 0,
-                  rcActiveSubscribers: rc.activeSubscribers ?? null,
-                  rcAllTimeCustomers: rc.allTimeCustomers ?? null,
+                  rcRevenue: rc.rcRevenue ?? null,
                 });
               }
             } catch (error) {
@@ -483,7 +481,7 @@
               {activeTab === "purchases" && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard label="Active Subscribers" value={d.rcActiveSubscribers} color={theme.success} dimmed={loading} />
+                    <StatCard label="Revenue" value={d.rcRevenue !== null ? `$${d.rcRevenue}` : null} color={theme.success} sub="28d · RevenueCat" dimmed={loading} />
                     <StatCard label="Upsell Views" value={d.totalUpsells} color="#6366f1" dimmed={loading} optIn={true} />
                     <StatCard label="Purchase Tapped" value={d.totalPurchaseTapped} color="#f59e0b" dimmed={loading} optIn={true} />
                     <StatCard label="Purchased" value={d.totalPurchased} color={theme.success} sub={timeRange} dimmed={loading} optIn={true} />

@@ -43,11 +43,7 @@ Deno.serve(async (req) => {
 
     return new Response(
       JSON.stringify({
-        activeSubscribers: metrics['active_subscriptions'] ?? metrics['active_subscribers'] ?? null,
-        allTimeCustomers: metrics['all_time_customers'] ?? null,
-        mrr: metrics['mrr'] ?? null,
-        revenue: metrics['revenue'] ?? null,
-        rawMetrics: data.metrics,
+        rcRevenue: metrics['revenue'] ?? null,
       }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
