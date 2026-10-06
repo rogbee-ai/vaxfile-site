@@ -478,14 +478,6 @@
               {activeTab === "purchases" && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
-                    <StatCard
-                      label="Premium Subscribers"
-                      value={d.allTimePurchased}
-                      color={theme.success}
-                      dimmed={loading}
-                      sub="all time"
-                      optIn={true}
-                    />
                     <StatCard label="Upsell Views" value={d.totalUpsells} color="#6366f1" dimmed={loading} optIn={true} />
                     <StatCard label="Purchase Tapped" value={d.totalPurchaseTapped} color="#f59e0b" dimmed={loading} optIn={true} />
                     <StatCard label="Purchased" value={d.totalPurchased} color={theme.success} sub={timeRange} dimmed={loading} optIn={true} />
