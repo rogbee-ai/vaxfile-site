@@ -25,8 +25,8 @@ function getFromDate(range: string): string {
     return new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString()
   }
 
-  if (range === 'all') {
-    return ''
+  if (range === 'since_v2') {
+    return new Date('2026-07-15T00:00:00.000Z').toISOString()
   }
 
   return new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString()
@@ -50,7 +50,7 @@ Deno.serve(async (req) => {
 
     const url = new URL(req.url)
     const range = url.searchParams.get('range') ?? '24h'
-    const normalizedRange = ['24h', '7d', '30d', '3months', 'all'].includes(range) ? range : '24h'
+    const normalizedRange = ['24h', '7d', '30d', '3months', 'since_v2'].includes(range) ? range : '24h'
     const fromDate = getFromDate(normalizedRange)
 
     let usersCountQuery = supabase

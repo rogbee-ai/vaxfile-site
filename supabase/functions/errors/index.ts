@@ -11,6 +11,7 @@ function mapRangeToDateFrom(range: string): string {
   if (range === '7d') return '-7d'
   if (range === '30d') return '-30d'
   if (range === '3months') return '-90d'
+  if (range === 'since_v2') return 'since_v2'
   return 'all'
 }
 
@@ -20,6 +21,7 @@ function getDateFilterSql(dateFrom: string): string {
   if (dateFrom === '-7d') return "timestamp >= now() - INTERVAL '7 day'"
   if (dateFrom === '-30d') return "timestamp >= now() - INTERVAL '30 day'"
   if (dateFrom === '-90d') return "timestamp >= now() - INTERVAL '90 day'"
+  if (dateFrom === 'since_v2') return "timestamp >= toDateTime('2026-07-15 00:00:00')"
   return 'true'
 }
 
@@ -105,7 +107,7 @@ Deno.serve(async (req) => {
       ? `AND JSONExtractString(properties, 'platform') = '${platform}'`
       : ''
     const range = requestUrl.searchParams.get('range') ?? 'all'
-    const normalizedRange = ['24h', '7d', '30d', '3months', 'all'].includes(range) ? range : 'all'
+    const normalizedRange = ['24h', '7d', '30d', '3months', 'since_v2', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
     const dateFilterSql = getDateFilterSql(dateFrom)
 

@@ -65,7 +65,7 @@
 
       // ─── Constants ────────────────────────────────────────────────────────────────
 
-      const TIME_RANGES = ["24h", "7d", "30d", "3 months", "all"];
+      const TIME_RANGES = ["24h", "7d", "30d", "3 months", "since v2"];
 
       const EMPTY_DATA = {
         newUsers: 0,
@@ -203,7 +203,7 @@
             "7d": "7d",
             "30d": "30d",
             "3 months": "3months",
-            "all": "all",
+            "since v2": "since_v2",
           };
 
           const rangeParam = rangeMap[timeRange] || "24h";

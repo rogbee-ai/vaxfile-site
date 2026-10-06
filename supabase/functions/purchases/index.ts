@@ -17,7 +17,7 @@ function getDateFilterSql(range: string): string {
   if (range === '24h') return "timestamp >= now() - INTERVAL '1 day'"
   if (range === '7d') return "timestamp >= now() - INTERVAL '7 day'"
   if (range === '30d') return "timestamp >= now() - INTERVAL '30 day'"
-  if (range === 'since_v2' || range === '2026-06-12') return "timestamp >= '2026-06-12 00:00:00'"
+  if (range === 'since_v2') return "timestamp >= '2026-07-15 00:00:00'"
   return 'true'
 }
 
@@ -182,22 +182,37 @@ Deno.serve(async (req) => {
       `,
     }
 
+    const allTimePurchasedQuery = {
+      kind: 'HogQLQuery',
+      query: `
+        SELECT count() FROM events
+        WHERE event = 'premium_purchased'
+        AND distinct_id != '${testUserId}'
+      `,
+    }
+
     const [
       upsellByFeatureRaw,
       purchaseTappedByFeatureRaw,
       purchasedByFeatureRaw,
       purchasedTrendRaw,
+      allTimePurchasedRaw,
     ] = await Promise.all([
       posthogQuery(apiUrl, token, upsellByFeatureQuery),
       posthogQuery(apiUrl, token, purchaseTappedByFeatureQuery),
       posthogQuery(apiUrl, token, purchasedByFeatureQuery),
       posthogQuery(apiUrl, token, purchasedTrendQuery),
+      posthogQuery(apiUrl, token, allTimePurchasedQuery),
     ])
 
     const upsellByFeature = parseFeatureCounts(upsellByFeatureRaw)
     const purchaseTappedByFeature = parseFeatureCounts(purchaseTappedByFeatureRaw)
     const purchasedByFeature = parseFeatureCounts(purchasedByFeatureRaw)
     const purchasedTrend = parseTrend(purchasedTrendRaw)
+    const allTimeResults = (allTimePurchasedRaw as { results?: unknown }).results
+    const row = Array.isArray(allTimeResults) && Array.isArray(allTimeResults[0])
+      ? allTimeResults[0]
+      : []
 
     return new Response(
       JSON.stringify({
@@ -208,6 +223,7 @@ Deno.serve(async (req) => {
         totalUpsells: sumCounts(upsellByFeature),
         totalPurchaseTapped: sumCounts(purchaseTappedByFeature),
         totalPurchased: sumCounts(purchasedByFeature),
+        allTimePurchased: Number(row[0]),
       }),
       {
         headers: {

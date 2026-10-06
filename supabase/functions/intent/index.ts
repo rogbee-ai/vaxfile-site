@@ -16,16 +16,19 @@ function mapRangeToDateFrom(range: string): string {
   if (range === '24h') return '-1d'
   if (range === '7d') return '-7d'
   if (range === '30d') return '-30d'
-  if (range === 'since_v2') return '2026-06-12'
+  if (range === '3months') return '-90d'
+  if (range === 'since_v2') return 'since_v2'
   return 'all'
 }
 
 function getDateFilterSql(dateFrom: string): string {
   if (dateFrom === 'all') return 'true'
-  if (dateFrom === 'since_v2' || dateFrom === '2026-06-12') return "timestamp >= '2026-06-12 00:00:00'"
   if (dateFrom === '-1d') return "timestamp >= now() - INTERVAL '1 day'"
   if (dateFrom === '-7d') return "timestamp >= now() - INTERVAL '7 day'"
-  return "timestamp >= now() - INTERVAL '30 day'"
+  if (dateFrom === '-30d') return "timestamp >= now() - INTERVAL '30 day'"
+  if (dateFrom === '-90d') return "timestamp >= now() - INTERVAL '90 day'"
+  if (dateFrom === 'since_v2') return "timestamp >= toDateTime('2026-07-15 00:00:00')"
+  return 'true'
 }
 
 function getPlatformWhereClause(platform: string): string {
@@ -126,7 +129,7 @@ Deno.serve(async (req) => {
   try {
     const requestUrl = new URL(req.url)
     const range = requestUrl.searchParams.get('range') ?? 'all'
-    const normalizedRange = ['24h', '7d', '30d', 'all', 'since_v2'].includes(range) ? range : 'all'
+    const normalizedRange = ['24h', '7d', '30d', '3months', 'since_v2', 'all'].includes(range) ? range : 'all'
     const dateFrom = mapRangeToDateFrom(normalizedRange)
     const dateFilterSql = getDateFilterSql(dateFrom)
     const platformParam = requestUrl.searchParams.get('platform') ?? 'all'
