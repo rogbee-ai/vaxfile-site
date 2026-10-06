@@ -19,8 +19,11 @@ Deno.serve(async (req) => {
       throw new Error('Missing REVENUECAT_API_KEY or REVENUECAT_PROJECT_ID')
     }
 
+    const url = new URL(req.url)
+    const debug = url.searchParams.get('debug') === '1'
+
     const response = await fetch(
-      `https://api.revenuecat.com/v2/projects/${projectId}/metrics/overview`,
+      `https://api.revenuecat.com/v2/projects/${projectId}/charts/non-subscription_purchases`,
       {
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -34,28 +37,17 @@ Deno.serve(async (req) => {
       throw new Error(`RevenueCat API error (${response.status}): ${body}`)
     }
 
-    const data = await response.json() as { metrics: Array<{ id: string; name: string; value: number; last_updated_at: string }> }
-
-    const metrics: Record<string, number> = {}
-    for (const m of data.metrics ?? []) {
-      metrics[m.id] = m.value
-    }
+    const data = await response.json() as { summary?: { total?: Record<string, number> } }
+    const totalPurchases = data.summary?.total?.['Non-subscription Purchases'] ?? null
 
     return new Response(
-      JSON.stringify({
-        rcRevenue: metrics['revenue'] ?? null,
-      }),
-      {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      },
+      JSON.stringify({ rcTotalPurchases: totalPurchases }),
+      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
     )
   } catch (error) {
     return new Response(
       JSON.stringify({ error: error instanceof Error ? error.message : 'Internal Server Error' }),
-      {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      },
+      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
     )
   }
 })
