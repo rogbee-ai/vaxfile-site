@@ -238,48 +238,6 @@
             throw lastError || new Error("Request failed");
           };
 
-          const fetchForRange = async (rp) => {
-            if (cache[rp]) return cache[rp];
-            const [growth, growthIos, growthAndroid, events, intent, errors, purchases, rc] = await Promise.all([
-              fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rp}&platform=all`),
-              fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rp}&platform=ios`),
-              fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rp}&platform=android`),
-              fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/events?range=${rp}`),
-              fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/intent?range=${rp}`),
-              fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/errors?range=${rp}`),
-              fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/purchases?range=${rp}`),
-              fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/revenuecat`).catch(() => ({})),
-            ]);
-            const result = {
-              newUsers: Number(growth.newUsers) || 0,
-              newUsersIos: Number(growthIos.newUsers) || 0,
-              newUsersAndroid: Number(growthAndroid.newUsers) || 0,
-              activeUsers: Number(events.appOpens) || 0,
-              childrenAdded: Number(growth.childrenAdded) || 0,
-              vaccinesLogged: Number(growth.vaccinesLogged || events.vaccinesLogged) || 0,
-              crashes: Number(errors.totalCrashes) || 0,
-              errors: Number(errors.totalErrors) || 0,
-              usersTrend: (events.appOpensTrend || []).map((p) => ({ day: p.day ?? p.date, value: Number(p.value ?? p.count) || 0 })),
-              vaccineTrend: (events.vaccineTrend || []).map((p) => ({ day: p.day ?? p.date, value: Number(p.value ?? p.count) || 0 })),
-              childrenByCountry: growth.childrenByCountry || [],
-              errorTypes: errors.errorTypes || [],
-              fakeDoors: intent.fakeDoors || EMPTY_DATA.fakeDoors,
-              fakeDoorTrend: (intent.fakeDoorTrend || []).map((p) => ({ day: p.day, value: Number(p.value) || 0 })),
-              totalIntentTaps: Number(intent.totalIntentTaps) || 0,
-              upsellByFeature: purchases.upsellByFeature || [],
-              purchaseTappedByFeature: purchases.purchaseTappedByFeature || [],
-              purchasedByFeature: purchases.purchasedByFeature || [],
-              purchasedTrend: (purchases.purchasedTrend || []).map((p) => ({ day: p.day, value: Number(p.value) || 0 })),
-              totalUpsells: Number(purchases.totalUpsells) || 0,
-              totalPurchaseTapped: Number(purchases.totalPurchaseTapped) || 0,
-              totalPurchased: Number(purchases.totalPurchased) || 0,
-              allTimePurchased: Number(purchases.allTimePurchased) || 0,
-              rcTotalPurchases: rc.rcTotalPurchases ?? null,
-            };
-            cache[rp] = result;
-            return result;
-          };
-
           const fetchData = async () => {
             if (cache[rangeParam]) {
               setData(cache[rangeParam]);
@@ -288,8 +246,62 @@
             }
             setLoading(true);
             try {
-              const result = await fetchForRange(rangeParam);
+              // growth + purchases get platform breakdown (ios/android separately)
+              // events, intent, errors do NOT filter by platform
+              const [growth, growthIos, growthAndroid, events, intent, errors, purchases, rc] = await Promise.all([
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rangeParam}&platform=all`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rangeParam}&platform=ios`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/growth?range=${rangeParam}&platform=android`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/events?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/intent?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/errors?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/purchases?range=${rangeParam}`),
+                fetchJsonWithRetry(`https://urbrqgtqwifojgrctlfu.supabase.co/functions/v1/revenuecat`).catch(() => ({})),
+              ]);
+
+              const usersTrend = (events.appOpensTrend || []).map((point) => ({
+                day: point.day ?? point.date,
+                value: Number(point.value ?? point.count) || 0,
+              }));
+              const vaccineTrend = (events.vaccineTrend || []).map((point) => ({
+                day: point.day ?? point.date,
+                value: Number(point.value ?? point.count) || 0,
+              }));
+
               if (!cancelled) {
+                const result = {
+                  newUsers: Number(growth.newUsers) || 0,
+                  newUsersIos: Number(growthIos.newUsers) || 0,
+                  newUsersAndroid: Number(growthAndroid.newUsers) || 0,
+                  activeUsers: Number(events.appOpens) || 0,
+                  childrenAdded: Number(growth.childrenAdded) || 0,
+                  vaccinesLogged: Number(growth.vaccinesLogged || events.vaccinesLogged) || 0,
+                  crashes: Number(errors.totalCrashes) || 0,
+                  errors: Number(errors.totalErrors) || 0,
+                  usersTrend,
+                  vaccineTrend,
+                  childrenByCountry: growth.childrenByCountry || [],
+                  errorTypes: errors.errorTypes || [],
+                  fakeDoors: intent.fakeDoors || EMPTY_DATA.fakeDoors,
+                  fakeDoorTrend: (intent.fakeDoorTrend || []).map((point) => ({
+                    day: point.day,
+                    value: Number(point.value) || 0,
+                  })),
+                  totalIntentTaps: Number(intent.totalIntentTaps) || 0,
+                  upsellByFeature: purchases.upsellByFeature || [],
+                  purchaseTappedByFeature: purchases.purchaseTappedByFeature || [],
+                  purchasedByFeature: purchases.purchasedByFeature || [],
+                  purchasedTrend: (purchases.purchasedTrend || []).map((point) => ({
+                    day: point.day,
+                    value: Number(point.value) || 0,
+                  })),
+                  totalUpsells: Number(purchases.totalUpsells) || 0,
+                  totalPurchaseTapped: Number(purchases.totalPurchaseTapped) || 0,
+                  totalPurchased: Number(purchases.totalPurchased) || 0,
+                  allTimePurchased: Number(purchases.allTimePurchased) || 0,
+                  rcTotalPurchases: rc.rcTotalPurchases ?? null,
+                };
+                cache[rangeParam] = result;
                 setData(result);
               }
             } catch (error) {
@@ -299,14 +311,6 @@
             } finally {
               if (!cancelled) {
                 setLoading(false);
-                // Background prefetch remaining ranges with stagger
-                const allRanges = ["24h", "7d", "30d", "since_v2"];
-                const remaining = allRanges.filter((rp) => rp !== rangeParam && !cache[rp]);
-                remaining.forEach((rp, i) => {
-                  sleep(1000 + i * 800).then(() => {
-                    if (!cancelled) fetchForRange(rp).catch(() => {});
-                  });
-                });
               }
             }
           };
@@ -363,12 +367,9 @@
                   background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 8,
                   width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center",
                   cursor: "pointer", color: theme.muted, boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
-                  transition: "color 0.15s",
+                  transition: "color 0.15s", fontSize: 16,
                 }}>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12.5 2.5A6 6 0 1 0 13 7" />
-                    <polyline points="13 2.5 13 6 9.5 6" />
-                  </svg>
+                  ↻
                 </button>
                 {/* Time Range */}
                 <div style={{ display: "flex", background: theme.surface, border: `1px solid ${theme.border}`, borderRadius: 8, overflow: "hidden", boxShadow: "0 1px 2px rgba(0,0,0,0.05)" }}>
