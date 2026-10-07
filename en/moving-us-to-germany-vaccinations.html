@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="canonical" href="https://www.vaxfile.app/en/vaccination-schedules.html">
-  <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/vaccination-schedules.html" />
-  <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/vaccination-schedules.html" />
+  <link rel="canonical" href="https://www.vaxfile.app/en/moving-us-to-germany-vaccinations.html">
+  <link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-us-to-germany-vaccinations.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-us-to-germany-vaccinations.html" />
   <link rel="icon" href="../assets/favicon.png" type="image/png" />
-  <title>Childhood vaccination schedules by country | VaxFile</title>
-  <meta name="description" content="Official childhood vaccination schedules for the UK, Germany, Spain, the Netherlands and the US, explained in English for expat families. Checked against the official sources." />
+  <title>Moving from the US to Germany with kids: vaccination guide | VaxFile</title>
+  <meta name="description" content="Moving to Germany from the US? How the STIKO schedule differs from the US schedule, what Germany's measles law means for daycare and school, and which catch-up shots to expect." />
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Childhood vaccination schedules by country">
-  <meta property="og:description" content="Official childhood vaccination schedules, explained in English for expat families.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.vaxfile.app/en/vaccination-schedules.html">
+  <meta property="og:title" content="Moving from the US to Germany: your child's vaccinations">
+  <meta property="og:description" content="Moving to Germany from the US? How the STIKO schedule differs from the US schedule, what Germany's measles law means for daycare and school, and which catch-up shots to expect.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.vaxfile.app/en/moving-us-to-germany-vaccinations.html">
   <meta property="og:image" content="https://www.vaxfile.app/assets/og-en.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -256,7 +256,7 @@
       .meta-line { font-size: 14px; color: #5B7A70; margin: 12px 0 0; }
     section.block { margin-top: 40px; }
     section.block p { margin: 0 0 12px; }
-    section.block ul { margin: 0 0 12px; padding-left: 20px; }
+    section.block ul, section.block ol { margin: 0 0 12px; padding-left: 20px; }
     section.block li { margin-bottom: 8px; }
     .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 12px; }
     table.schedule { width: 100%; border-collapse: collapse; font-size: 15px; background: #FFFFFF; border-radius: 12px; overflow: hidden; }
@@ -280,60 +280,34 @@
       table.schedule tr { border-bottom: 1px solid #E0E0E0; padding: 12px 14px; }
       table.schedule td { border: none; padding: 0; }
       table.schedule td.age { white-space: normal; margin-bottom: 4px; }
-      table.schedule td:nth-child(3) { font-size: 14px; color: #5B7A70; margin-top: 6px; }
-      table.schedule td:nth-child(3)::before { content: "Protects against: "; font-weight: 500; }
+      table.schedule td:nth-child(2),
+      table.schedule td:nth-child(3) { margin-top: 6px; }
+      table.schedule td:nth-child(2)::before { content: "US: "; font-weight: 700; color: #1F4D3A; }
+      table.schedule td:nth-child(3)::before { content: "Germany (STIKO): "; font-weight: 700; color: #1F4D3A; }
     }
-    .country-card { display: block; background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; text-decoration: none; color: inherit; }
-    .country-card:hover { border-color: #1A5F3A; }
-    .country-card h3 { margin: 0 0 4px; font-size: 18px; color: #1A5F3A; }
-    .country-card p { margin: 0; }
-    .country-card .langs { margin-top: 8px; font-size: 14px; color: #5B7A70; }
   </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "url": "https://www.vaxfile.app/en/vaccination-schedules.html",
-  "name": "Childhood vaccination schedules by country",
-  "inLanguage": "en",
-  "publisher": {
-    "@id": "https://www.vaxfile.app/#organization"
-  },
-  "mainEntity": {
-    "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "United Kingdom childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/uk-vaccination-schedule.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Germany childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/germany-vaccination-schedule.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Spain childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/spain-vaccination-schedule.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Netherlands childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/netherlands-vaccination-schedule.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "name": "United States childhood vaccination schedule",
-        "url": "https://www.vaxfile.app/en/us-vaccination-schedule.html"
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://www.vaxfile.app/en/moving-us-to-germany-vaccinations.html#page",
+      "url": "https://www.vaxfile.app/en/moving-us-to-germany-vaccinations.html",
+      "name": "Moving from the US to Germany: your child's vaccinations",
+      "inLanguage": "en",
+      "description": "Moving to Germany from the US? How the STIKO schedule differs from the US schedule, what Germany's measles law means for daycare and school, and which catch-up shots to expect.",
+      "lastReviewed": "2026-10-07",
+      "citation": [
+        "https://www.rki.de/SharedDocs/FAQs/DE/Impfen/MMR/Zielgruppe/FAQ-Liste_Zielgruppe.html",
+        "https://www.rki.de/SharedDocs/FAQ/Impfen/AllgFr_AllgemeineFragen/FAQ-Liste_AllgFr_Impfen.html",
+        "https://www.masernschutz.de"
+      ],
+      "publisher": {
+        "@id": "https://www.vaxfile.app/#organization"
       }
-    ]
-  }
+    }
+  ]
 }
   </script>
 </head>
@@ -351,9 +325,9 @@
         </button>
         <div class="lang-dropdown" role="menu">
             <a class="lang-option active" href="#" role="menuitem">EN</a>
-            <a class="lang-option" href="/de/impfkalender-deutschland.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','de')">DE</a>
-            <a class="lang-option" href="/es/calendario-vacunacion-espana.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','es')">ES</a>
-            <a class="lang-option" href="/nl/vaccinatieschema-nederland.html" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','nl')">NL</a>
+            <a class="lang-option" href="/de/" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','de')">DE</a>
+            <a class="lang-option" href="/es/" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','es')">ES</a>
+            <a class="lang-option" href="/nl/" role="menuitem" onclick="sessionStorage.setItem('vaxfile-lang','nl')">NL</a>
         </div>
       </div>
     </div>
@@ -361,79 +335,134 @@
 
   <main>
     <section class="hero">
-      <h1>Childhood vaccination schedules by country</h1>
-      <p class="hero-sub">Official vaccination schedules for babies, children and teenagers, explained in English for families who live in or move between countries. Each page is checked against the official source and shows when it was last checked.</p>
+      <h1>Moving from the US to Germany: your child's vaccinations</h1>
+      <p class="hero-sub">Germany's schedule covers the same core diseases as the US one, but the timing is different, there's one vaccine US babies don't routinely get, and measles vaccination is a legal requirement for daycare (Kita) and school. Here's what to sort out before or soon after you arrive.</p>
+      <p class="meta-line">Last checked: October 2026 · See also: <a href="/en/us-vaccination-schedule.html">US vaccination schedule</a> · <a href="/en/germany-vaccination-schedule.html">Germany vaccination schedule</a> · <a href="/en/vaccination-schedules.html">All schedules</a></p>
     </section>
 
-    <section class="block" aria-label="Countries">
-      <div class="country-card">
-        <h3><a href="/en/uk-vaccination-schedule.html">United Kingdom vaccination schedule</a></h3>
-        <p>The NHS schedule from 1 September 2026, including the 2026 switch to MMRV and which version applies to your child.</p>
-      </div>
-      <div class="country-card">
-        <h3><a href="/en/germany-vaccination-schedule.html">Germany vaccination schedule</a></h3>
-        <p>The STIKO Impfkalender 2026, the measles rule for Kita and school, and the 2026 MenACWY change.</p><p class="langs">Also in <a href="/de/impfkalender-deutschland.html" lang="de">Deutsch</a></p>
-      </div>
-      <div class="country-card">
-        <h3><a href="/en/spain-vaccination-schedule.html">Spain vaccination schedule</a></h3>
-        <p>The national common calendar 2026 and how the regions differ.</p><p class="langs">Also in <a href="/es/calendario-vacunacion-espana.html" lang="es">Español</a></p>
-      </div>
-      <div class="country-card">
-        <h3><a href="/en/netherlands-vaccination-schedule.html">Netherlands vaccination schedule</a></h3>
-        <p>The National Immunisation Programme (Rijksvaccinatieprogramma), including the RSV immunisation for babies.</p><p class="langs">Also in <a href="/nl/vaccinatieschema-nederland.html" lang="nl">Nederlands</a></p>
-      </div>
-      <div class="country-card">
-        <h3><a href="/en/us-vaccination-schedule.html">United States vaccination schedule</a></h3>
-        <p>The AAP 2026 schedule, and how it differs from the CDC schedule.</p>
-      </div>
-    </section>
-
-    <section class="block" aria-labelledby="moving">
-      <h2 id="moving">Moving between countries</h2>
-      <p>Schedules differ more than you might expect. Some countries vaccinate against chickenpox, MenB or flu and others don't, and the same vaccine can be due at different ages.</p>
-      <p>Guides for common moves, with what carries over and what your child may be offered:</p>
+    <section class="block" aria-labelledby="measles">
+      <h2 id="measles">The rule you can't skip: measles proof (Masernschutzgesetz)</h2>
       <ul>
-        <li><a href="/en/moving-us-to-uk-vaccinations.html">Moving from the US to the UK</a></li>
-        <li><a href="/en/moving-uk-to-spain-vaccinations.html">Moving from the UK to Spain</a></li>
-        <li><a href="/en/moving-germany-to-spain-vaccinations.html">Moving from Germany to Spain</a></li>
-        <li><a href="/en/moving-us-to-germany-vaccinations.html">Moving from the US to Germany</a></li>
-        <li><a href="/en/moving-uk-to-australia-vaccinations.html">Moving from the UK to Australia</a></li>
+        <li>Children in a Kita, Hort, childminder care or school must show proof of measles protection.</li>
+        <li>From age 1: at least one measles vaccination. From age 2: at least two.</li>
+        <li>Proof can be the vaccination record, a doctor's certificate, or a blood test showing immunity.</li>
+        <li>US children usually get their second MMR at 4–6 years. A 2- or 3-year-old coming from the US often has only one dose and needs the second before starting Kita. Germany allows the second dose as early as 4 weeks after the first.</li>
       </ul>
-      <p>When you move, take your child's vaccination records to your new doctor or health centre. They compare them with the local schedule and offer any missing doses. Each country page explains how this works there.</p>
-      <p>VaxFile also includes the schedules of Switzerland, Ireland, Mexico and Australia.</p>
+    </section>
+
+    <section class="block" aria-labelledby="differences">
+      <h2 id="differences">Key differences at a glance</h2>
+      <div class="table-wrap">
+        <table class="schedule">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">US</th>
+              <th scope="col">Germany (STIKO)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="age" scope="row">MMR</td>
+              <td>12–15 months, 4–6 years</td>
+              <td>11 months, 15 months</td>
+            </tr>
+            <tr>
+              <td class="age" scope="row">Varicella (chickenpox)</td>
+              <td>12–15 months, 4–6 years</td>
+              <td>11 months, 15 months</td>
+            </tr>
+            <tr>
+              <td class="age" scope="row">Meningococcal B</td>
+              <td>Not routine for infants</td>
+              <td>2, 4 and 12 months</td>
+            </tr>
+            <tr>
+              <td class="age" scope="row">Hepatitis A</td>
+              <td>12 and 18 months</td>
+              <td>Not routine</td>
+            </tr>
+            <tr>
+              <td class="age" scope="row">Flu</td>
+              <td>Every year from 6 months</td>
+              <td>Only for children with risk factors</td>
+            </tr>
+            <tr>
+              <td class="age" scope="row">Hepatitis B</td>
+              <td>Birth dose, then 1–2 and 6–18 months</td>
+              <td>In the 6-in-1 at 2, 4 and 11 months</td>
+            </tr>
+            <tr>
+              <td class="age" scope="row">Pre-school booster</td>
+              <td>DTaP + polio at 4–6 years</td>
+              <td>Diphtheria, tetanus, whooping cough at 5–6 years</td>
+            </tr>
+            <tr>
+              <td class="age" scope="row">MenACWY</td>
+              <td>11–12 and 16 years</td>
+              <td>Once at 12–14 years</td>
+            </tr>
+            <tr>
+              <td class="age" scope="row">HPV</td>
+              <td>From 9–12 years</td>
+              <td>9–14 years</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="after">
+      <h2 id="after">What your child may need after the move</h2>
+      <ul>
+        <li><strong>Second MMR and varicella dose</strong> if your child is older than 15 months and hasn't had the US 4–6 year doses yet.</li>
+        <li><strong>Meningococcal B.</strong> Not routine in the US. Germany recommends it at 2, 4 and 12 months, and catch-up up to the 5th birthday.</li>
+        <li><strong>MenACWY for teens.</strong> Germany gives one dose at 12–14, with catch-up up to age 24. If your teen already had it in the US, bring the record.</li>
+        <li><strong>Nothing to undo.</strong> Hepatitis A and flu doses from the US still count; Germany just doesn't routinely give them.</li>
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="records">
+      <h2 id="records">What happens to US records</h2>
+      <ul>
+        <li>Your paediatrician (Kinderarzt) can enter the US doses into a German vaccination record (Impfpass). Bring the original record with clear vaccine names, dates and doses.</li>
+        <li>In Germany, only documented vaccinations count. If a dose can't be shown, the doctor will usually give it again. STIKO considers a possible extra dose acceptable for reliable protection.</li>
+      </ul>
     </section>
 
     <section class="cta-card" aria-labelledby="cta">
-      <h2 id="cta">Keep track with VaxFile</h2>
-      <p>VaxFile shows your child's schedule for the country you live in, reminds you of upcoming doses, and keeps records from every country you've lived in. Free on iOS and Android.</p>
+      <h2 id="cta">How VaxFile helps</h2>
+      <p>Add your child's US doses (or scan the record), then switch the country to Germany. VaxFile shows what's still due on the German schedule, and you can export a PDF for the paediatrician or the Kita.</p>
       <div class="cta-badges">
-        <a href="https://apps.apple.com/app/apple-store/id6763343268?pt=128817231&ct=site-en-vaccination-schedules&mt=8" class="appstore-badge" aria-label="Download VaxFile on the App Store">
+        <a href="https://apps.apple.com/app/apple-store/id6763343268?pt=128817231&ct=site-en-moving-us-de&mt=8" class="appstore-badge" aria-label="Download VaxFile on the App Store">
           <img
             src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
             alt="Download on the App Store"
           />
         </a>
-        <a href="https://play.google.com/store/apps/details?id=com.vaxfile.app&referrer=utm_source%3Dvaxfile-site%26utm_medium%3Den%26utm_campaign%3Dvaccination-schedules" class="appstore-badge" aria-label="Get VaxFile on Google Play">
+        <a href="https://play.google.com/store/apps/details?id=com.vaxfile.app&referrer=utm_source%3Dvaxfile-site%26utm_medium%3Den%26utm_campaign%3Dmoving-us-de" class="appstore-badge" aria-label="Get VaxFile on Google Play">
           <img src="../assets/google-play-badge.png" alt="Get it on Google Play" style="height: 52px; width: auto; display: block;">
         </a>
       </div>
     </section>
 
-    <section class="disclaimer" aria-label="Disclaimer">
-      <p>These pages summarise official vaccination schedules for information only. They aren't medical advice. Your doctor or nurse decides which vaccines your child needs.</p>
+    <section class="disclaimer" aria-label="Sources and disclaimer">
+      <p><strong>Sources:</strong> <a href="https://www.rki.de/SharedDocs/FAQs/DE/Impfen/MMR/Zielgruppe/FAQ-Liste_Zielgruppe.html" rel="noopener">RKI, MMR FAQ</a> · <a href="https://www.rki.de/SharedDocs/FAQ/Impfen/AllgFr_AllgemeineFragen/FAQ-Liste_AllgFr_Impfen.html" rel="noopener">RKI, general vaccination FAQ</a> · <a href="https://www.masernschutz.de" rel="noopener">BIÖG/BZgA, Masernschutzgesetz FAQ</a></p>
+      <p>This page compares the US schedule with the German STIKO schedule, for information only. It isn't medical advice. Your paediatrician decides which vaccines your child needs.</p>
+      <p>Last checked against the official sources: October 2026.</p>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-row">
-        <a href="https://apps.apple.com/app/apple-store/id6763343268?pt=128817231&ct=site-en-vaccination-schedules&mt=8" class="appstore-badge" aria-label="Download VaxFile on the App Store">
+        <a href="https://apps.apple.com/app/apple-store/id6763343268?pt=128817231&ct=site-en-moving-us-de&mt=8" class="appstore-badge" aria-label="Download VaxFile on the App Store">
           <img
             src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
             alt="Download on the App Store"
           />
         </a>
-        <a href="https://play.google.com/store/apps/details?id=com.vaxfile.app&referrer=utm_source%3Dvaxfile-site%26utm_medium%3Den%26utm_campaign%3Dvaccination-schedules" class="appstore-badge" aria-label="Get VaxFile on Google Play">
+        <a href="https://play.google.com/store/apps/details?id=com.vaxfile.app&referrer=utm_source%3Dvaxfile-site%26utm_medium%3Den%26utm_campaign%3Dmoving-us-de" class="appstore-badge" aria-label="Get VaxFile on Google Play">
           <img src="../assets/google-play-badge.png" alt="Get it on Google Play" style="height: 52px; width: auto; display: block;">
         </a>
         <a href="vaccination-schedules.html" class="footer-link">Vaccination schedules</a>
