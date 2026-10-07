@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get VaxFile</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html:not(.show) body { visibility: hidden; }
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #355B4F;
+      background-color: #F6FBF8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    a { color: #1A5F3A; }
+    a:focus-visible { outline: 2px solid #1A5F3A; outline-offset: 2px; border-radius: 4px; }
+    .page {
+      text-align: center;
+      padding: 48px 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand img { width: 32px; height: 32px; display: block; }
+    .wordmark {
+      font-size: 17px;
+      font-weight: 500;
+      color: #1A5F3A;
+      letter-spacing: -0.01em;
+    }
+    .lead {
+      font-size: 16px;
+      color: #355B4F;
+      margin: 24px 0 28px;
+    }
+    .cta-stack {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .cta-stack .appstore-badge {
+      display: block;
+      line-height: 0;
+    }
+    .cta-stack .appstore-badge img {
+      display: block;
+    }
+    .appstore-badge { display: inline-block; }
+    .site-link {
+      display: inline-block;
+      margin-top: 28px;
+      font-size: 13px;
+      color: #1A5F3A;
+    }
+  </style>
+  <script>
+    (function () {
+      var raw = '';
+      try {
+        raw = new URLSearchParams(window.location.search).get('c') || '';
+      } catch (e) {}
+      var campaign = String(raw).toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40);
+      if (!campaign) campaign = 'unknown';
+
+      var apple = 'https://apps.apple.com/app/apple-store/id6763343268?pt=128817231&ct=' + campaign + '&mt=8';
+      var play = 'https://play.google.com/store/apps/details?id=com.vaxfile.app&referrer=utm_source%3Dvaxfile-get%26utm_medium%3Dlink%26utm_campaign%3D' + campaign;
+
+      var ua = navigator.userAgent || '';
+      var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && (navigator.maxTouchPoints || 0) > 1);
+      if (ios) {
+        window.location.replace(apple);
+        return;
+      }
+      if (ua.indexOf('Android') !== -1) {
+        window.location.replace(play);
+        return;
+      }
+
+      document.documentElement.classList.add('show');
+      function setLinks() {
+        var appleLink = document.getElementById('app-store');
+        var playLink = document.getElementById('play-store');
+        if (appleLink) appleLink.href = apple;
+        if (playLink) playLink.href = play;
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setLinks);
+      } else {
+        setLinks();
+      }
+    })();
+  </script>
+  <noscript><style>html body { visibility: visible !important; }</style></noscript>
+</head>
+<body>
+  <main class="page">
+    <div class="brand">
+      <img src="assets/icon.png" alt="" width="32" height="32">
+      <span class="wordmark">VaxFile</span>
+    </div>
+    <p class="lead">Get VaxFile for your phone</p>
+    <div class="cta-stack">
+      <a id="app-store" href="https://apps.apple.com/app/apple-store/id6763343268?pt=128817231&amp;ct=unknown&amp;mt=8" class="appstore-badge" aria-label="Download VaxFile on the App Store">
+        <img src="assets/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 44px; width: auto; display: block;">
+      </a>
+      <a id="play-store" href="https://play.google.com/store/apps/details?id=com.vaxfile.app&amp;referrer=utm_source%3Dvaxfile-get%26utm_medium%3Dlink%26utm_campaign%3Dunknown" class="appstore-badge" aria-label="Get VaxFile on Google Play" style="display: block;">
+        <img src="assets/google-play-badge.png" alt="Get it on Google Play" style="height: 64px; width: auto; display: block;">
+      </a>
+    </div>
+    <a class="site-link" href="https://www.vaxfile.app/en/">vaxfile.app</a>
+  </main>
+</body>
+</html>
