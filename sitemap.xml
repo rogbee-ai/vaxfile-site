@@ -290,6 +290,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.vaxfile.app/en/mexico-vaccination-schedule.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/mexico-vaccination-schedule.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vaxfile.app/es/calendario-vacunacion-mexico.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/mexico-vaccination-schedule.html"/>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vaxfile.app/es/calendario-vacunacion-mexico.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/mexico-vaccination-schedule.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vaxfile.app/es/calendario-vacunacion-mexico.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/mexico-vaccination-schedule.html"/>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.vaxfile.app/en/moving-us-to-uk-vaccinations.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-us-to-uk-vaccinations.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-us-to-uk-vaccinations.html"/>
