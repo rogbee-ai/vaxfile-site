@@ -1,8 +1,8 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.117.3'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-dashboard-key',
   'Access-Control-Allow-Methods': 'GET, OPTIONS',
 }
 
@@ -37,16 +37,21 @@ Deno.serve(async (req) => {
     return new Response('ok', { headers: corsHeaders })
   }
 
+  const expected = Deno.env.get('DASHBOARD_PASSWORD')
+  if (!expected || req.headers.get('x-dashboard-key') !== expected) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
+  }
+
   try {
     const SUPABASE_URL = Deno.env.get('SUPABASE_URL')
-    const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
+    const SUPABASE_SECRET_KEYS = JSON.parse(Deno.env.get('SUPABASE_SECRET_KEYS')!)
     const testUserId = Deno.env.get('TEST_USER_ID') ?? ''
 
-    if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-      throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY')
+    if (!SUPABASE_URL || !SUPABASE_SECRET_KEYS['default']) {
+      throw new Error('Missing SUPABASE_URL or SUPABASE_SECRET_KEYS')
     }
 
-    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEYS['default'])
 
     const url = new URL(req.url)
     const range = url.searchParams.get('range') ?? '24h'

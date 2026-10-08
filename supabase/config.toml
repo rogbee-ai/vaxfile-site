@@ -1,7 +1,7 @@
 
 [functions.growth]
 enabled = true
-verify_jwt = true
+verify_jwt = false
 import_map = "./functions/growth/deno.json"
 # Uncomment to specify a custom file path to the entrypoint.
 # Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
@@ -12,7 +12,7 @@ entrypoint = "./functions/growth/index.ts"
 
 [functions.events]
 enabled = true
-verify_jwt = true
+verify_jwt = false
 import_map = "./functions/events/deno.json"
 # Uncomment to specify a custom file path to the entrypoint.
 # Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
@@ -23,7 +23,7 @@ entrypoint = "./functions/events/index.ts"
 
 [functions.intent]
 enabled = true
-verify_jwt = true
+verify_jwt = false
 import_map = "./functions/intent/deno.json"
 # Uncomment to specify a custom file path to the entrypoint.
 # Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
@@ -34,7 +34,7 @@ entrypoint = "./functions/intent/index.ts"
 
 [functions.errors]
 enabled = true
-verify_jwt = true
+verify_jwt = false
 import_map = "./functions/errors/deno.json"
 # Uncomment to specify a custom file path to the entrypoint.
 # Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
@@ -45,7 +45,7 @@ entrypoint = "./functions/errors/index.ts"
 
 [functions.purchases]
 enabled = true
-verify_jwt = true
+verify_jwt = false
 import_map = "./functions/purchases/deno.json"
 # Uncomment to specify a custom file path to the entrypoint.
 # Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
@@ -53,3 +53,13 @@ entrypoint = "./functions/purchases/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/purchases/*.html" ]
+
+[functions.revenuecat]
+enabled = true
+verify_jwt = false
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/revenuecat/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/revenuecat/*.html" ]
