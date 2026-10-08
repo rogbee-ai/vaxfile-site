@@ -348,6 +348,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.vaxfile.app/en/moving-uk-to-germany-vaccinations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-uk-to-germany-vaccinations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-uk-to-germany-vaccinations.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vaxfile.app/en/moving-germany-to-netherlands-vaccinations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-germany-to-netherlands-vaccinations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-germany-to-netherlands-vaccinations.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.vaxfile.app/en/moving-uk-to-australia-vaccinations.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-uk-to-australia-vaccinations.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-uk-to-australia-vaccinations.html"/>
