@@ -130,6 +130,17 @@ Deno.serve(async (req) => {
       `,
     }
 
+    const totalCrashesQuery = {
+      kind: 'HogQLQuery',
+      query: `
+        SELECT count()
+        FROM events
+        WHERE event = '$exception'
+          AND (${dateFilterSql})
+          ${platformFilter}
+      `,
+    }
+
     const errorTypesQuery = {
       kind: 'HogQLQuery',
       query: `
@@ -149,19 +160,15 @@ Deno.serve(async (req) => {
       `,
     }
 
-    const [totalErrorsRaw, errorTypesRaw] = await Promise.all([
+    const [totalErrorsRaw, totalCrashesRaw, errorTypesRaw] = await Promise.all([
       posthogQuery(apiUrl, token, totalErrorsQuery),
+      posthogQuery(apiUrl, token, totalCrashesQuery),
       posthogQuery(apiUrl, token, errorTypesQuery),
     ])
 
     const totalErrors = readScalarFromResponse(totalErrorsRaw)
+    const totalCrashes = readScalarFromResponse(totalCrashesRaw)
     const errorTypes = parseErrorTypes(errorTypesRaw)
-    const totalCrashes = errorTypes
-      .filter((entry) => {
-        const n = entry.name.toLowerCase()
-        return n.includes('crash') || n.includes('auth_sign_in_failed') || n === '$exception'
-      })
-      .reduce((sum, entry) => sum + entry.count, 0)
 
     return new Response(
       JSON.stringify({
