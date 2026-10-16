@@ -1,0 +1,46 @@
+# VaxFile
+
+> VaxFile is a mobile app (iOS and Android) for parents to keep their children's vaccination records in one place and follow the official childhood vaccination schedule of the country they live in. It is built for families who move between countries. Supported schedules: United Kingdom, Germany, Netherlands, Spain, Switzerland, Ireland, United States, Mexico and Australia. App languages: English, German, Dutch and Spanish.
+
+Key facts:
+- Free to download. A one-time Premium purchase unlocks extra features such as scanning paper vaccination records and PDF export.
+- A child can have several countries; VaxFile shows each country's schedule and which doses are still due.
+- Reminders for upcoming vaccinations.
+- Data is stored in the EU (Frankfurt). Accounts are for adults (18+).
+- Made by Little Handy Apps, Berlin, Germany.
+- VaxFile does not give medical advice. The schedules summarise official sources (for example RIVM, STIKO/RKI, UKHSA, the Spanish Ministry of Health, BAG, HSE, AAP, the Australian NIP and Mexico's PRONAM).
+
+## Vaccination schedules
+
+- [All schedules](https://www.vaxfile.app/en/vaccination-schedules.html): overview of every country covered
+- [UK vaccination schedule](https://www.vaxfile.app/en/uk-vaccination-schedule.html)
+- [Germany vaccination schedule](https://www.vaxfile.app/en/germany-vaccination-schedule.html) ([Deutsch](https://www.vaxfile.app/de/impfkalender-deutschland.html))
+- [Netherlands vaccination schedule](https://www.vaxfile.app/en/netherlands-vaccination-schedule.html) ([Nederlands](https://www.vaxfile.app/nl/vaccinatieschema-nederland.html))
+- [Spain vaccination schedule](https://www.vaxfile.app/en/spain-vaccination-schedule.html) ([Español](https://www.vaxfile.app/es/calendario-vacunacion-espana.html))
+- [US vaccination schedule](https://www.vaxfile.app/en/us-vaccination-schedule.html)
+- [Switzerland vaccination schedule](https://www.vaxfile.app/en/switzerland-vaccination-schedule.html) ([Deutsch](https://www.vaxfile.app/de/impfplan-schweiz.html))
+- [Ireland vaccination schedule](https://www.vaxfile.app/en/ireland-vaccination-schedule.html)
+- [Mexico vaccination schedule](https://www.vaxfile.app/en/mexico-vaccination-schedule.html) ([Español](https://www.vaxfile.app/es/calendario-vacunacion-mexico.html))
+- [Australia vaccination schedule](https://www.vaxfile.app/en/australia-vaccination-schedule.html)
+
+## Moving abroad with children
+
+- [US to UK](https://www.vaxfile.app/en/moving-us-to-uk-vaccinations.html)
+- [US to Germany](https://www.vaxfile.app/en/moving-us-to-germany-vaccinations.html)
+- [UK to Germany](https://www.vaxfile.app/en/moving-uk-to-germany-vaccinations.html)
+- [UK to Spain](https://www.vaxfile.app/en/moving-uk-to-spain-vaccinations.html)
+- [UK to Australia](https://www.vaxfile.app/en/moving-uk-to-australia-vaccinations.html)
+- [Germany to Spain](https://www.vaxfile.app/en/moving-germany-to-spain-vaccinations.html) ([Deutsch](https://www.vaxfile.app/de/umzug-deutschland-spanien-impfungen.html))
+- [Germany to the Netherlands](https://www.vaxfile.app/en/moving-germany-to-netherlands-vaccinations.html)
+- [Germany to Switzerland (Deutsch)](https://www.vaxfile.app/de/umzug-deutschland-schweiz-impfungen.html)
+- [Netherlands to Germany (Nederlands)](https://www.vaxfile.app/nl/verhuizen-nederland-duitsland-vaccinaties.html)
+- [Netherlands to Spain (Nederlands)](https://www.vaxfile.app/nl/verhuizen-nederland-spanje-vaccinaties.html)
+
+## App and support
+
+- [Home](https://www.vaxfile.app/en/): features and screenshots
+- [Support and FAQ](https://www.vaxfile.app/en/support.html)
+- [Privacy policy](https://www.vaxfile.app/en/privacy.html)
+- [Terms of use](https://www.vaxfile.app/en/terms.html)
+- [App Store](https://apps.apple.com/app/id6763343268)
+- [Google Play](https://play.google.com/store/apps/details?id=com.vaxfile.app)
