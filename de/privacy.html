@@ -97,7 +97,7 @@
       <p><strong>Familienprofile:</strong> Name, Geburtsdatum, Geschlecht, Land und optionales Foto jeder Person, die du hinzufügst.</p>
       <p><strong>Impfeinträge:</strong> Impfstoff, Datum, Dosis, wer geimpft hat, und deine Notizen. Impfeinträge sind Gesundheitsdaten, eine besondere Kategorie personenbezogener Daten nach der DSGVO.</p>
       <p><strong>Gescannte Dokumente (optional, Premium):</strong> Fotos von Impfdokumenten, die du scannen möchtest.</p>
-      <p><strong>Nutzungsstatistiken (optional):</strong> nur, wenn du zustimmst. Welche Funktionen du nutzt und wie oft du die App öffnest, verknüpft mit deiner Konto-ID, aber nicht mit deiner E-Mail-Adresse, sowie technische Geräteinformationen. Keine Impfdaten, keine IP-Adresse und kein Standort.</p>
+      <p><strong>Nutzungsstatistiken (optional):</strong> nur, wenn du zustimmst. Welche Funktionen du nutzt und wie oft du die App öffnest, verknüpft mit deiner Konto-ID, aber nicht mit deiner E-Mail-Adresse, sowie technische Geräteinformationen. Keine Impfdaten, keine IP-Adresse und kein Standort. Dazu gehören technische Fehlerberichte, wenn in der App etwas schiefgeht, zum Beispiel die Art des Fehlers, eine technische Fehlermeldung und der Bildschirm, auf dem er auftrat. Sie enthalten keine Namen und keine Impfdaten.</p>
       <p><strong>Käufe:</strong> Wenn du Premium kaufst, deine Konto-ID und die Kaufdetails.</p>
       <p><strong>Nur auf deinem Gerät:</strong> Impferinnerungen, Kalendereinträge und PDF-Exporte werden auf deinem Gerät erstellt. Wir erhalten sie nicht.</p>
     </section>
@@ -120,7 +120,7 @@
       <ul>
         <li><strong>Supabase</strong> speichert dein Konto, deine Familienprofile und Impfeinträge auf Servern in Frankfurt.</li>
         <li><strong>OpenAI</strong> (USA) liest gescannte Fotos aus und gibt die Impfdaten zurück. OpenAI verwendet sie nicht zum Training und speichert sie höchstens 30 Tage zur Missbrauchsüberwachung.</li>
-        <li><strong>PostHog</strong> (EU-Cloud) verarbeitet Nutzungsstatistiken, nur wenn du zustimmst.</li>
+        <li><strong>PostHog</strong> (EU-Cloud) verarbeitet Nutzungsstatistiken und Fehlerberichte, nur wenn du zustimmst.</li>
         <li><strong>RevenueCat</strong> (USA) verwaltet Premium-Käufe. RevenueCat erhält deine Konto-ID und die Kaufdetails, aber keine Impfdaten.</li>
         <li><strong>Apple und Google</strong> wickeln In-App-Käufe über den App Store und Google Play ab.</li>
       </ul>

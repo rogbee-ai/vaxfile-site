@@ -233,7 +233,7 @@
       <p><strong>Perfiles familiares:</strong> nombre, fecha de nacimiento, sexo, país y foto opcional de cada persona que añadas.</p>
       <p><strong>Registros de vacunación:</strong> vacuna, fecha, dosis, quién la administró y tus notas. Los registros de vacunación son datos de salud, una categoría especial de datos personales según el RGPD.</p>
       <p><strong>Documentos escaneados (opcional, Premium):</strong> fotos de documentos de vacunación que decidas escanear.</p>
-      <p><strong>Estadísticas de uso (opcional):</strong> solo si das tu consentimiento. Qué funciones usas y con qué frecuencia abres la app, vinculado a tu ID de cuenta pero no a tu correo electrónico, además de información técnica del dispositivo. Sin datos de vacunación, sin dirección IP y sin ubicación.</p>
+      <p><strong>Estadísticas de uso (opcional):</strong> solo si das tu consentimiento. Qué funciones usas y con qué frecuencia abres la app, vinculado a tu ID de cuenta pero no a tu correo electrónico, además de información técnica del dispositivo. Sin datos de vacunación, sin dirección IP y sin ubicación. Esto incluye informes técnicos de errores cuando algo falla en la app, como el tipo de error, un mensaje técnico de error y la pantalla donde ocurrió. No contienen nombres ni datos de vacunación.</p>
       <p><strong>Compras:</strong> si compras Premium, tu ID de cuenta y los detalles de la compra.</p>
       <p><strong>Solo en tu dispositivo:</strong> los recordatorios de vacunas, las entradas del calendario y las exportaciones en PDF se crean en tu dispositivo. No los recibimos.</p>
     </section>
@@ -256,7 +256,7 @@
       <ul>
         <li><strong>Supabase</strong> guarda tu cuenta, perfiles familiares y registros de vacunación en servidores en Fráncfort (Alemania).</li>
         <li><strong>OpenAI</strong> (Estados Unidos) lee las fotos escaneadas y devuelve los datos de vacunación. OpenAI no las usa para entrenamiento y las conserva como máximo 30 días para la detección de abusos.</li>
-        <li><strong>PostHog</strong> (nube de la UE) trata las estadísticas de uso, solo si das tu consentimiento.</li>
+        <li><strong>PostHog</strong> (nube de la UE) trata las estadísticas de uso y los informes de errores, solo si das tu consentimiento.</li>
         <li><strong>RevenueCat</strong> (Estados Unidos) gestiona las compras Premium. Recibe tu ID de cuenta y los detalles de la compra, pero ningún dato de vacunación.</li>
         <li><strong>Apple y Google</strong> procesan las compras dentro de la app a través del App Store y Google Play.</li>
       </ul>

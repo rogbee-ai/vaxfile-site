@@ -233,7 +233,7 @@
       <p><strong>Family profiles:</strong> the name, date of birth, sex, country and optional photo of each person you add.</p>
       <p><strong>Vaccination records:</strong> vaccine, date, dose, who administered it, and your notes. Vaccination records are health data, a special category of personal data under the GDPR.</p>
       <p><strong>Scanned documents (optional, Premium):</strong> photos of vaccination documents you choose to scan.</p>
-      <p><strong>Usage statistics (optional):</strong> only if you opt in. Which features you use and how often you open the app, linked to your account ID but not to your email address, plus technical device information. No vaccination data, no IP address and no location.</p>
+      <p><strong>Usage statistics (optional):</strong> only if you opt in. Which features you use and how often you open the app, linked to your account ID but not to your email address, plus technical device information. No vaccination data, no IP address and no location. This includes technical error reports when something goes wrong in the app, such as the type of error, a technical error message and the screen where it happened. They contain no names and no vaccination data.</p>
       <p><strong>Purchases:</strong> if you buy Premium, your account ID and purchase details.</p>
       <p><strong>On your device only:</strong> vaccination reminders, calendar entries and PDF exports are created on your device. We don't receive them.</p>
     </section>
@@ -256,7 +256,7 @@
       <ul>
         <li><strong>Supabase</strong> stores your account, family profiles and vaccination records on servers in Frankfurt, Germany.</li>
         <li><strong>OpenAI</strong> (United States) reads scanned photos and returns the vaccination data. OpenAI does not use them for training and keeps them for at most 30 days for abuse monitoring.</li>
-        <li><strong>PostHog</strong> (EU cloud) processes usage statistics, only if you opt in.</li>
+        <li><strong>PostHog</strong> (EU cloud) processes usage statistics and error reports, only if you opt in.</li>
         <li><strong>RevenueCat</strong> (United States) manages Premium purchases. It receives your account ID and purchase details, but no vaccination data.</li>
         <li><strong>Apple and Google</strong> process in-app purchases through the App Store and Google Play.</li>
       </ul>
