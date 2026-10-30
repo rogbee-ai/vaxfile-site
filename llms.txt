@@ -1,6 +1,6 @@
 # VaxFile
 
-> VaxFile is a mobile app (iOS and Android) for parents to keep their children's vaccination records in one place and follow the official childhood vaccination schedule of the country they live in. It is built for families who move between countries. Supported schedules: United Kingdom, Germany, Netherlands, Spain, Switzerland, Ireland, United States, Mexico and Australia. App languages: English, German, Dutch and Spanish.
+> VaxFile is a mobile app (iOS and Android) for parents to keep their children's vaccination records in one place and follow the official childhood vaccination schedule of the country they live in. It is built for families who move between countries. Supported schedules: United Kingdom, Germany, Netherlands, Spain, Switzerland, Ireland, United States, Mexico, Australia, Austria, Romania and Türkiye. App languages: English, German, Dutch and Spanish.
 
 Key facts:
 - Free to download. A one-time Premium purchase unlocks extra features such as scanning paper vaccination records and PDF export.
@@ -8,7 +8,7 @@ Key facts:
 - Reminders for upcoming vaccinations.
 - Data is stored in the EU (Frankfurt). Accounts are for adults (18+).
 - Made by Little Handy Apps, Berlin, Germany.
-- VaxFile does not give medical advice. The schedules summarise official sources (for example RIVM, STIKO/RKI, UKHSA, the Spanish Ministry of Health, BAG, HSE, AAP, the Australian NIP and Mexico's PRONAM).
+- VaxFile does not give medical advice. The schedules summarise official sources (for example RIVM, STIKO/RKI, UKHSA, the Spanish Ministry of Health, BAG, HSE, AAP, the Australian NIP, Mexico's PRONAM, Austria's Impfplan Österreich, Romania's INSP and Türkiye's Ministry of Health).
 
 ## Vaccination schedules
 
@@ -22,6 +22,9 @@ Key facts:
 - [Ireland vaccination schedule](https://www.vaxfile.app/en/ireland-vaccination-schedule.html)
 - [Mexico vaccination schedule](https://www.vaxfile.app/en/mexico-vaccination-schedule.html) ([Español](https://www.vaxfile.app/es/calendario-vacunacion-mexico.html))
 - [Australia vaccination schedule](https://www.vaxfile.app/en/australia-vaccination-schedule.html)
+- [Austria vaccination schedule](https://www.vaxfile.app/en/austria-vaccination-schedule.html) ([Deutsch](https://www.vaxfile.app/de/impfplan-oesterreich.html))
+- [Romania vaccination schedule](https://www.vaxfile.app/en/romania-vaccination-schedule.html)
+- [Türkiye vaccination schedule](https://www.vaxfile.app/en/turkiye-vaccination-schedule.html)
 
 ## Moving abroad with children
 
