@@ -30,11 +30,14 @@ Key facts:
 - [UK to Germany](https://www.vaxfile.app/en/moving-uk-to-germany-vaccinations.html)
 - [UK to Spain](https://www.vaxfile.app/en/moving-uk-to-spain-vaccinations.html)
 - [UK to Australia](https://www.vaxfile.app/en/moving-uk-to-australia-vaccinations.html)
+- [UK to Ireland](https://www.vaxfile.app/en/moving-uk-to-ireland-vaccinations.html)
+- [Ireland to Australia](https://www.vaxfile.app/en/moving-ireland-to-australia-vaccinations.html)
 - [Germany to Spain](https://www.vaxfile.app/en/moving-germany-to-spain-vaccinations.html) ([Deutsch](https://www.vaxfile.app/de/umzug-deutschland-spanien-impfungen.html))
 - [Germany to the Netherlands](https://www.vaxfile.app/en/moving-germany-to-netherlands-vaccinations.html)
 - [Germany to Switzerland (Deutsch)](https://www.vaxfile.app/de/umzug-deutschland-schweiz-impfungen.html)
 - [Netherlands to Germany (Nederlands)](https://www.vaxfile.app/nl/verhuizen-nederland-duitsland-vaccinaties.html)
 - [Netherlands to Spain (Nederlands)](https://www.vaxfile.app/nl/verhuizen-nederland-spanje-vaccinaties.html)
+- [Mexico to the US (Español)](https://www.vaxfile.app/es/mudarse-mexico-estados-unidos-vacunas.html)
 
 ## App and support
 

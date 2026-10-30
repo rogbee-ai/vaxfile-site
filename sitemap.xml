@@ -405,4 +405,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.vaxfile.app/es/mudarse-mexico-estados-unidos-vacunas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vaxfile.app/es/mudarse-mexico-estados-unidos-vacunas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/es/mudarse-mexico-estados-unidos-vacunas.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vaxfile.app/en/moving-ireland-to-australia-vaccinations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-ireland-to-australia-vaccinations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-ireland-to-australia-vaccinations.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vaxfile.app/en/moving-uk-to-ireland-vaccinations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vaxfile.app/en/moving-uk-to-ireland-vaccinations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vaxfile.app/en/moving-uk-to-ireland-vaccinations.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
